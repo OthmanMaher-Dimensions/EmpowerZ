@@ -1,0 +1,111 @@
+.section {
+    padding: 6rem 0;
+    background-color: #020617;
+    /* Deep dark blue */
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    /* Large gap between Mission and Vision blocks */
+}
+
+/* Block Layout */
+.block {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.reverseBlock {
+    /* No special reverse logic needed for flex row default, 
+       HTML order handles image-left text-right for the second block.
+       But on mobile we might want to stack differently. */
+}
+
+/* Content */
+.textContent {
+    flex: 1;
+}
+
+.title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    opacity: 0.9;
+}
+
+/* Image */
+.imageWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    border-radius: 8px;
+    /* Clean look */
+    object-fit: cover;
+    /* Optional: box-shadow or glow if needed */
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .container {
+        gap: 5rem;
+    }
+
+    .block {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .block {
+        flex-direction: column-reverse;
+        /* Text on top or bottom? usually Image top on mobile looks better, or Text top. */
+        /* Let's Try: Image Top, Text Bottom for standard flow. */
+        flex-direction: column;
+        text-align: left;
+        gap: 2rem;
+    }
+
+    /* For the layout where text comes before image in DOM (Mission) */
+    .block:not(.reverseBlock) {
+        flex-direction: column-reverse;
+        /* Image displays first (bottom of flex col reversed? no wait) 
+        Standard col: element 1 (text), element 2 (image). 
+        If we want image top: column-reverse puts element 2 on top. */
+        flex-direction: column-reverse;
+    }
+
+    /* For the layout where image comes before text in DOM (Vision) */
+    .reverseBlock {
+        flex-direction: column;
+        /* Image (1) on top, Text (2) below */
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+}

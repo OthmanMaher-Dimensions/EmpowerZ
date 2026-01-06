@@ -1,0 +1,179 @@
+.section {
+    color: #fff;
+    background-color: #020617;
+    /* Dark background for the whole section context */
+}
+
+/* Title Section */
+.titleContainer {
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    position: relative;
+}
+
+.heading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.heading::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    /* White underline */
+    margin-top: 1rem;
+}
+
+/* Pink square next to title like in design */
+.titleDecor {
+    display: inline-block;
+    width: 120px;
+    height: 80px;
+    background-color: #ec4899;
+    /* Pink accent */
+    margin-right: 1.5rem;
+    vertical-align: middle;
+}
+
+/* Cards Grid */
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+}
+
+.card {
+    padding: 3rem 1.5rem;
+    color: #000;
+    /* Dark text for light cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+    min-height: 400px;
+    min-height: 400px;
+    margin: 2px;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.iconContainer {
+    margin-bottom: 2rem;
+    height: 100px;
+    /* Fixed height for consistency */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardIcon {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.cardTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.cardDescription {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #334155;
+}
+
+/* Bottom Section */
+.bottomSectionWrapper {
+    width: 100%;
+    background-color: #fff;
+    padding: 5rem 0;
+    color: #000;
+}
+
+.bottomSection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.bottomImageContainer {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.bottomImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.bottomContent {
+    flex: 1;
+}
+
+.bottomTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.bottomDescription {
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .cardsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .cardsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bottomSection {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .heading {
+        font-size: 2.5rem;
+    }
+
+    .titleDecor {
+        width: 60px;
+        height: 60px;
+    }
+}

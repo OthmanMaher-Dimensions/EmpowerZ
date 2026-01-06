@@ -1,0 +1,291 @@
+/* AboutHero.module.css */
+.section {
+    position: relative;
+    min-height: 100vh;
+    background-color: var(--bg-primary, #020617);
+    color: var(--text-primary, #ffffff);
+    overflow: hidden;
+    padding-top: 80px;
+    /* Header space */
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    /* Allow content to hang out */
+}
+
+/* Backgrounds */
+.bgContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bgImage {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/about/about-hero-bg.jpg');
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.gradientOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to right, var(--bg-primary, #020617) 0%, var(--bg-primary, #020617) 16%, #020617b3 56%, #0206174d 100%);
+    z-index: 2;
+}
+
+/* Content Layout */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: var(--container-width, 1200px);
+    margin: 0 10%;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Left Content */
+.contentLeft {
+    max-width: 600px;
+    padding-top: 4rem;
+}
+
+.badge {
+    display: inline-block;
+    background-color: #FDC344;
+    color: #000;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    border-radius: 2px;
+    transform: rotate(-2deg);
+    box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.1);
+}
+
+.headline {
+    font-family: 'Work Sans', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 7rem;
+    letter-spacing: 0.02em;
+    position: relative;
+}
+
+.headlineSpark {
+    display: block;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 50px;
+    letter-spacing: 9.936px;
+    text-transform: uppercase;
+}
+
+.headlinePassion {
+    display: block;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 96px;
+    line-height: 96px;
+    letter-spacing: 7.2px;
+    text-transform: uppercase;
+}
+
+.headlineMovement {
+    position: absolute;
+
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 42px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 9.648px;
+    text-transform: uppercase;
+
+    background: linear-gradient(90deg, #FF8100 0%, #DFAE00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+
+    white-space: nowrap;
+    margin-top: 16%;
+    margin-left: 11%;
+
+}
+
+.subHeadline {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 50px;
+    letter-spacing: 9.936px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+/* Arrow Graphic */
+.arrowContainer {
+    pointer-events: none;
+    z-index: 5;
+    opacity: .8;
+    width: 466px;
+    position: absolute;
+    top: 24%;
+    left: 14%;
+}
+
+.arrowImage {
+    width: 100%;
+    height: auto;
+}
+
+/* Bottom Area */
+.bottomArea {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+    align-items: flex-start;
+    margin-top: auto;
+    /* Allow card to hang off the bottom */
+    transform: translateY(40%);
+    position: relative;
+    z-index: 20;
+}
+
+/* Frame Image */
+.frameContainer {
+    position: relative;
+    padding: 10px;
+    background: #fff;
+    /* transform: rotate(-3deg); Removed rotation as requested */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    width: fit-content;
+}
+
+.frameImage {
+    display: block;
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Text Box */
+.textBox {
+    background-color: #FDC344;
+    color: #000;
+    padding: 3rem;
+    border-radius: 12px;
+    position: relative;
+}
+
+.textBox p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.textBox p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .bgImage {
+        width: 100%;
+        opacity: 0.4;
+    }
+
+    .gradientOverlay {
+        background: linear-gradient(to top,
+                var(--bg-primary, #020617) 0%,
+                rgba(2, 6, 23, 0.9) 100%);
+    }
+
+    .container {
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .bottomArea {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .arrowContainer {
+        display: none;
+    }
+
+    .frameContainer {
+        display: none;
+        /* Hide frame on mobile for cleaner layout or adjust */
+    }
+}
+
+@media (max-width: 768px) {
+    .headline {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .headlineSpark,
+    .headlinePassion,
+    .subHeadline,
+    .headlineMovement {
+        font-size: 32px;
+        line-height: normal;
+        letter-spacing: 2px;
+    }
+
+    .headlineMovement {
+        position: static;
+        margin: 0;
+        display: block;
+        background: none;
+        background-clip: unset;
+        -webkit-text-fill-color: #fff;
+        color: #fff;
+    }
+
+    .contentLeft {
+        padding-top: 2rem;
+    }
+
+    .textBox {
+        padding: 2rem;
+    }
+}

@@ -1,0 +1,142 @@
+.section {
+    background-color: #0F0920;
+    /* Deep purple/black, matching theme */
+    padding: 6rem 0;
+    color: white;
+}
+
+.container {
+    max-width: 900px;
+    /* Constrained width for the form box */
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.formWrapper {
+    border: 2px solid #FEC23D;
+    /* Yellow border */
+    padding: 3rem 4rem;
+    position: relative;
+    /* We'll use padding-bottom to make space for the button if needed, 
+       or just rely on the button wrapper positioning. */
+    padding-bottom: 5rem;
+}
+
+.introText {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+    color: white;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    font-weight: 500;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.fullRow {
+    width: 100%;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border-radius: 4px;
+    /* Slightly rounded */
+    border: 1px solid #FFD036;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    outline: none;
+    transition: box-shadow 0.2s;
+}
+
+.input:focus,
+.textarea:focus {
+    box-shadow: 0 0 0 2px #FEC23D;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: #64748b;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.buttonWrapper {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    /* Center on the bottom border */
+    width: auto;
+}
+
+.submitButton {
+    background-color: #FEC23D;
+    color: #0F0920;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 4px;
+    /* Matches inputs */
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.submitButton:hover {
+    transform: translate(-50%, calc(50% - 2px));
+    /* Adjust for existing translate */
+    background-color: #e5ac34;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section {
+        padding: 4rem 0;
+    }
+
+    .formWrapper {
+        padding: 2rem 1.5rem;
+        padding-bottom: 4rem;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .introText {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .submitButton {
+        padding: 0.85rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+        /* Full width on mobile looks safer or keep constrained */
+        width: auto;
+        min-width: 200px;
+    }
+}

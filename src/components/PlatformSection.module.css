@@ -1,0 +1,203 @@
+.section {
+    padding: 6rem 0;
+    background-color: #020617;
+    /* Dark background */
+    color: white;
+}
+
+.container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    width: 100%;
+}
+
+.yellowBar {
+    width: 140px;
+    height: 70px;
+    background-color: #FEC23D;
+    /* Yellow */
+    flex-shrink: 0;
+}
+
+.mainTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.underlined {
+    position: relative;
+    display: inline-block;
+}
+
+.underlined::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    /* Adjust distance */
+    width: 100%;
+    height: 3px;
+    /* Strong underline */
+    background-color: white;
+}
+
+/* Text Content */
+.textDetails {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto 6rem auto;
+    padding: 0 2rem;
+    /* Add padding for smaller screens */
+}
+
+.subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FEC23D;
+    /* Yellow */
+    margin-bottom: 2rem;
+}
+
+.description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e2e8f0;
+    margin-bottom: 1.5rem;
+}
+
+/* Screenshots Area */
+.screenshotsArea {
+    text-align: center;
+    padding: 0 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.highlightTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FEC23D;
+    margin-bottom: 3rem;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    /* Allow wrap on smaller screens */
+}
+
+.screenshotCard {
+    flex: 1;
+    min-width: 200px;
+    /* Minimum width before wrapping */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.imageWrapper {
+    width: 100%;
+    /* Maintain aspect ratio or fixed height? 
+       Screenshots usually have same aspect ratio. 
+       Let's verify sizing. */
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* If arrows extend outside, we need padding? 
+       Assuming image contains arrows within its canvas. 
+       Use object-contain if strictly needed, but responsive width is best. */
+}
+
+.caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: white;
+    max-width: 180px;
+    /* Limit caption width for readability */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .mainTitle {
+        font-size: 3rem;
+    }
+
+    .yellowBar {
+        width: 100px;
+        height: 50px;
+    }
+
+    .grid {
+        justify-content: center;
+    }
+
+    .screenshotCard {
+        min-width: 45%;
+        /* 2 per row */
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .yellowBar {
+        width: 80px;
+        height: 8px;
+        /* Make it a thin bar or smaller block */
+        margin-bottom: 0.5rem;
+    }
+
+    .mainTitle {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .screenshotCard {
+        min-width: 100%;
+        /* 1 per row */
+    }
+
+    .textDetails {
+        margin-bottom: 3rem;
+        padding: 0;
+    }
+
+    .screenshotsArea {
+        padding: 0 1.5rem;
+    }
+}

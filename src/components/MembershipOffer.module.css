@@ -1,0 +1,286 @@
+.section {
+    position: relative;
+    width: 100%;
+    min-height: 800px;
+    padding: 4rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    background-color: #020617;
+    /* Fallback */
+    font-family: 'DM Sans', sans-serif;
+}
+
+.bgImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.6;
+    /* Darken background for readability */
+}
+
+/* Gradient overlay to ensure text readability */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.6));
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Top Quote */
+.topQuoteContainer {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 1000px;
+}
+
+.topQuote {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #fff;
+    font-weight: 500;
+}
+
+.quoteIcon {
+    color: #FEC23D;
+    font-size: 3rem;
+    margin: 0 0.5rem;
+    vertical-align: text-top;
+}
+
+/* Main Gold Border Box */
+.contentBox {
+    position: relative;
+    border: 2px solid #FEC23D;
+    padding: 3rem;
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 4rem;
+    /* Space for the CTA button overlap */
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #FEC23D;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.description {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-bottom: 3rem;
+    color: #e2e8f0;
+}
+
+/* Stats Grid */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.statItem:not(:last-child)::after {
+    content: ':';
+    position: absolute;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 300;
+}
+
+.statValue {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FEC23D;
+    margin-bottom: 0.5rem;
+}
+
+.statLabel {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.oneStepText {
+    font-size: 1.5rem;
+    color: #FEC23D;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+/* Feature Cards Row - Overlapping the bottom */
+.featureCardsRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    /* margin-top: 2rem; */
+}
+
+.featureCard {
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    color: #0f172a;
+    /* Dark text for colored backgrounds */
+}
+
+.cardBlue {
+    background-color: #93C5FD;
+    /* Light Blue */
+}
+
+.cardGreen {
+    background-color: #bef264;
+    /* Lime Green */
+}
+
+.cardPink {
+    background-color: #fdba74;
+    /* Orange/Pinkish - adjusting to match image better */
+    background-color: #f472b6;
+    /* Pink */
+}
+
+/* Adjust colors to match image more closely */
+.cardBlue {
+    background-color: #8da4ef;
+}
+
+.cardGreen {
+    background-color: #dbf18a;
+}
+
+.cardPink {
+    background-color: #ef8496;
+}
+
+
+.featureIcon {
+    font-size: 1.5rem;
+    min-width: 24px;
+}
+
+.featureText {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* CTA Button Area */
+.ctaContainer {
+    position: absolute;
+    bottom: -25px;
+    /* Halfway out of the box */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.ctaButton {
+    background-color: #FEC23D;
+    color: #000;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ctaButton:hover {
+    transform: scale(1.05);
+    background-color: #fbbf24;
+}
+
+.arrowImage {
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px;
+    width: auto;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .statItem:not(:last-child)::after {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .contentBox {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .featureCardsRow {
+        grid-template-columns: 1fr;
+    }
+
+    .ctaContainer {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 2rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .arrowImage {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: rotate(90deg);
+    }
+}

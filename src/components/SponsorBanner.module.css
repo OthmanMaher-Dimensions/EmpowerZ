@@ -1,0 +1,103 @@
+.bannerSection {
+    background-color: #ffffff;
+    padding: 4rem 0;
+    /* Remove horizontal padding from section */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.bannerContainer {
+    width: 100%;
+    /* Removed max-width to obey "without container effect" */
+    padding-right: 5%;
+    /* Keep button off the right edge */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.leftContent {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.pinkBar {
+    width: 100px;
+    height: 60px;
+    background-color: #fc38b0;
+    /* Updated specific pink */
+}
+
+.bannerText {
+    font-family: 'Inter', sans-serif;
+    /* Or 'Cairo' / system font if needed, matching globals */
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #000000;
+}
+
+.sponsorBtn {
+    background-color: #ffc83d;
+    /* Gold/Yellow from image */
+    color: #000000;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    /* Pill shape */
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sponsorBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 200, 61, 0.4);
+}
+
+.arrowIcon {
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .bannerText {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .bannerContainer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .leftContent {
+        width: 100%;
+    }
+
+    .bannerText {
+        font-size: 1.5rem;
+    }
+
+    .pinkBar {
+        width: 80px;
+        height: 50px;
+    }
+
+    .sponsorBtn {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,108 @@
+"use client";
+
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
+import styles from './Hero.module.css';
+
+const Hero = () => {
+    return (
+        <section className={styles.hero}>
+            {/* Background Image Container */}
+            <div className={styles.heroBgContainer}>
+                {/* The Image */}
+                <div className={styles.heroBgImage} />
+
+                {/* The Gradient Overlay */}
+                <div className={styles.gradientOverlay} />
+
+                {/* Top Gradient Blend for Mobile */}
+                <div className={styles.topBlend} />
+
+                {/* Bottom Gradient Blend for Mobile */}
+                <div className={styles.bottomBlend} />
+            </div>
+
+            {/* Content Area */}
+            <div className={styles.contentArea}>
+
+                <div className={styles.contentInner}>
+
+                    {/* Eyebrow: A NEW LEARNING ----- */}
+                    <h2 className={`${styles.eyebrow} ${styles.animateIn} ${styles.delay1}`}>
+                        A New Learning
+                        <span className={styles.eyebrowLine}></span>
+                    </h2>
+
+                    {/* Heading: JOURNEY */}
+                    <h1 className={`${styles.heading} ${styles.animateIn} ${styles.delay2}`}>
+                        Journey
+                    </h1>
+
+                    {/* Subheading: INVESTING IN YOUR POTENTIAL */}
+                    <h3 className={`${styles.subheading} ${styles.animateIn} ${styles.delay3}`}>
+                        Investing in Your Potential
+                    </h3>
+
+                    {/* Divider/Subtitle: ---- A WORLD OF BENEFITS */}
+                    <div className={`${styles.dividerContainer} ${styles.animateIn} ${styles.delay4}`}>
+                        <span className={styles.dividerLine}></span>
+                        <span className={styles.dividerText}>
+                            A world of benefits
+                        </span>
+                    </div>
+
+                    {/* Empower Statement: WE EMPOWER ENTREPRENEURS */}
+                    <p className={`${styles.empowerText} ${styles.animateIn} ${styles.delay5}`}>
+                        We Empower <span className={styles.empowerTextStrong}>Entrepreneurs</span>
+                        {/* The reference image shows a cursor-like bar at the end */}
+                        <span className={styles.empowerTextCursor}>|</span>
+                    </p>
+
+                    {/* CTA Button: Join the Movement */}
+                    <a href="#join" className={`${styles.ctaButton} ${styles.animateIn} ${styles.delay6}`}>
+                        <span className="hero-cta-text">Join the Movement</span> <ArrowRight className={styles.ctaArrow} size={24} strokeWidth={2.5} />
+                    </a>
+
+                </div>
+
+                {/* Partners Footer - Infinite Swiper */}
+                <div className={`${styles.partnersFooter} ${styles.animateIn} ${styles.delay10}`}>
+                    <span className={styles.partnersTitle}>Partners and Patrons</span>
+
+                    {/* Marquee Container */}
+                    <div className={styles.marqueeContainer}>
+                        {/* Track - Two sets of logos for seamless loop */}
+                        <div className={styles.partnerTrack}>
+                            {/* First Set */}
+                            {[...Array(15)].map((_, i) => (
+                                <img key={`a-${i}`} src="/assets/logo-microsoft.png" alt="Partner" className={styles.partnerLogo} />
+                            ))}
+                            {/* Duplicate Set */}
+                            {[...Array(15)].map((_, i) => (
+                                <img key={`b-${i}`} src="/assets/logo-microsoft.png" alt="Partner" className={styles.partnerLogo} />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {/* Social Sidebar */}
+            <div className={`${styles.socialSidebar} ${styles.animateIn} ${styles.delay8}`}>
+                {[
+                    { img: '/assets/icon-youtube-gold.png', href: '#' },
+                    { img: '/assets/icon-x-gold.png', href: '#' },
+                    { img: '/assets/icon-facebook-gold.png', href: '#' },
+                    { img: '/assets/icon-instagram-gold.png', href: '#' },
+                    { img: '/assets/icon-linkedin-gold.png', href: '#' }
+                ].map((item, i) => (
+                    <a key={i} href={item.href} className={styles.socialIconLink}>
+                        <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
+                    </a>
+                ))}
+            </div>
+        </section>
+    );
+};
+
+export default Hero;

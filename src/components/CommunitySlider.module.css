@@ -1,0 +1,199 @@
+.section {
+    background-image: url('/assets/community-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #f3f4f6;
+    padding: 6rem 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    max-width: 900px;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #000;
+}
+
+.sliderWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    position: relative;
+    justify-content: center;
+    isolation: isolate;
+    /* Create new stacking context */
+}
+
+/* Ensure buttons are on top */
+.navBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 50;
+    /* Higher than window */
+    flex-shrink: 0;
+    pointer-events: auto;
+}
+
+.navBtn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* Slider window sits below buttons */
+.sliderWindow {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem 0;
+    position: relative;
+    z-index: 1;
+    /* Lower than buttons */
+}
+
+.sliderTrack {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    /* Keep 100% width reference for relative translation */
+    will-change: transform;
+}
+
+.slideItem {
+    /* flex: 0 0 % is handled inline for responsiveness */
+    padding: 0 12px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    /* Important: prevents shrinking */
+}
+
+.card {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cardOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 3rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 100%);
+    color: white;
+    text-align: center;
+}
+
+.cardTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.cardDesc {
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.ctaContainer {
+    margin-top: 4rem;
+}
+
+.ctaButton {
+    background-color: #fbbf24;
+    color: #000;
+    padding: 1rem 3rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+    text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.ctaButton:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+
+    /* Force 100% width on tablet/mobile to backup JS */
+    .slideItem {
+        flex: 0 0 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 3rem 0;
+    }
+
+    .headline {
+        font-size: 1.2rem;
+    }
+
+    .card {
+        height: 420px;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+    }
+}

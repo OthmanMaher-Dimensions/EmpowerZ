@@ -1,0 +1,168 @@
+.section {
+    background-color: #0F0920;
+    /* Deep purple/black background */
+    padding: 6rem 0;
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.headerWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.yellowBlock {
+    width: 100px;
+    height: 60px;
+    background-color: #FEC23D;
+    margin-right: 1.5rem;
+}
+
+.title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.25rem;
+    color: #e2e8f0;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    text-align: left;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* Make the last item center if we have 7 items (3x2 + 1) */
+.card:last-child {
+    grid-column: 2;
+    /* Center in the 3-column grid */
+}
+
+.card {
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    /* More vertical padding since no icon */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    align-items: flex-start;
+    /* Left align text */
+    text-align: left;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+    color: #1a1a1a;
+    min-height: 200px;
+    /* Slightly shorter than other cards */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.cardTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+    /* White text on colored background as per image */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cardDescription {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #1a1a1a;
+    /* Keep description dark for readability */
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Adjust text color based on background luminance if needed, 
+   but for now following the visual pattern of white title/dark desc 
+   or checking the image again. 
+   Actually in the image: Title is White/Light, Description is Black/Dark.
+*/
+
+/* Responsive */
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card:last-child {
+        grid-column: 1 / span 2;
+        /* Span full width or center? Let's verify. Or just flow naturally. */
+        grid-column: auto;
+    }
+
+    /* Center the last item in a 2-column grid if it's odd? 
+       7 items in 2 cols: 2, 2, 2, 1. The last one will be on the left.
+       To center it:
+    */
+    .card:nth-child(7) {
+        grid-column: 1 / span 2;
+        max-width: 50%;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerWrapper {
+        justify-content: center;
+    }
+
+    .yellowBlock {
+        display: none;
+    }
+
+    .title {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .subtitle {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reset specific grid styling for mobile */
+    .card:nth-child(7) {
+        grid-column: auto;
+        max-width: 100%;
+    }
+
+    .card {
+        padding: 2rem;
+        align-items: center;
+        text-align: center;
+    }
+}

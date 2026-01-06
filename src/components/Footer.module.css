@@ -1,0 +1,94 @@
+.footer {
+    width: 100%;
+    background-color: #100820;
+    /* Dark Theme */
+    color: #a0a0a0;
+    padding: 4rem 1.5rem 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: none;
+}
+
+.container {
+    max-width: var(--container-width);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Big Brand Logo styling if needed, but design shows small footer with 3 parts? 
+   Actually design 1 shows "EMPOWER Z" logo on left. 
+   Design 5 shows Lingo Shack logo.
+   User said "fifth image will be the lingo shack logo".
+   Let's follow the standard footer pattern:
+   Left: Logo (Empower Z?)
+   Center: Links
+   Right: Powered By Lingo Shack
+   
+   Or bottom row.
+   Let's check the provided image 1 (footer part):
+   Left: EmpowerZ Logo
+   Center: Empower Z 2025 | Terms...
+   Right: Powered By [Lingo Shack Logo]
+*/
+
+.footerContent {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .footerContent {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.brandLogo {
+    height: 50px;
+    /* Adjust based on logo aspect */
+    width: auto;
+}
+
+.links {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.links a {
+    color: #a0a0a0;
+    transition: color 0.3s;
+}
+
+.links a:hover {
+    color: #FEC23D;
+}
+
+.separator {
+    margin: 0 0.5rem;
+    color: #555;
+}
+
+.poweredBy {
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+    font-family: 'DM Sans', sans-serif;
+    text-transform: uppercase;
+    color: #666;
+}
+
+.lingoLogo {
+    height: 30px;
+    /* Small for "Powered By" */
+    width: auto;
+    margin-left: 0.5rem;
+}

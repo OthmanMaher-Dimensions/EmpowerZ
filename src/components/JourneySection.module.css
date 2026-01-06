@@ -1,0 +1,130 @@
+.section {
+    background-color: #0F0920;
+    /* Deep purple/black background */
+    padding: 6rem 0;
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.mainTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5rem;
+    color: white;
+}
+
+.cardsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.card {
+    position: relative;
+    border: 3px solid #FEC23D;
+    /* Yellow border */
+    border-radius: 4px;
+    padding: 3rem;
+    padding-top: 4rem;
+    /* Extra padding for title space */
+}
+
+/* 
+   To achieve the effect of the title sitting ON the border:
+   We position it absolute at top: 0, transform Y to move up,
+   and give it background color matching section bg to "cut" the border.
+*/
+.cardHeader {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0F0920;
+    /* Matches section bg */
+    padding: 0 2rem;
+    white-space: nowrap;
+}
+
+.cardTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: white;
+}
+
+.cardBody {
+    text-align: center;
+}
+
+.description {
+    font-family: 'DM Sans', sans-serif;
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 900px;
+    text-align: left;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.checkIcon {
+    color: #FEC23D;
+    min-width: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mainTitle {
+        font-size: 2.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .card {
+        padding: 2rem 1.5rem;
+        padding-top: 3rem;
+        margin-top: 2rem;
+    }
+
+    .cardTitle {
+        font-size: 1.8rem;
+    }
+
+    .list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .listItem {
+        font-size: 1rem;
+    }
+}

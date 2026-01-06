@@ -1,0 +1,56 @@
+.gallerySection {
+    width: 100%;
+    background-color: #100820;
+    /* Keep consistent dark theme */
+    padding-bottom: 5rem;
+}
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    /* 6 images in a row as shown? Or 6 images total? Image 4 shows 6 panels. */
+    /* The design shows 6 vertical panels next to each other. */
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 0.5rem;
+    /* Small gap */
+    padding: 0 1rem;
+}
+
+@media (max-width: 992px) {
+    .galleryGrid {
+        grid-template-columns: repeat(3, 1fr);
+        /* Stack on tablet */
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallerySection {
+        padding-bottom: 3rem;
+    }
+
+    .galleryGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+}
+
+.galleryImage {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9/16;
+    /* Vertical panels usually */
+    object-fit: cover;
+    border-radius: 4px;
+    /* Optional */
+    filter: grayscale(20%);
+    transition: all 0.3s ease;
+}
+
+.galleryImage:hover {
+    filter: grayscale(0%);
+    transform: scale(1.02);
+    z-index: 10;
+}

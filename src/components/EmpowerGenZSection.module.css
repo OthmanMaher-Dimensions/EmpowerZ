@@ -1,0 +1,164 @@
+.section {
+    position: relative;
+    padding: 8rem 0;
+    /* The image is for the upper part, but we'll use it as cover for the section for now to match the look */
+    background-image: url('/assets/what-we-offer/genz-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+/* Dark overlay to match the reference image darkness */
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(6, 6, 26, 0.85);
+    /* Slightly darker/blue tint */
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Content Row Layout */
+.contentRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6rem;
+    gap: 2rem;
+}
+
+.leftColumn {
+    flex: 1;
+}
+
+.heading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    color: #FEC23D;
+    /* Yellow */
+    text-transform: uppercase;
+}
+
+.rightColumn {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+}
+
+.benefitList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefitItem {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.25rem;
+    line-height: 2;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.bullet {
+    color: #f1f5f9;
+    font-size: 1.5rem;
+    line-height: 0;
+}
+
+/* Stats Row Layout */
+.statsRow {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.statBox {
+    flex: 1;
+    border: 1px solid #FEC23D;
+    padding: 3rem 2rem;
+    text-align: center;
+    background-color: transparent;
+    /* Assuming transparent based on overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 250px;
+}
+
+.statNumber {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #FEC23D;
+    margin-bottom: 1rem;
+}
+
+.statText {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #fff;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .contentRow {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .rightColumn {
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .heading {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 5rem 0;
+    }
+
+    .heading {
+        font-size: 2.8rem;
+    }
+
+    .statsRow {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .statBox {
+        padding: 2rem 1.5rem;
+        min-height: auto;
+    }
+
+    .statNumber {
+        font-size: 2.5rem;
+    }
+}

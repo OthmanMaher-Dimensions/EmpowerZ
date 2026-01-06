@@ -1,0 +1,243 @@
+/* MissionAcronym.module.css */
+.section {
+    padding: 6rem 0;
+    /* Remove horizontal padding from section to allow full width */
+    background-color: #100820;
+    color: white;
+    overflow: hidden;
+    /* Prevent scrollbar issues with wide absolute positioning */
+}
+
+/* Full Width Container */
+.container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titleWrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-left: 0;
+    /* Far left as requested */
+    margin-top: 0;
+}
+
+.pinkBar {
+    width: 100px;
+    height: 40px;
+    background-color: #FB2FB5;
+    margin-right: 1.5rem;
+    margin-top: 10px;
+}
+
+.title {
+    font-size: 3rem;
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.subtitle {
+    display: block;
+}
+
+/* Graphic Container */
+.graphicContainer {
+    position: relative;
+    width: 100%;
+    /* Ensure enough height for the image + text. Image ~300px? Text spreads. */
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centralImage {
+    width: 1000px;
+    max-width: 90%;
+    height: auto;
+    object-fit: contain;
+    z-index: 1;
+    position: relative;
+}
+
+.mobileOnly {
+    display: none;
+}
+
+.desktopOnly {
+    display: block;
+}
+
+/* Text Groups Helper - anchors */
+.textGroup {
+    position: absolute;
+    z-index: 10;
+    width: 250px;
+    text-align: center;
+    pointer-events: none;
+    /* Let clicks pass through to image if needed */
+}
+
+/* Common text styles */
+.itemTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+}
+
+.itemDesc {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.9rem;
+    color: #ddd;
+    line-height: 1.4;
+    white-space: normal;
+}
+
+/* --- POSITIONING --- */
+
+.posEmpowerment {
+    top: calc(50% - 257px);
+    left: calc(50% - 348px);
+    transform: translateX(-50%);
+}
+
+.posMotivation {
+    top: calc(50% - 264px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.posPotential {
+    top: calc(50% - 259px);
+    left: calc(50% + 347px);
+    transform: translateX(-50%);
+}
+
+.posResilience {
+    top: 58%;
+    left: calc(48% - 600px);
+    transform: translate(-50%, -50%);
+    text-align: right;
+    align-items: flex-end;
+}
+
+.posWisdom {
+    top: calc(50% + 181px);
+    left: calc(50% - 227px);
+    transform: translateX(-50%);
+}
+
+.posEducation {
+    top: calc(50% + 175px);
+    left: calc(50% + 229px);
+    transform: translateX(-50%);
+}
+
+.posOpportunity {
+    top: 58%;
+    left: calc(50% + 649px);
+    transform: translate(-50%, -50%);
+    text-align: left;
+    align-items: flex-start;
+}
+
+/* Specific text alignments */
+.posResilience .textBlockLeft {
+    text-align: right;
+    width: 100%;
+}
+
+.posOpportunity .textBlockRight {
+    text-align: left;
+    width: 100%;
+}
+
+.textBlockUp,
+.textBlockDown {
+    text-align: center;
+    width: 100%;
+}
+
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .centralImage {
+        width: 800px;
+    }
+
+    .posResilience {
+        left: calc(50% - 480px);
+    }
+
+    .posOpportunity {
+        left: calc(50% + 480px);
+    }
+
+    .posEmpowerment {
+        left: calc(50% - 250px);
+    }
+
+    .posPotential {
+        left: calc(50% + 250px);
+    }
+}
+
+@media (max-width: 1024px) {
+    .section {
+        padding: 4rem 1rem;
+    }
+
+    .graphicContainer {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .centralImage {
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
+
+    .desktopOnly {
+        display: none !important;
+    }
+
+    .mobileOnly {
+        display: block !important;
+    }
+
+    .textGroup {
+        position: static;
+        width: 100%;
+        max-width: 400px;
+        transform: none;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    /* Reset specific alignments for mobile */
+    .posResilience,
+    .posOpportunity {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .posResilience .textBlockLeft {
+        text-align: center;
+    }
+
+    .posOpportunity .textBlockRight {
+        text-align: center;
+    }
+}

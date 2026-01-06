@@ -1,0 +1,142 @@
+.section {
+    padding: 8rem 0;
+    background-color: #FCFBFC;
+    /* Light background */
+    color: #0f172a;
+    /* Dark text */
+    overflow: hidden;
+    /* For tilted elements */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.textCol {
+    flex: 1;
+}
+
+.imageCol {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paragraph {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #334155;
+    /* Darker slate for readability on light bg */
+    opacity: 1;
+    font-weight: 500;
+}
+
+/* Polaroid Effect */
+.polaroid {
+    background: white;
+    padding: 1rem 1rem 2.5rem 1rem;
+    /* Extra bottom padding for polaroid look */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    width: 380px;
+    max-width: 100%;
+    transform-origin: center;
+}
+
+.polaroid:hover {
+    transform: scale(1.02) rotate(0deg) !important;
+    z-index: 10;
+}
+
+.imageInner {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Square images inside polaroid typically, or portrait */
+    overflow: hidden;
+    background: #eee;
+}
+
+.imageInner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Rotations */
+.rotateRight {
+    transform: rotate(3deg);
+}
+
+.rotateLeft {
+    transform: rotate(-3deg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .row {
+        gap: 3rem;
+    }
+
+    .polaroid {
+        width: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .reverseMobile {
+        flex-direction: column-reverse;
+        /* Swap Image/Text row on mobile so Text comes first (if Text is 2nd in DOM) 
+           Wait, DOM for Row 2 is Image(1), Text(2). 
+           Column-reverse makes Text(2) top, Image(1) bottom. -> Text -> Image. 
+           Row 1 is Text(1), Image(2). Column makes Text(1) top, Image(2) bottom. -> Text -> Image.
+           Perfect. */
+    }
+
+    /* If we want Text ALWAYS first on mobile: 
+       Row 1 is already Text first.
+       Row 2 is Image first. 
+       Row 3 is Text first.
+    */
+
+    .polaroid {
+        width: 100%;
+        max-width: 350px;
+        transform: rotate(0deg);
+        /* Reset rotation on mobile for cleaner look? Or keep it? Keep it for fun. */
+    }
+
+    .paragraph {
+        text-align: center;
+        /* Or left? */
+        text-align: left;
+    }
+
+    .textCol {
+        text-align: center;
+        /* Center visuals */
+    }
+
+    .paragraph {
+        text-align: left;
+        /* Keep text readable */
+    }
+}

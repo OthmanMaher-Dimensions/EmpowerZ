@@ -1,0 +1,146 @@
+.section {
+    background-color: #0F0920;
+    /* Deep purple/black background */
+    padding: 6rem 0;
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.headerWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.yellowBlock {
+    width: 100px;
+    height: 60px;
+    background-color: #FEC23D;
+    margin-right: 1.5rem;
+}
+
+.title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.25rem;
+    color: #e2e8f0;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.card {
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    color: #1a1a1a;
+    /* Dark text on colored cards */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.iconWrapper {
+    background-color: transparent;
+    color: #1a1a1a;
+    min-width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconWrapper svg {
+    width: 40px;
+    height: 40px;
+    stroke-width: 1.5px;
+}
+
+.customIcon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.content {
+    flex: 1;
+}
+
+.cardTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.cardDescription {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerWrapper {
+        justify-content: center;
+        /* Center header on mobile */
+    }
+
+    .yellowBlock {
+        display: none;
+        /* Hide block on mobile if desired, or adjust */
+    }
+
+    .title {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .subtitle {
+        text-align: center;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
