@@ -27,6 +27,7 @@ const SiteHeader = () => {
     const navLinks = [
         { name: 'What We Offer', href: '/what-we-offer' },
         { name: 'About Us', href: '/about-us' },
+        { name: 'Blogs', href: '/blogs' },
         { name: 'Contact Us', href: '/contact-us' }
     ];
 

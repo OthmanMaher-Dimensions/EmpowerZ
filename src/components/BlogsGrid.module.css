@@ -1,0 +1,180 @@
+.section {
+    padding: 6rem 0;
+    /* Use the uploaded light textured background */
+    background-image: url('/assets/blogs/grid-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    background-color: #f5f5f5;
+    /* Fallback for the light texture */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.card {
+    background-color: #2D2436;
+    /* Dark purple/black based on image */
+    background: linear-gradient(135deg, #2D2436 0%, #1F1528 100%);
+    border-radius: 4px;
+    /* Sharp or slightly rounded */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.imageWrapper {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .cardImage {
+    transform: scale(1.05);
+}
+
+.cardContent {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.cardTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.titleLink {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+
+.titleLink:hover {
+    color: #FEC23D;
+}
+
+.cardDescription {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    /* Light gray */
+    margin-bottom: 2rem;
+    flex-grow: 1;
+    /* Pushes button down */
+}
+
+.readMore {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #FEC23D;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s;
+}
+
+.readMore:hover {
+    opacity: 0.8;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.pageArrow {
+    background: transparent;
+    border: none;
+    color: #FEC23D;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.pageArrow:disabled {
+    color: #94a3b8;
+    cursor: default;
+}
+
+.pageArrow:not(:disabled):hover {
+    transform: scale(1.1);
+}
+
+.pageNumber {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    color: #64748b;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.activePage {
+    border: 1px solid #FEC23D;
+    color: #FEC23D;
+}
+
+.pageNumber:hover:not(.activePage) {
+    color: #FEC23D;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cardContent {
+        padding: 1.5rem;
+    }
+}

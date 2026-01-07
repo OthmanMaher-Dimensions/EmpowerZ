@@ -1,0 +1,114 @@
+.section {
+    padding: 6rem 0;
+    background-color: white;
+    /* Clean white background */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.sectionTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    letter-spacing: 0.1em;
+    color: #000;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Card Styling - Reused logic but scoped here */
+.card {
+    background: #2D2436;
+    /* Dark card */
+    background: linear-gradient(135deg, #2D2436 0%, #1F1528 100%);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.imageWrapper {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardContent {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.cardTitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.titleLink {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+
+.titleLink:hover {
+    color: #FEC23D;
+}
+
+.cardDescription {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.readMore {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #FEC23D;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

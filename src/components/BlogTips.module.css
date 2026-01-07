@@ -1,0 +1,106 @@
+.section {
+    background-color: #0c0519;
+    /* Clean dark background fallback */
+    background-image: url('/assets/blogs/tips-bg.png');
+    /* The happy guy is in this image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 6rem 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    /* No gap needed if image is background, but we need to constrain text width */
+    height: 100%;
+}
+
+.content {
+    flex: 0 0 50%;
+    /* Occupy left half */
+    max-width: 600px;
+    padding-right: 2rem;
+    z-index: 2;
+    /* Ensure text is above bg */
+}
+
+.title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.titleYellow {
+    color: #FEC23D;
+}
+
+.description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.list li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+.listHighlight {
+    color: #FEC23D;
+    font-weight: 700;
+    padding-right: 0.5rem;
+}
+
+.summary {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .section {
+        background-position: center right;
+        /* Shift image to prevent overlap? Or just darken it? */
+        /* If the guy is on the right, on mobile we might want him at the bottom or hidden */
+    }
+
+    .content {
+        flex: 1;
+        max-width: 100%;
+        padding-right: 0;
+        /* Maybe add a dark overlay on mobile so text is readable if image scales */
+        /* Since we don't know exact image composition, a safe bet is a gradient */
+    }
+
+    /* Add a gradient overlay for mobile readability just in case */
+    .section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, rgba(12, 5, 25, 0.95) 0%, rgba(12, 5, 25, 0.7) 100%);
+        z-index: 1;
+    }
+}
