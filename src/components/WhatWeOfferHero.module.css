@@ -216,8 +216,9 @@
 @media (max-width: 768px) {
     .hero {
         padding-top: 100px;
-        justify-content: flex-end;
-        /* Push content to bottom/center */
+        justify-content: center;
+        min-height: 80vh;
+        /* Ensure proper height */
         padding-bottom: 4rem;
         align-items: center;
     }
@@ -257,7 +258,6 @@
     }
 
     .heroBgImage {
-        background-position: 70% center;
-        /* Adjust image position if needed */
+        background-position: center center;
     }
 }

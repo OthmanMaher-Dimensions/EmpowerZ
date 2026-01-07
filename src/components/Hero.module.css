@@ -393,7 +393,10 @@
     }
 
     .heroBgImage {
-        display: none;
+        display: block;
+        opacity: 0.4;
+        background-position: center;
+        background-size: cover;
     }
 
     .contentArea {

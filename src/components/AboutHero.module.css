@@ -227,13 +227,17 @@
 @media (max-width: 1024px) {
     .bgImage {
         width: 100%;
-        opacity: 0.4;
+        height: 100%;
+        opacity: 0.7;
+        background-size: cover;
+        background-position: center top;
     }
 
     .gradientOverlay {
-        background: linear-gradient(to top,
-                var(--bg-primary, #020617) 0%,
-                rgba(2, 6, 23, 0.9) 100%);
+        background: linear-gradient(to bottom,
+                rgba(2, 6, 23, 0.2) 0%,
+                rgba(2, 6, 23, 0.6) 50%,
+                var(--bg-primary, #020617) 100%);
     }
 
     .container {
@@ -244,6 +248,9 @@
     .bottomArea {
         grid-template-columns: 1fr;
         gap: 3rem;
+        transform: none;
+        /* Reset transform on mobile to prevent overlap */
+        margin-top: 0;
     }
 
     .arrowContainer {

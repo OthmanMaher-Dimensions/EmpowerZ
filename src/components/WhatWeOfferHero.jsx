@@ -3,12 +3,12 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import styles from './WhatWeOfferHero.module.css';
-import Header from './Header';
+import SiteHeader from './SiteHeader';
 
 const WhatWeOfferHero = () => {
     return (
         <>
-            <Header />
+            <SiteHeader />
             <section className={styles.hero}>
                 {/* Background Image Container */}
                 <div className={styles.heroBgContainer}>

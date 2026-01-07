@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styles from './ContactUsHero.module.css';
-import Header from './Header';
+import SiteHeader from './SiteHeader';
 
 const ContactUsHero = () => {
     return (
@@ -15,7 +15,7 @@ const ContactUsHero = () => {
                 <div className={styles.gradientOverlay} />
             </div>
 
-            <Header />
+            <SiteHeader />
 
             <div className={styles.contentArea}>
                 <div className={styles.contentInner}>

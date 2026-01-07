@@ -92,7 +92,7 @@
     overflow: hidden;
     color: white;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
-    /* flex-shrink: 0; */
+    flex-shrink: 0;
 }
 
 .card:last-child {
@@ -218,13 +218,43 @@
 }
 
 @media (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cardGrid {
+        padding-bottom: 2rem;
+        /* Space for scrollbar if needed, or visual breathing room */
+    }
+
     .card {
-        width: 80vw;
+        width: 85vw;
         height: 60vh;
+        margin-right: 1rem;
+        border-right: none;
+        border-radius: 8px;
+        /* Rounded corners for standalone feel */
     }
 
     .overlayTitle {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        padding: 4rem 1.5rem 2rem;
         font-size: 2.5rem;
-        width: 90%;
+        width: 100%;
+        text-align: left;
+    }
+
+    .cardOverlay {
+        opacity: 1;
+        /* Always show info on mobile */
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+    }
+
+    .name {
+        font-size: 2rem;
     }
 }

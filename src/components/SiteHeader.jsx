@@ -33,61 +33,63 @@ const SiteHeader = () => {
     const isActive = (path) => pathname === path;
 
     return (
-        <header
-            id="site-header"
-            className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''} ${isScrolled ? 'scrolled-mode' : ''}`}
-        >
-            <div className={styles.container}>
-                {/* Logo */}
-                <div className={styles.logoContainer}>
-                    <Link href="/">
-                        <img src="/assets/logo.png" alt="EmpowerZ Logo" className={styles.logo} />
-                    </Link>
-                </div>
+        <>
+            <header
+                id="site-header"
+                className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''} ${isScrolled ? 'scrolled-mode' : ''}`}
+            >
+                <div className={styles.container}>
+                    {/* Logo */}
+                    <div className={styles.logoContainer}>
+                        <Link href="/">
+                            <img src="/assets/logo.png" alt="EmpowerZ Logo" className={styles.logo} />
+                        </Link>
+                    </div>
 
-                {/* Desktop Nav */}
-                <nav className={styles.desktopNav}>
-                    <ul className={styles.navList}>
-                        <li>
-                            <Link
-                                href="/"
-                                className={isActive('/') ? styles.navLinkHome : styles.navLink}
-                            >
-                                Home
-                            </Link>
-                        </li>
-                        {navLinks.map((link) => (
-                            <li key={link.name}>
+                    {/* Desktop Nav */}
+                    <nav className={styles.desktopNav}>
+                        <ul className={styles.navList}>
+                            <li>
                                 <Link
-                                    href={link.href}
-                                    className={isActive(link.href) ? styles.navLinkHome : styles.navLink}
+                                    href="/"
+                                    className={isActive('/') ? styles.navLinkHome : styles.navLink}
                                 >
-                                    {link.name}
+                                    Home
                                 </Link>
                             </li>
-                        ))}
-                    </ul>
-                </nav>
+                            {navLinks.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        className={isActive(link.href) ? styles.navLinkHome : styles.navLink}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
 
-                {/* Desktop Actions (Login) */}
-                <div className={styles.desktopActions}>
-                    <Link href="/#login" className={styles.loginBtn}>
-                        Login
-                    </Link>
+                    {/* Desktop Actions (Login) */}
+                    <div className={styles.desktopActions}>
+                        <Link href="/#login" className={styles.loginBtn}>
+                            Login
+                        </Link>
+                    </div>
+
+                    {/* Mobile Toggle */}
+                    <button
+                        id="mobile-menu-toggle"
+                        className={styles.mobileToggle}
+                        type="button"
+                        aria-label="Toggle menu"
+                        style={{ cursor: 'pointer', zIndex: 2147483647, position: 'relative' }}
+                    >
+                        <Menu size={32} style={{ pointerEvents: 'none' }} />
+                    </button>
+
                 </div>
-
-                {/* Mobile Toggle */}
-                <button
-                    id="mobile-menu-toggle"
-                    className={styles.mobileToggle}
-                    type="button"
-                    aria-label="Toggle menu"
-                    style={{ cursor: 'pointer', zIndex: 2147483647, position: 'relative' }}
-                >
-                    <Menu size={32} style={{ pointerEvents: 'none' }} />
-                </button>
-
-            </div>
+            </header>
 
             {/* Mobile Menu Overlay */}
             <div
@@ -120,7 +122,7 @@ const SiteHeader = () => {
                     Login
                 </Link>
             </div>
-        </header>
+        </>
     );
 };
 export default SiteHeader;
