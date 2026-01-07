@@ -1,4 +1,4 @@
-/* Header.module.css */
+/* SiteHeader.module.css */
 .header {
     position: fixed;
     top: 0;
@@ -14,14 +14,20 @@
     backdrop-filter: none;
 }
 
-.headerScrolled,
+/* Mobile Menu (Solid/Dark) */
 .headerMobileOpen {
-    background-color: rgba(2, 6, 23, 0.95);
-    backdrop-filter: blur(10px);
+    background-color: rgba(2, 6, 23, 0.98);
+    backdrop-filter: blur(20px);
 }
 
-.headerScrolled {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+/* Scrolled Header (Glassy) */
+.headerScrolled,
+.header:global(.scrolled-mode) {
+    background-color: rgba(16, 8, 32, 0.85);
+    /* Slightly darker for visibility */
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .container {
@@ -125,6 +131,10 @@
 .mobileMenu {
     position: fixed;
     inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(2, 6, 23, 0.98);
     backdrop-filter: blur(20px);
     z-index: 10000;
@@ -142,11 +152,12 @@
     background-image: radial-gradient(circle at top right, #1e1b4b 0%, #020617 100%);
 }
 
-.mobileMenuOpen {
+.mobileMenu:global(.mobile-menu-open) {
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
     /* Enable clicks when open */
+    display: flex !important;
 }
 
 .mobileNavList {

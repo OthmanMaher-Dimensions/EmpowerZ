@@ -12,6 +12,7 @@ const Header = () => {
   const pathname = usePathname();
 
   useEffect(() => {
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -35,6 +36,16 @@ const Header = () => {
   ];
 
   const isActive = (path) => pathname === path;
+
+  const toggleMenu = (e) => {
+    // Debugging flag using window for browser agent
+    if (typeof window !== 'undefined') window.burgerClicked = true;
+    console.log("Toggling menu. Current state:", isMobileMenuOpen);
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // Ensure component render is logged
+  console.log("Header rendering. Menu Open:", isMobileMenuOpen);
 
   return (
     <header
@@ -82,9 +93,15 @@ const Header = () => {
         {/* Mobile Toggle */}
         <button
           className={styles.mobileToggle}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={toggleMenu}
+          type="button"
+          aria-label="Toggle menu"
+          style={{ cursor: 'pointer', zIndex: 2147483647, position: 'relative' }}
         >
-          {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
+          {isMobileMenuOpen ?
+            <X size={32} style={{ pointerEvents: 'none' }} /> :
+            <Menu size={32} style={{ pointerEvents: 'none' }} />
+          }
         </button>
 
       </div>
@@ -92,6 +109,11 @@ const Header = () => {
       {/* Mobile Menu Overlay */}
       <div
         className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}
+        style={{
+          opacity: isMobileMenuOpen ? 1 : 0,
+          visibility: isMobileMenuOpen ? 'visible' : 'hidden',
+          pointerEvents: isMobileMenuOpen ? 'auto' : 'none'
+        }}
       >
         <ul className={styles.mobileNavList}>
           <li>
@@ -124,6 +146,4 @@ const Header = () => {
     </header>
   );
 };
-
-
 export default Header;

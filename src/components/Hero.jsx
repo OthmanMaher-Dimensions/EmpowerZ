@@ -3,6 +3,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import styles from './Hero.module.css';
+import PartnersSection from './PartnersSection';
 
 const Hero = () => {
     return (
@@ -65,24 +66,9 @@ const Hero = () => {
 
                 </div>
 
-                {/* Partners Footer - Infinite Swiper */}
+                {/* Partners Footer - Replaced by Component */}
                 <div className={`${styles.partnersFooter} ${styles.animateIn} ${styles.delay10}`}>
-                    <span className={styles.partnersTitle}>Partners and Patrons</span>
-
-                    {/* Marquee Container */}
-                    <div className={styles.marqueeContainer}>
-                        {/* Track - Two sets of logos for seamless loop */}
-                        <div className={styles.partnerTrack}>
-                            {/* First Set */}
-                            {[...Array(15)].map((_, i) => (
-                                <img key={`a-${i}`} src="/assets/logo-microsoft.png" alt="Partner" className={styles.partnerLogo} />
-                            ))}
-                            {/* Duplicate Set */}
-                            {[...Array(15)].map((_, i) => (
-                                <img key={`b-${i}`} src="/assets/logo-microsoft.png" alt="Partner" className={styles.partnerLogo} />
-                            ))}
-                        </div>
-                    </div>
+                    <PartnersSection variant="hero" />
                 </div>
 
             </div>

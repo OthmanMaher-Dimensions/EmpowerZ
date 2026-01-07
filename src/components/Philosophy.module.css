@@ -322,17 +322,45 @@
 
     .quoteText {
         font-size: 1.25rem;
-        /* Smaller for mobile */
+    }
+
+    .polaroidContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .polaroidItem {
+        width: 100%;
+        max-width: 320px;
+        margin-bottom: 0;
     }
 
     .polaroidFrame {
-        max-width: 90%;
+        width: 100%;
+        max-width: 100%;
         transform: rotate(0deg) !important;
-        /* Remove rotation on mobile stack */
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .polaroidText {
+        font-size: 1.1rem;
+        max-width: 100%;
     }
 
     .henryFordImage {
-        width: 100px;
+        display: none !important;
+    }
+
+    .quoteHeader {
+        justify-content: center;
+        margin-bottom: 2rem;
+        /* Make space for image */
+    }
+
+    .quoteIntro {
+        margin-left: 20px;
+        /* Offset for image overlap */
+        font-size: 1rem;
     }
 }

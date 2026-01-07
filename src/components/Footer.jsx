@@ -17,9 +17,9 @@ const Footer = () => {
                     <div className={styles.links}>
                         <span>EMPOWER Z 2025 ©</span>
                         <span className={styles.separator}>|</span>
-                        <a href="#">TERMS & CONDITIONS</a>
+                        <a href="/terms-and-conditions">TERMS & CONDITIONS</a>
                         <span className={styles.separator}>|</span>
-                        <a href="#">PRIVACY POLICY</a>
+                        <a href="/privacy-policy">PRIVACY POLICY</a>
                     </div>
 
                     {/* Right: Powered By */}

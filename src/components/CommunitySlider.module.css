@@ -62,7 +62,8 @@
 }
 
 .navBtn:disabled {
-    opacity: 0.3;
+    opacity: 1;
+    /* Color handling ensures visual feedback */
     cursor: default;
 }
 
@@ -85,14 +86,32 @@
     will-change: transform;
 }
 
+/* Button Colors based on Disabled State */
+.navBtn:disabled svg path {
+    fill: #D1D5DB;
+    /* Gray */
+}
+
+.navBtn:not(:disabled) svg path {
+    fill: #FBBF24;
+    /* Gold */
+}
+
+.navBtn svg {
+    display: block;
+    /* Remove inline-block spacing */
+    width: 40px;
+    height: 40px;
+}
+
 .slideItem {
-    /* flex: 0 0 % is handled inline for responsiveness */
+    /* Desktop Default: 3 slides */
+    flex: 0 0 33.333%;
     padding: 0 12px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     flex-shrink: 0;
-    /* Important: prevents shrinking */
 }
 
 .card {
@@ -174,13 +193,11 @@
 
 @media (max-width: 768px) {
 
-    /* Force 100% width on tablet/mobile to backup JS */
+    /* Mobile: 1 slide */
     .slideItem {
-        flex: 0 0 100% !important;
+        flex: 0 0 100%;
     }
-}
 
-@media (max-width: 768px) {
     .section {
         padding: 3rem 0;
     }

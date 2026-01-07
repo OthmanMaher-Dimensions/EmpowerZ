@@ -337,7 +337,13 @@
 }
 
 /* Responsive Styles */
-@media (max-width: 1023px) {
+@media (max-width: 1366px) {
+    .heading {
+        font-size: clamp(3rem, 10vw, 6rem);
+    }
+}
+
+@media (max-width: 1024px) {
     .socialSidebar {
         display: none !important;
     }
@@ -345,6 +351,19 @@
     .topBlend,
     .bottomBlend {
         display: block !important;
+    }
+
+    .heading {
+        font-size: clamp(2.5rem, 12vw, 5rem);
+        letter-spacing: clamp(5px, 1.5vw, 15px);
+    }
+
+    .subheading {
+        font-size: clamp(1rem, 3.5vw, 1.5rem);
+    }
+
+    .dividerText {
+        font-size: 0.9rem;
     }
 
     .ctaButton {
@@ -363,16 +382,127 @@
     }
 }
 
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 100px;
+        align-items: flex-start;
+        min-height: auto;
+        padding-bottom: 2rem;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .heroBgImage {
+        display: none;
+    }
+
+    .contentArea {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        width: 100%;
+    }
+
+    .contentInner {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .heading {
+        font-size: 3rem;
+        letter-spacing: 5px;
+        line-height: 1.1;
+        width: 100%;
+        word-break: break-word;
+    }
+
+    .eyebrow {
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+        flex-wrap: wrap;
+    }
+
+    .dividerContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .dividerLine {
+        width: 40px;
+        flex-shrink: 0;
+    }
+
+    .dividerText {
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        flex: 1;
+        min-width: 200px;
+        white-space: normal;
+    }
+
+    .empowerText {
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+        width: 100%;
+        white-space: normal;
+        line-height: 1.4;
+    }
+
+    .empowerTextStrong {
+        display: inline-block;
+    }
+
+    .ctaButton {
+        margin-bottom: 4rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .partnersFooter {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        gap: 1rem;
+        background: transparent;
+        position: relative;
+        width: 100%;
+        left: 0;
+        transform: none;
+        overflow: hidden;
+    }
+
+    .partnersTitle {
+        font-size: 1rem;
+        opacity: 0.9;
+        text-align: center;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        position: relative;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: block;
+    }
+
+    .marqueeContainer {
+        width: 100%;
+        overflow: hidden;
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+}
+
 @media (max-width: 400px) {
     .ctaButton {
         padding: 0.8rem 1.4rem !important;
         font-size: 0.85rem !important;
         letter-spacing: 3px !important;
         gap: 0.5rem !important;
+        width: 100% !important;
     }
 
-    .ctaArrow {
-        width: 16px !important;
-        height: 16px !important;
+    .heading {
+        font-size: 2.5rem;
     }
 }

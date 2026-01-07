@@ -224,6 +224,7 @@
         transform: none;
         margin-bottom: 1.5rem;
         text-align: center;
+        padding: 0 1rem;
     }
 
     /* Reset specific alignments for mobile */

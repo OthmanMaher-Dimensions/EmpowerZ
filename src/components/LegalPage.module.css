@@ -1,0 +1,72 @@
+/* Shared styles for Legal Pages */
+.pageContainer {
+    background-color: #100820;
+    /* Dark background */
+    color: #fff;
+    min-height: 100vh;
+    padding-top: 100px;
+    /* Space for fixed header */
+}
+
+.contentContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+}
+
+.title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #FEC23D;
+    /* Gold Color */
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.section {
+    margin-bottom: 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    /* Slight card effect */
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FEC23D;
+    margin-bottom: 1rem;
+}
+
+.text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #E2E8F0;
+    /* Off-white text */
+    margin-bottom: 1rem;
+}
+
+.list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: #E2E8F0;
+}
+
+.listItem {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .contentContainer {
+        padding: 2rem 1rem 4rem;
+    }
+}

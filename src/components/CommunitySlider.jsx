@@ -48,50 +48,6 @@ const CommunitySlider = () => {
         }
     ];
 
-    const [imgIndex, setImgIndex] = useState(0);
-    const [slidesToShow, setSlidesToShow] = useState(3); // Default to 3
-
-    // Update slides to show based on window width
-    useEffect(() => {
-        const handleResize = () => {
-
-            if (window.innerWidth < 768) {
-                setSlidesToShow(1);
-            } else {
-                setSlidesToShow(3);
-            }
-        };
-
-        handleResize(); // Initial check
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-
-    // Ensure state updates correctly
-    const maxIndex = Math.max(0, slides.length - slidesToShow);
-
-    // Translate calculation:
-    // We want to move by 1 slide width.
-    // 1 slide width = (100 / slidesToShow)% of the VIEWPORT (Container).
-    // translateX is relative to the element (Track).
-    // If Track is 100% wide (same as Viewport), then translateX(-33.33%) moves it left by 33.33% of Viewport.
-    const translateX = -(imgIndex * (100 / slidesToShow));
-
-    const nextSlide = () => {
-        setImgIndex((prev) => {
-            const next = prev + 1;
-            return next > maxIndex ? 0 : next;
-        });
-    };
-
-    const prevSlide = () => {
-        setImgIndex((prev) => {
-            const next = prev - 1;
-            return next < 0 ? maxIndex : next;
-        });
-    };
-
     return (
         <section className={styles.section}>
             <div className={styles.container}>
@@ -103,22 +59,28 @@ const CommunitySlider = () => {
 
                 <div className={styles.sliderWrapper}>
                     <button
+                        id="community-slider-prev"
                         className={`${styles.navBtn} ${styles.prevBtn}`}
-                        onClick={prevSlide}
                         aria-label="Previous slide"
                         type="button"
+                        disabled // Disabled by default at start
                     >
-                        <ArrowLeft size={40} color="#757575" />
+                        {/* Solid Left Triangle - Bigger */}
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 19l-7-7 7-7" strokeWidth="0" />
+                            <path d="M14 6L8 12L14 18V6Z" />
+                        </svg>
                     </button>
 
                     <div className={styles.sliderWindow}>
-                        <div className={styles.sliderTrack} style={{ transform: `translateX(${translateX}%)`, }} >
-
+                        <div
+                            id="community-slider-track"
+                            className={styles.sliderTrack}
+                        >
                             {slides.map((slide, index) => (
                                 <div
                                     key={index}
                                     className={styles.slideItem}
-                                    style={{ flex: `0 0 ${100 / slidesToShow}%` }}
                                 >
                                     <div className={styles.card}>
                                         <img src={slide.image} alt={slide.title} className={styles.cardImage} />
@@ -133,12 +95,15 @@ const CommunitySlider = () => {
                     </div>
 
                     <button
+                        id="community-slider-next"
                         className={`${styles.navBtn} ${styles.nextBtn}`}
-                        onClick={nextSlide}
                         aria-label="Next slide"
                         type="button"
                     >
-                        <ArrowRight size={40} color="#fbbf24" />
+                        {/* Solid Right Triangle - Bigger */}
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 6L16 12L10 18V6Z" />
+                        </svg>
                     </button>
                 </div>
 

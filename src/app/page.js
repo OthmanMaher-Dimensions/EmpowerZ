@@ -1,4 +1,6 @@
-import Header from '../components/Header';
+
+
+import Header from '../components/SiteHeader';
 import Hero from '../components/Hero';
 import Philosophy from '../components/Philosophy';
 import MissionAcronym from '../components/MissionAcronym';

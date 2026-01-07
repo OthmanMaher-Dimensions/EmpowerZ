@@ -4,21 +4,35 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import styles from './PartnersSection.module.css';
 
-const PartnersSection = ({ enableSignup = false }) => {
-    // Array of partner logos - currently reusing the Microsoft logo as placeholder
-    // In a real scenario, this would be a list of different partner logos
+const PartnersSection = ({ enableSignup = false, variant = 'default' }) => {
+    // List of partner logos
     const partners = [
-        "/assets/logo-microsoft.png",
-        "/assets/logo-microsoft.png",
-        "/assets/logo-microsoft.png",
-        "/assets/logo-microsoft.png",
-        "/assets/logo-microsoft.png",
-        "/assets/logo-microsoft.png",
-        "/assets/logo-microsoft.png",
+        "/assets/clients/logo.png",
+        "/assets/clients/logo1.png",
+        "/assets/clients/logo2.png",
+        "/assets/clients/logo3.png",
+        "/assets/clients/logo4.png",
+        "/assets/clients/logo5.png",
+        "/assets/clients/logo6.png",
+        "/assets/clients/logo7.png",
+        "/assets/clients/logo8.png",
+        "/assets/clients/logo9.png",
+        "/assets/clients/logo10.png",
+        "/assets/clients/logo11.png",
+        "/assets/clients/logo12.png",
+        "/assets/clients/logo13.png",
+        "/assets/clients/logo14.png",
+        "/assets/clients/logo15.png",
+        "/assets/clients/logo16.png",
+        "/assets/clients/logo17.png",
+        "/assets/clients/logo18.png",
+        "/assets/clients/logo19.png",
     ];
 
     return (
-        <section className={styles.partnersSection}>
+        <section
+            className={`${styles.partnersSection} ${variant === 'hero' ? styles.heroSection : ''}`}
+        >
             <span className={styles.partnersTitle}>Partners and Patrons</span>
 
             {/* Marquee Container */}
@@ -38,15 +52,6 @@ const PartnersSection = ({ enableSignup = false }) => {
                     {partners.map((src, i) => (
                         <img
                             key={`b-${i}`}
-                            src={src}
-                            alt="Partner"
-                            className={styles.partnerLogo}
-                        />
-                    ))}
-                    {/* Triplicate Set for wider screens if needed to ensure no gap */}
-                    {partners.map((src, i) => (
-                        <img
-                            key={`c-${i}`}
                             src={src}
                             alt="Partner"
                             className={styles.partnerLogo}

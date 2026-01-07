@@ -1,5 +1,5 @@
 import AboutHero from '@/components/AboutHero';
-import Header from '@/components/Header';
+import Header from '@/components/SiteHeader';
 import BoardSection from '@/components/BoardSection';
 import PartnersSection from '@/components/PartnersSection';
 import MissionAcronym from '@/components/MissionAcronym';
