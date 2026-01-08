@@ -229,6 +229,8 @@
         /* Naturally full width */
         width: 100%;
         max-width: none;
+        min-width: 0;
+        /* Override desktop min-width */
         margin: 4rem 0 0 0;
         /* Top margin only */
 
