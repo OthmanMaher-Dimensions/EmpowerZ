@@ -193,6 +193,9 @@
 }
 
 @media (max-width: 1024px) {
+    .title{
+        font-size: 3rem;
+    }
     .section {
         padding: 4rem 1rem;
     }

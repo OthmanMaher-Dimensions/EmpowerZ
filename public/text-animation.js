@@ -18,23 +18,15 @@
     let timeoutId = null;
     let cursorIntervalId = null;
 
-    function init() {
-        textElement = document.getElementById('hero-typewriter-text');
-        cursorElement = document.getElementById('hero-typewriter-cursor');
-
-        if (!textElement || !cursorElement) {
-            // Retry if not found immediately (e.g. hydration timing)
-            // console.warn('Elements not found, retrying...');
-            setTimeout(init, 500);
-            return;
-        }
-
+    function startAnimation() {
         console.log('[TextHandler] Elements found, starting animation');
         startTyping();
         startCursorBlink();
     }
 
     function startTyping() {
+        if (!textElement) return;
+
         const currentWord = WORDS[wordIndex];
 
         if (isDeleting) {
@@ -76,12 +68,20 @@
         }, 500);
     }
 
-    // Start on load
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        // slight delay to allow React hydration to start/finish
-        setTimeout(init, 100);
-    }
+    // Polling mechanism to wait for React to render the elements
+    const checkInterval = setInterval(() => {
+        textElement = document.getElementById('hero-typewriter-text');
+        cursorElement = document.getElementById('hero-typewriter-cursor');
+
+        if (textElement && cursorElement) {
+            clearInterval(checkInterval);
+            startAnimation();
+        }
+    }, 100);
+
+    // Stop polling after 10 seconds to save resources if something is really wrong
+    setTimeout(() => {
+        clearInterval(checkInterval);
+    }, 10000);
 
 })();

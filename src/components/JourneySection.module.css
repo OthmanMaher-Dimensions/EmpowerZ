@@ -115,6 +115,15 @@
         font-size: 1.8rem;
     }
 
+    .cardHeader {
+        white-space: normal;
+        text-align: center;
+        width: 90%;
+        max-width: 300px;
+        line-height: 1.2;
+        padding: 0 1rem;
+    }
+
     .list {
         grid-template-columns: 1fr;
         gap: 1rem;

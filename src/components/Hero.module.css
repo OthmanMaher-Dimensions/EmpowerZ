@@ -427,19 +427,23 @@
         width: 100%;
         word-break: break-word;
     }
+
     .subheading {
-    margin-bottom: 1rem;
+        margin-bottom: 1rem;
     }
+
     .eyebrow {
         font-size: 1.3rem;
         letter-spacing: 4px;
         flex-wrap: wrap;
     }
-.eyebrowLine{
+
+    .eyebrowLine {
         width: 146px;
-    height: 1px;
-    margin-top: -39px;
-}
+        height: 1px;
+        margin-top: -39px;
+    }
+
     .dividerContainer {
         display: flex;
         flex-wrap: wrap;
@@ -469,9 +473,9 @@
         line-height: 1.4;
     }
 
-    .empowerTextStrong {
+    /* .empowerTextStrong {
         display: inline-block;
-    }
+    } */
 
     .ctaButton {
         margin-bottom: 2rem;
