@@ -57,8 +57,8 @@ const Hero = () => {
                     {/* Empower Statement: WE EMPOWER ENTREPRENEURS */}
                     <p className={`${styles.empowerText} ${styles.animateIn} ${styles.delay5}`}>
                         We Empower{' '}
-                        <span id="hero-typewriter-text" className={styles.empowerTextStrong}></span>
-                        <span id="hero-typewriter-cursor" className={styles.empowerTextCursor}>|</span>
+                        <span id="hero-typewriter-text" className={styles.empowerTextStrong} suppressHydrationWarning></span>
+                        <span id="hero-typewriter-cursor" className={styles.empowerTextCursor} suppressHydrationWarning>|</span>
                     </p>
 
                     {/* CTA Button: Join the Movement */}
