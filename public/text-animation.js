@@ -24,7 +24,8 @@
 
         if (!textElement || !cursorElement) {
             // Retry if not found immediately (e.g. hydration timing)
-            setTimeout(init, 100);
+            // console.warn('Elements not found, retrying...');
+            setTimeout(init, 500);
             return;
         }
 
@@ -79,8 +80,8 @@
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
-        init();
+        // slight delay to allow React hydration to start/finish
+        setTimeout(init, 100);
     }
 
-    // Also try to re-init if for some reason the component remounts (MutationObserver could be better but this is simple)
 })();
