@@ -4,10 +4,12 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import styles from './Hero.module.css';
 import PartnersSection from './PartnersSection';
+import Script from 'next/script';
 
 const Hero = () => {
     return (
         <section className={styles.hero}>
+
             {/* Background Image Container */}
             <div className={styles.heroBgContainer}>
                 {/* The Image */}
@@ -54,15 +56,30 @@ const Hero = () => {
 
                     {/* Empower Statement: WE EMPOWER ENTREPRENEURS */}
                     <p className={`${styles.empowerText} ${styles.animateIn} ${styles.delay5}`}>
-                        We Empower <span className={styles.empowerTextStrong}>Entrepreneurs</span>
-                        {/* The reference image shows a cursor-like bar at the end */}
-                        <span className={styles.empowerTextCursor}>|</span>
+                        We Empower{' '}
+                        <span id="hero-typewriter-text" className={styles.empowerTextStrong}></span>
+                        <span id="hero-typewriter-cursor" className={styles.empowerTextCursor}>|</span>
                     </p>
 
                     {/* CTA Button: Join the Movement */}
                     <a href="#join" className={`${styles.ctaButton} ${styles.animateIn} ${styles.delay6}`}>
                         <span className="hero-cta-text">Join the Movement</span> <ArrowRight className={styles.ctaArrow} size={24} strokeWidth={2.5} />
                     </a>
+
+                    {/* Mobile Social Icons Row */}
+                    <div className={styles.mobileSocials}>
+                        {[
+                            { img: '/assets/icon-youtube-gold.png', href: '#' },
+                            { img: '/assets/icon-x-gold.png', href: '#' },
+                            { img: '/assets/icon-facebook-gold.png', href: '#' },
+                            { img: '/assets/icon-instagram-gold.png', href: '#' },
+                            { img: '/assets/icon-linkedin-gold.png', href: '#' }
+                        ].map((item, i) => (
+                            <a key={i} href={item.href} className={styles.socialIconLink}>
+                                <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
+                            </a>
+                        ))}
+                    </div>
 
                 </div>
 

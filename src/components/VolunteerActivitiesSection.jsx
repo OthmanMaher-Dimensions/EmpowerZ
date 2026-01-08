@@ -85,7 +85,7 @@ const VolunteerActivitiesSection = () => {
             description: "Disaster response, humanitarian aid, and crisis support.",
             icon: "/assets/what-we-offer/icons/emergency-relief.png",
             isCustomIcon: true,
-            color: "#FB2FB5"
+            color: "#bc7ba6"
         }
     ];
 

@@ -80,10 +80,13 @@
 
 .quoteMark {
     color: #FFC107;
-    /* Yellow */
     margin: 0 0.5rem;
     font-size: 3rem;
-    vertical-align: top;
+    line-height: 0;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: 5px;
 }
 
 /* --- Man Image Absolute --- */
@@ -292,7 +295,7 @@
 
     /* Remove bubble padding and ensure centering */
     .boxContentOverlay {
-        padding: 0 1rem;
+        padding: 15px;
         text-align: center;
         align-items: center;
     }
@@ -310,7 +313,12 @@
     }
 
     .quote {
-        font-size: 1.5rem;
+        font-size: 0.75rem;
         margin-top: -20px;
+        white-space: nowrap;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* Just in case it overflows extremely small screens */
     }
 }

@@ -15,6 +15,8 @@ import ConnectSection from '@/components/ConnectSection';
 import GallerySection from '@/components/GallerySection';
 import Footer from '@/components/Footer';
 import WhoWeServe from '@/components/WhoWeServe';
+import PlatformSection from '@/components/PlatformSection';
+import SponsorBanner from '@/components/SponsorBanner';
 
 export default function WhatWeOffer() {
     return (
@@ -30,10 +32,13 @@ export default function WhatWeOffer() {
             <MentorshipSection />
             <VolunteerActivitiesSection />
             <SocialEventsSection />
+            <PlatformSection />
             <MembershipBenefits />
-            <Testimonials />
-                  <WhoWeServe />
+            <SponsorBanner />
 
+            <Testimonials />
+
+            <WhoWeServe />
             <ConnectSection />
             <GallerySection />
             <Footer />

@@ -26,14 +26,30 @@
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .gallerySection {
         padding-bottom: 3rem;
     }
 
     .galleryGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0.25rem;
+        /* Very small gap to fit everything */
+        overflow-x: visible;
+        /* No scroll needed */
+        padding-bottom: 0;
+    }
+
+    .galleryImage {
+        width: 100%;
+        height: 600px !important;
+        /* Force tall height */
+        min-height: 60vh;
+        /* Relative minimum */
+        object-fit: cover;
+        aspect-ratio: unset;
+        /* Remove aspect ratio constraint if it conflicts */
     }
 }
 

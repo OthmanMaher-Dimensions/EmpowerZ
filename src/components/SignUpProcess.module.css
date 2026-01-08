@@ -103,13 +103,14 @@
 }
 
 .stepDescription {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     line-height: 1.6;
     color: #d1d5db;
     /* Light gray text */
     margin-top: 1rem;
     padding: 0 0.5rem;
     /* Small padding for readability */
+    min-height: 200px;
 }
 
 .arrowContainer {

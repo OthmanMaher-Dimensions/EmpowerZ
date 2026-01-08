@@ -22,9 +22,9 @@ const MembershipOffer = () => {
                     <p className={styles.topQuote}>
                         <span className={styles.quoteIcon}>❝</span>
                         You do not have to spend a fortune to access high-profile courses
-                        <span className={styles.quoteIcon}>❞</span>
-                        <br />
                         and learn new skills. For less than a dollar a day, you will unpack a load of learning opportunities and networking events that are worth thousands of dollars.
+                        <span className={styles.quoteIcon}>❞</span>
+
                     </p>
                 </div>
 

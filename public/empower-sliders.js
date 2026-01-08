@@ -7,7 +7,7 @@
  * Uses Event Delegation to bypass React Hydration issues.
  */
 (function () {
-    console.log('--- EMPOWER SLIDERS SCRIPT LOADED v1 ---');
+    console.log('--- EMPOWER SLIDERS SCRIPT LOADED v2 (Loop + AutoPlay) ---');
 
     // --- STATE MANAGEMENT ---
     const state = {
@@ -20,6 +20,8 @@
             count: 3
         }
     };
+
+    let communityAutoPlayInterval;
 
     // --- HELPER FUNCTIONS ---
 
@@ -44,17 +46,17 @@
         const count = state.community.count;
         const maxIndex = Math.max(0, count - slidesToShow);
 
-        // Clamp
-        if (state.community.index < 0) state.community.index = 0;
-        if (state.community.index > maxIndex) state.community.index = maxIndex;
+        // Loop Logic
+        if (state.community.index < 0) state.community.index = maxIndex;
+        if (state.community.index > maxIndex) state.community.index = 0;
 
         // Move
         const percent = -(state.community.index * (100 / slidesToShow));
         track.style.transform = `translateX(${percent}%)`;
 
-        // Buttons
-        prevBtn.toggleAttribute('disabled', state.community.index === 0);
-        nextBtn.toggleAttribute('disabled', state.community.index >= maxIndex);
+        // Buttons: NEVER Disable for infinite loop
+        prevBtn.removeAttribute('disabled');
+        nextBtn.removeAttribute('disabled');
     }
 
     function updateTestimonialsSlider() {
@@ -65,15 +67,12 @@
         if (!track || !prevBtn || !nextBtn) return;
 
         const slidesToShow = getSlidesToShow('testimonials');
-        // We added duplicated data (6 items). Let's update count or detect it?
-        // Ideally we detect children count.
         const realCount = track.children.length;
-        // fallback to state count if 0, but usually we should trust DOM
         const count = realCount || state.testimonials.count;
 
         const maxIndex = Math.max(0, count - slidesToShow);
 
-        // Clamp
+        // Clamp (Testimonials still clamp? User asked for Community. Keeping Testimonials as is for safety unless requested)
         if (state.testimonials.index < 0) state.testimonials.index = 0;
         if (state.testimonials.index > maxIndex) state.testimonials.index = maxIndex;
 
@@ -82,7 +81,6 @@
         track.style.transform = `translateX(${percent}%)`;
 
         // Buttons
-        // We use setAttribute/removeAttribute to ensure CSS selectors [disabled] work
         if (state.testimonials.index === 0) prevBtn.setAttribute('disabled', 'true');
         else prevBtn.removeAttribute('disabled');
 
@@ -95,22 +93,37 @@
         updateTestimonialsSlider();
     }
 
+    function startCommunityAutoPlay() {
+        if (communityAutoPlayInterval) clearInterval(communityAutoPlayInterval);
+        communityAutoPlayInterval = setInterval(() => {
+            state.community.index++;
+            updateCommunitySlider();
+        }, 3000); // 3 Seconds
+    }
+
+    function resetCommunityAutoPlay() {
+        if (communityAutoPlayInterval) clearInterval(communityAutoPlayInterval);
+        startCommunityAutoPlay();
+    }
+
     // --- EVENT DELEGATION ---
     document.addEventListener('click', function (e) {
         // COMMUNITY SLIDER
         const cPrev = e.target.closest('#community-slider-prev');
         const cNext = e.target.closest('#community-slider-next');
 
-        if (cPrev && !cPrev.hasAttribute('disabled')) {
+        if (cPrev) {
             e.preventDefault(); e.stopPropagation();
             state.community.index--;
             updateCommunitySlider();
+            resetCommunityAutoPlay(); // Reset timer on interaction
             return;
         }
-        if (cNext && !cNext.hasAttribute('disabled')) {
+        if (cNext) {
             e.preventDefault(); e.stopPropagation();
             state.community.index++;
             updateCommunitySlider();
+            resetCommunityAutoPlay(); // Reset timer on interaction
             return;
         }
 
@@ -137,8 +150,12 @@
 
     // Loop to auto-heal/init
     setInterval(() => {
-        // Try to update. If elements missing, function just returns.
         updateAll();
+        // ensure autoplay is running if we have elements? 
+        // Better: start autoplay once.
     }, 500);
+
+    // Start AutoPlay
+    startCommunityAutoPlay();
 
 })();

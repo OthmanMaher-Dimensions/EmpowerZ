@@ -12,7 +12,7 @@
 }
 
 /* Dark overlay to ensure text readability */
-.section::before {
+/* .section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -24,7 +24,7 @@
             rgba(2, 6, 23, 0.8) 40%,
             rgba(2, 6, 23, 0.4) 100%);
     z-index: 1;
-}
+} */
 
 .container {
     position: relative;
@@ -58,15 +58,23 @@
 }
 
 .highlightBox {
-    background-color: #FEC23D;
-    padding: 2rem;
-    border-radius: 4px;
-    /* Rough edge effect using standard box shadow or clip-path could be added, keeping it simple clean for now as per "do it" request */
+    /* background-color: #FEC23D; removed for image frame */
+    background-image: url('/assets/what-we-offer/text-frame.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 3rem 4rem;
+    /* Adjusted padding for better fit inside the frame */
+    /* border-radius: 4px; removed */
     position: relative;
     margin-top: 3rem;
-    transform: rotate(-1deg);
-    max-width: 550px;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+    /* transform: rotate(-1deg); removed */
+    max-width: 650px;
+    /* Increased slightly to fit */
+    /* box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2); removed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .highlightText {

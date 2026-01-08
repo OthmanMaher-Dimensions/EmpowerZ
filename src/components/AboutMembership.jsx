@@ -31,9 +31,9 @@ const AboutMembership = () => {
                             className={styles.soundwaveImg}
                         />
                         <h2 className={styles.quote}>
-                            <span className={styles.quoteMark}>“</span>
+                            <span className={styles.quoteMark}>❝</span>
                             Empowerment is what we promise and deliver
-                            <span className={styles.quoteMark}>”</span>
+                            <span className={styles.quoteMark}>❞</span>
                         </h2>
                     </div>
                 </div>

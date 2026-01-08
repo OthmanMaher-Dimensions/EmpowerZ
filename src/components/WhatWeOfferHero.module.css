@@ -39,12 +39,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to left,
-            #020617 0%,
-            #020617 25%,
-            rgba(2, 6, 23, 0.9) 50%,
-            rgba(2, 6, 23, 0.4) 75%,
-            transparent 100%);
+    background: linear-gradient(to left, #020617 0% 22%, #020617e6 36%, #02061766 62%, #0000 100%);
     z-index: 1;
 }
 
@@ -66,8 +61,10 @@
     max-width: 650px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    margin-right: 60px;
+    align-items: flex-start;
+    text-align: left;
+    margin-right: 190px;
+
 }
 
 /* Heading Styles */
@@ -75,7 +72,7 @@
     font-family: 'DM Sans', sans-serif;
     font-size: clamp(2.5rem, 7vw, 5rem);
     font-weight: 700;
-    font-style: italic;
+    font-style: normal;
     line-height: 1.1;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
@@ -118,7 +115,7 @@
     box-shadow: 0 4px 20px rgba(254, 194, 61, 0.4);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .ctaButton:hover {
@@ -158,7 +155,7 @@
 }
 
 .socialIconImg {
-    width: 22px;
+    width: 30;
     height: auto;
     display: block;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
@@ -260,4 +257,21 @@
     .heroBgImage {
         background-position: center center;
     }
+
+    .desktopOnly {
+        display: none !important;
+    }
+
+    .mobileOnly {
+        display: inline !important;
+        /* or block depending on usage, inline is safer for spans */
+    }
+}
+
+.mobileOnly {
+    display: none;
+}
+
+.desktopOnly {
+    display: inline;
 }

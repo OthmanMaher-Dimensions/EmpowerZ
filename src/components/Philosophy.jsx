@@ -64,7 +64,9 @@ const Philosophy = () => {
                   className={styles.polaroidImage}
                 />
               </div>
-              {/* No text for second item as per reference */}
+              <p className={styles.polaroidText}>
+                FREE online and in-person training courses for members only
+              </p>
             </div>
 
             {/* Item 3 */}

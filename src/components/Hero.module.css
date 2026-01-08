@@ -75,6 +75,7 @@
     flex-grow: 1;
     padding-left: max(5vw, 1.5rem);
     padding-right: max(5vw, 1.5rem);
+    padding-top: 3%;
 }
 
 .contentInner {
@@ -85,7 +86,7 @@
 
 .eyebrow {
     font-family: 'Work Sans', sans-serif;
-    font-size: 1.25rem;
+    font-size: 2.25rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -102,14 +103,14 @@
 
 .eyebrowLine {
     height: 1px;
-    width: 100px;
+    width: 250px;
     background: var(--accent-gold, #FEC23D);
     display: block;
 }
 
 .heading {
     font-family: 'Work Sans', sans-serif;
-    font-size: clamp(3.5rem, 13vw, 8.5rem);
+    font-size: clamp(3.5rem, 13vw, 7.5rem);
     font-weight: 600;
     line-height: 1;
     margin-bottom: 0.2rem;
@@ -141,13 +142,13 @@
 
 .dividerLine {
     height: 2px;
-    width: 165px;
+    width: 200px;
     background: var(--accent-gold, #FEC23D);
 }
 
 .dividerText {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.7rem;
     color: var(--accent-gold, #FEC23D);
     text-transform: uppercase;
     letter-spacing: 6px;
@@ -180,7 +181,7 @@
 .ctaButton {
     font-family: 'DM Sans', sans-serif;
     padding: 1.25rem 3.5rem;
-    font-size: 1.25rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: #100820;
     background-color: #FEC23D;
@@ -279,6 +280,10 @@
     animation-delay: 1.0s;
 }
 
+.mobileSocials {
+    display: none;
+}
+
 .socialSidebar {
     position: absolute;
     right: 3vw;
@@ -303,7 +308,7 @@
 }
 
 .socialIconImg {
-    width: 24px;
+    width: 40px;
     height: auto;
     display: block;
 }
@@ -350,7 +355,11 @@
 
     .topBlend,
     .bottomBlend {
-        display: block !important;
+        display: none !important;
+    }
+
+    .gradientOverlay {
+        display: none !important;
     }
 
     .heading {
@@ -394,14 +403,14 @@
 
     .heroBgImage {
         display: block;
-        opacity: 0.4;
-        background-position: center;
+        opacity: 0.6;
         background-size: cover;
     }
 
     .contentArea {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
+        padding-top: 0;
         width: 100%;
     }
 
@@ -411,25 +420,32 @@
     }
 
     .heading {
-        font-size: 3rem;
+        font-size: 4rem;
+        margin-top: -10px;
         letter-spacing: 5px;
         line-height: 1.1;
         width: 100%;
         word-break: break-word;
     }
-
+    .subheading {
+    margin-bottom: 1rem;
+    }
     .eyebrow {
-        font-size: 0.9rem;
+        font-size: 1.3rem;
         letter-spacing: 4px;
         flex-wrap: wrap;
     }
-
+.eyebrowLine{
+        width: 146px;
+    height: 1px;
+    margin-top: -39px;
+}
     .dividerContainer {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
         width: 100%;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     .dividerLine {
@@ -438,7 +454,7 @@
     }
 
     .dividerText {
-        font-size: 0.8rem;
+        font-size: 1rem;
         letter-spacing: 3px;
         flex: 1;
         min-width: 200px;
@@ -458,9 +474,21 @@
     }
 
     .ctaButton {
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
         width: 100%;
         justify-content: center;
+    }
+
+    .mobileSocials {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .mobileSocials .socialIconImg {
+        width: 30px;
     }
 
     .partnersFooter {

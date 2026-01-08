@@ -70,7 +70,7 @@
 .mainHeading {
     font-family: 'Cairo', sans-serif;
     color: #FFD036;
-    font-size: 1.1rem;
+    font-size: 1.6rem;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 1rem;
@@ -78,7 +78,7 @@
 }
 
 .subHeading {
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: #e0e0e0;
     line-height: 1.6;
     font-weight: 400;
@@ -98,15 +98,15 @@
 }
 
 .connectTitle {
-    font-family: 'DM Sans', sans-serif;
-    color: #DEC48C;
-    font-size: 0.9rem;
+    color: #dec48c;
     text-transform: uppercase;
-    letter-spacing: 7px;
-    margin-bottom: 2rem;
+    letter-spacing: 14px;
     text-align: center;
-    font-weight: 100;
     margin-top: 5%;
+    margin-bottom: 2rem;
+    font-family: DM Sans, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 100;
 
 }
 
@@ -199,4 +199,20 @@
     .bottomSection {
         margin-top: 3rem;
     }
+}
+
+@media (max-width: 768px) {
+    .mainHeading{
+        font-size: 1.3rem;
+    }
+    .subHeading{
+        font-size: 1rem;
+    }
+.connectTitle {
+    font-size: 1.4rem;
+
+}
+.socialGrid{
+    gap: 3rem;
+}
 }

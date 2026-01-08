@@ -207,10 +207,33 @@
     }
 
     .card {
-        height: 420px;
+        height: 550px;
+        /* Increased height for mobile */
     }
 
     .header {
         margin-bottom: 2rem;
+    }
+
+    /* Absolute positioning for nav buttons on mobile */
+    .sliderWrapper {
+        gap: 0;
+    }
+
+    .navBtn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .navBtn:first-child {
+        left: 0;
+    }
+
+    .navBtn:last-child {
+        right: 0;
     }
 }

@@ -73,7 +73,7 @@
     color: #000;
     font-family: 'Work Sans', sans-serif;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     letter-spacing: 0.1em;
     padding: 0.5rem 1.5rem;
     text-transform: uppercase;
@@ -225,6 +225,14 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
+    .section {
+        overflow: hidden;
+        /* Fix layout overflow on mobile */
+        height: auto;
+        min-height: auto;
+        padding-bottom: 4rem;
+    }
+
     .bgImage {
         width: 100%;
         height: 100%;
@@ -254,12 +262,25 @@
     }
 
     .arrowContainer {
-        display: none;
+        width: 254px;
+        display: block;
+        top: 9%;
+        left: 35%;
+        transform: none;
     }
 
     .frameContainer {
-        display: none;
-        /* Hide frame on mobile for cleaner layout or adjust */
+        display: block;
+        margin: 0 auto 2rem auto;
+        /* Center and add space below */
+        width: fit-content;
+    }
+
+    /* Adjust frame image size for mobile if needed, or keep as is */
+    .frameImage {
+        width: 200px;
+        /* Slightly smaller to fit better */
+        height: auto;
     }
 }
 
@@ -279,13 +300,19 @@
     }
 
     .headlineMovement {
+        /* Keep specific styling */
         position: static;
         margin: 0;
+        margin-top: 4rem;
+        /* Push down to be "under" the arrow */
         display: block;
-        background: none;
-        background-clip: unset;
-        -webkit-text-fill-color: #fff;
-        color: #fff;
+
+        /* Revert to gradient text as requested "remain the styling" */
+        background: linear-gradient(90deg, #FF8100 0%, #DFAE00 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
     }
 
     .contentLeft {

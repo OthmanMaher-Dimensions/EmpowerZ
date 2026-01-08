@@ -88,6 +88,9 @@ const ImpactSection = () => {
                                 className={styles.goalCard}
                                 style={{ backgroundColor: goal.color }}
                             >
+                                <div className={styles.numberWrapper}>
+                                    <span className={styles.goalNumber}>{index + 1}</span>
+                                </div>
                                 <div className={styles.iconWrapper}>
                                     {goal.isImage ? (
                                         <img src={goal.icon} alt={goal.title} className={styles.iconImage} />

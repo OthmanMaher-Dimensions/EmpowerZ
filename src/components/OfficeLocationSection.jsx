@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { MapPin, Phone } from 'lucide-react';
 import styles from './OfficeLocationSection.module.css';
 
 const OfficeLocationSection = () => {
@@ -8,22 +9,78 @@ const OfficeLocationSection = () => {
         <section className={styles.section}>
             <div className={styles.container}>
                 <div className={styles.headerWrapper}>
-                    <div className={styles.greenBlock}></div>
+                    <div className={styles.yellowBlock}></div>
                     <h2 className={styles.title}>Our Offices</h2>
                 </div>
 
-                <div className={styles.mapContainer}>
-                    <iframe
-                        title="Our Offices Location"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1709664654321!5m2!1sen!2s"
-                        width="100%"
-                        height="450"
-                        style={{ border: 0 }}
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        className={styles.map}
-                    ></iframe>
+                <div className={styles.officesGrid}>
+                    {/* Jordan */}
+                    <div className={styles.officeCard}>
+                        <div className={styles.cardHeader}>
+                            <h3 className={styles.countryName}>Jordan</h3>
+                        </div>
+                        <div className={styles.cardBody}>
+                            <div className={styles.detailRow}>
+                                <MapPin className={styles.icon} />
+                                <p className={styles.detailText}>Amman, King Abdullah II St, Building 15</p>
+                            </div>
+                            <div className={styles.detailRow}>
+                                <Phone className={styles.icon} />
+                                <p className={styles.detailText}>+962 6 123 4567</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Saudi Arabia */}
+                    <div className={styles.officeCard}>
+                        <div className={styles.cardHeader}>
+                            <h3 className={styles.countryName}>Saudi Arabia</h3>
+                        </div>
+                        <div className={styles.cardBody}>
+                            <div className={styles.detailRow}>
+                                <MapPin className={styles.icon} />
+                                <p className={styles.detailText}>Riyadh, Olaya St, Tower 7</p>
+                            </div>
+                            <div className={styles.detailRow}>
+                                <Phone className={styles.icon} />
+                                <p className={styles.detailText}>+966 11 987 6543</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Egypt */}
+                    <div className={styles.officeCard}>
+                        <div className={styles.cardHeader}>
+                            <h3 className={styles.countryName}>Egypt</h3>
+                        </div>
+                        <div className={styles.cardBody}>
+                            <div className={styles.detailRow}>
+                                <MapPin className={styles.icon} />
+                                <p className={styles.detailText}>Cairo, New Cairo, 5th Settlement</p>
+                            </div>
+                            <div className={styles.detailRow}>
+                                <Phone className={styles.icon} />
+                                <p className={styles.detailText}>+20 2 2345 6789</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* United States */}
+                    <div className={styles.officeCard}>
+                        <div className={styles.cardHeader}>
+                            <h3 className={styles.countryName}>United States</h3>
+                        </div>
+                        <div className={styles.cardBody}>
+                            <div className={styles.detailRow}>
+                                <MapPin className={styles.icon} />
+                                <p className={styles.detailText}>New York, 5th Ave, Suite 300</p>
+                            </div>
+                            <div className={styles.detailRow}>
+                                <Phone className={styles.icon} />
+                                <p className={styles.detailText}>+1 212 555 0199</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

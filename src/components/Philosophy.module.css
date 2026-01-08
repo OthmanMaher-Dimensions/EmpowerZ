@@ -55,13 +55,13 @@
 }
 
 .henryFordImage {
-    position: absolute;
-    left: 8%;
-    top: -28%;
-    width: 24%;
+    width: 20%;
     height: auto;
-    filter: brightness(0) invert(1);
     margin-bottom: 0;
+    position: absolute;
+    top: -27%;
+    left: 13%;
+    filter: brightness(0) invert(1);
 }
 
 /* Specific styling for the user provided sketch if needed */
@@ -92,8 +92,12 @@
 .quoteMark {
     color: #FEC23D;
     font-size: 1.5em;
-    vertical-align: top;
     margin: 0 0.5rem;
+    line-height: 0;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: 5px;
 }
 
 /* Belief Section */
@@ -317,7 +321,7 @@
 
 @media (max-width: 768px) {
     .section {
-        padding: 4rem 1rem;
+        padding: 7rem 1rem;
     }
 
     .quoteText {
@@ -348,8 +352,19 @@
         max-width: 100%;
     }
 
+    .polaroidItem:nth-child(2) {
+        margin-bottom: 2.5rem;
+    }
+
     .henryFordImage {
-        display: none !important;
+        width: 60%;
+        position: absolute;
+        top: -118px;
+        left: 29%;
+        transform: none;
+        display: block !important;
+        /* Reset desktop transform if any, though desktop didn't have X transform */
+        filter: brightness(0) invert(1);
     }
 
     .quoteHeader {

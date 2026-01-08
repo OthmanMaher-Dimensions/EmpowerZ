@@ -11,6 +11,8 @@
     width: 100%;
     /* Removed max-width to obey "without container effect" */
     padding-right: 5%;
+    padding-left: 5%;
+    /* Balance the layout */
     /* Keep button off the right edge */
     display: flex;
     align-items: center;
@@ -28,6 +30,8 @@
     width: 100px;
     height: 60px;
     background-color: #fc38b0;
+    flex-shrink: 0;
+    /* Prevent squashing */
     /* Updated specific pink */
 }
 

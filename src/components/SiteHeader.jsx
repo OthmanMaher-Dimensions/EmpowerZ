@@ -28,6 +28,7 @@ const SiteHeader = () => {
         { name: 'What We Offer', href: '/what-we-offer' },
         { name: 'About Us', href: '/about-us' },
         { name: 'Blogs', href: '/blogs' },
+        { name: 'Gallery', href: '/gallery' },
         { name: 'Contact Us', href: '/contact-us' }
     ];
 

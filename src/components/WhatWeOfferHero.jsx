@@ -24,18 +24,32 @@ const WhatWeOfferHero = () => {
                     <div className={styles.contentInner}>
                         {/* Heading: DISCOVER AN EXCLUSIVE */}
                         <h1 className={`${styles.heading} ${styles.animateIn} ${styles.delay1}`}>
-                            <span className={styles.headingGold}>Discover</span>
-                            <br />
-                            <span className={styles.headingGold}>An Exclusive</span>
+                            <span className={styles.desktopOnly}>
+                                <span className={styles.headingGold}>Discover</span>
+                                <br />
+                                <span className={styles.headingGold}>An Exclusive</span>
+                            </span>
+                            <span className={styles.mobileOnly}>
+                                <span className={styles.headingGold}>Discover An</span>
+                                <br />
+                                <span className={styles.headingGold}>Exclusive</span>
+                            </span>
                         </h1>
 
                         {/* Subheading: WORLD OF LIMITLESS PERKS AND BENEFITS */}
                         <h2 className={`${styles.subheading} ${styles.animateIn} ${styles.delay2}`}>
-                            World Of
-                            <br />
-                            <span className={styles.subheadingBold}>Limitless Perks</span>
-                            <br />
-                            <span className={styles.subheadingBold}>And Benefits</span>
+                            <span className={styles.desktopOnly}>
+                                World Of
+                                <br />
+                                <span className={styles.subheadingBold}>Limitless Perks</span>
+                                <br />
+                                <span className={styles.subheadingBold}>And Benefits</span>
+                            </span>
+                            <span className={styles.mobileOnly}>
+                                World Of <span className={styles.subheadingBold}>Limitless</span>
+                                <br />
+                                <span className={styles.subheadingBold}>Perks And Benefits</span>
+                            </span>
                         </h2>
 
                         {/* CTA Button: Join Now */}
@@ -50,10 +64,10 @@ const WhatWeOfferHero = () => {
                 <div className={`${styles.socialSidebar} ${styles.animateIn} ${styles.delay4}`}>
                     {[
                         { img: '/assets/icon-youtube-gold.png', href: '#' },
-                        { img: '/assets/icon-x-gold.png', href: '#' },
-                        { img: '/assets/icon-facebook-gold.png', href: '#' },
-                        { img: '/assets/icon-instagram-gold.png', href: '#' },
-                        { img: '/assets/icon-linkedin-gold.png', href: '#' }
+                        { img: '/assets/icon-x-gold.png', href: '#', },
+                        { img: '/assets/icon-facebook-gold.png', href: '#', },
+                        { img: '/assets/icon-instagram-gold.png', href: '#', },
+                        { img: '/assets/icon-linkedin-gold.png', href: '#', }
                     ].map((item, i) => (
                         <a key={i} href={item.href} className={styles.socialIconLink}>
                             <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />

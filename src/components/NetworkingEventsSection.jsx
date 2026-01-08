@@ -71,7 +71,7 @@ const NetworkingEventsSection = () => {
             description: "International student and youth networking opportunities.",
             icon: "/assets/what-we-offer/icons/global.png",
             isCustomIcon: true,
-            color: "#FB2FB5" // Hot Pink
+            color: "#bc7ba6" // Hot Pink
         },
         {
             title: "Alumni & Community Gatherings",

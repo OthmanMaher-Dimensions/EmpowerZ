@@ -32,7 +32,7 @@
 
 .mainTitle {
     font-family: 'DM Sans', sans-serif;
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 700;
     color: white;
     text-transform: uppercase;
@@ -67,7 +67,7 @@
 
 .subtitle {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: #FEC23D;
     /* Yellow */
@@ -76,7 +76,7 @@
 
 .description {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     line-height: 1.8;
     color: #e2e8f0;
     margin-bottom: 1.5rem;
@@ -86,7 +86,8 @@
 .screenshotsArea {
     text-align: center;
     padding: 0 4rem;
-    max-width: 1400px;
+    max-width: 100%;
+    /* Was 1400px, allow full width to maximize scale */
     margin: 0 auto;
     width: 100%;
 }
@@ -102,15 +103,17 @@
 .grid {
     display: flex;
     justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    /* Allow wrap on smaller screens */
+    gap: 1rem;
+    /* Reduce gap slightly to give more space to images */
+    flex-wrap: nowrap;
+    /* Prevent wrapping on desktop to keep them in one row */
+    overflow-x: auto;
+    /* Allow scroll if very small */
 }
 
 .screenshotCard {
     flex: 1;
-    min-width: 200px;
-    /* Minimum width before wrapping */
+    /* min-width: 200px; removed constraints to let them grow */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -135,7 +138,7 @@
 
 .caption {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     color: white;
     max-width: 180px;
     /* Limit caption width for readability */
@@ -199,5 +202,22 @@
 
     .screenshotsArea {
         padding: 0 1.5rem;
+    }
+
+    .grid {
+        flex-wrap: wrap;
+        /* Enable wrapping for vertical stacking */
+        overflow-x: visible;
+        /* Remove scroll */
+        gap: 3rem;
+        /* Increase gap between stacked items */
+        justify-content: center;
+    }
+
+    .subtitle {
+   font-size: 1.5rem;
+    }
+    .description{
+           font-size:1rem;
     }
 }
