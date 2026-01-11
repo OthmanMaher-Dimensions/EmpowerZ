@@ -23,12 +23,27 @@ const AboutHero = () => {
                         <span className={styles.headlineSpark}>How a</span>
                         <span className={styles.headlinePassion}>Spark of Passion</span>
                         <span className={styles.subHeadline}>Grew into a</span>
-                        <span className={styles.headlineMovement}>Movement <br/> of Change.</span>
+                        <span className={styles.headlineMovement}>Movement <br /> of Change.</span>
                     </h1>
 
                     {/* Dotted Arrow - positioned absolutely relative to container handled by CSS */}
                     <div className={styles.arrowContainer}>
                         <img src="/assets/about/arrow-icons.png" alt="" className={styles.arrowImage} />
+                    </div>
+
+                    {/* Mobile Social Icons Row */}
+                    <div className={styles.mobileSocials}>
+                        {[
+                            { img: '/assets/icon-youtube-gold.png', href: '#' },
+                            { img: '/assets/icon-x-gold.png', href: '#' },
+                            { img: '/assets/icon-facebook-gold.png', href: '#' },
+                            { img: '/assets/icon-instagram-gold.png', href: '#' },
+                            { img: '/assets/icon-linkedin-gold.png', href: '#' }
+                        ].map((item, i) => (
+                            <a key={i} href={item.href} className={styles.socialIconLink}>
+                                <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
+                            </a>
+                        ))}
                     </div>
                 </div>
 
@@ -57,6 +72,20 @@ const AboutHero = () => {
                         </p>
                     </div>
                 </div>
+            </div>
+            {/* Social Sidebar */}
+            <div className={styles.socialSidebar}>
+                {[
+                    { img: '/assets/icon-youtube-gold.png', href: '#' },
+                    { img: '/assets/icon-x-gold.png', href: '#' },
+                    { img: '/assets/icon-facebook-gold.png', href: '#' },
+                    { img: '/assets/icon-instagram-gold.png', href: '#' },
+                    { img: '/assets/icon-linkedin-gold.png', href: '#' }
+                ].map((item, i) => (
+                    <a key={i} href={item.href} className={styles.socialIconLink}>
+                        <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
+                    </a>
+                ))}
             </div>
         </section>
     );

@@ -8,21 +8,35 @@ import styles from './SiteHeader.module.css';
 
 const SiteHeader = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
+        setIsMounted(true);
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };
         window.addEventListener('scroll', handleScroll);
-
-        // Re-initialize static menu on mount/navigation
-        if (window.initMobileMenu) {
-            window.initMobileMenu();
-        }
-
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [pathname]); // Re-run on path change
+    }, []);
+
+    // Close menu on route change
+    useEffect(() => {
+        setMobileMenuOpen(false);
+    }, [pathname]);
+
+    // Lock body scroll when menu is open
+    useEffect(() => {
+        if (mobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [mobileMenuOpen]);
 
     const navLinks = [
         { name: 'What We Offer', href: '/what-we-offer' },
@@ -34,11 +48,20 @@ const SiteHeader = () => {
 
     const isActive = (path) => pathname === path;
 
+    const headerClasses = isMounted
+        ? [
+            styles.header,
+            isScrolled ? styles.headerScrolled : null,
+            mobileMenuOpen ? styles.headerMobileOpen : null
+        ].filter(Boolean).join(' ')
+        : styles.header;
+
     return (
         <>
             <header
                 id="site-header"
-                className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''} ${isScrolled ? 'scrolled-mode' : ''}`}
+                className={headerClasses}
+                suppressHydrationWarning
             >
                 <div className={styles.container}>
                     {/* Logo */}
@@ -74,20 +97,23 @@ const SiteHeader = () => {
 
                     {/* Desktop Actions (Login) */}
                     <div className={styles.desktopActions}>
+
                         <Link href="/login" className={styles.loginBtn} aria-label="Login">
                             Login
+                        </Link>
+                        <Link href="/apply-member" className={styles.joinBtn} aria-label="Join Now">
+                            Join Now
                         </Link>
                     </div>
 
                     {/* Mobile Toggle */}
                     <button
-                        id="mobile-menu-toggle"
                         className={styles.mobileToggle}
                         type="button"
                         aria-label="Toggle menu"
-                        style={{ cursor: 'pointer', zIndex: 2147483647, position: 'relative' }}
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        <Menu size={32} style={{ pointerEvents: 'none' }} />
+                        {isMounted && mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
                     </button>
 
                 </div>
@@ -95,23 +121,24 @@ const SiteHeader = () => {
 
             {/* Mobile Menu Overlay */}
             <div
-                id="mobile-menu-overlay"
-                className={styles.mobileMenu}
+                className={`${styles.mobileMenu} ${isMounted && mobileMenuOpen ? styles.mobileMenuOpen : ''}`}
             >
                 <ul className={styles.mobileNavList}>
                     <li>
                         <Link
                             href="/"
-                            className={`mobile-menu-link ${isActive('/') ? styles.mobileNavLinkHome : styles.mobileNavLink}`}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className={isActive('/') ? styles.mobileNavLinkHome : styles.mobileNavLink}
                         >
                             Home
                         </Link>
                     </li>
                     {navLinks.map((link, i) => (
-                        <li key={link.name} style={{ transitionDelay: `${i * 0.1}s` }}>
+                        <li key={link.name} style={{ transitionDelay: `${i * 0.05}s` }}>
                             <Link
                                 href={link.href}
-                                className={`mobile-menu-link ${isActive(link.href) ? styles.mobileNavLinkHome : styles.mobileNavLink}`}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className={isActive(link.href) ? styles.mobileNavLinkHome : styles.mobileNavLink}
                             >
                                 {link.name}
                             </Link>
@@ -119,10 +146,25 @@ const SiteHeader = () => {
                     ))}
                 </ul>
 
-                {/* Mobile Login Button */}
-                <Link href="/login" className={`mobile-menu-link ${styles.mobileLoginBtn}`} aria-label="Mobile Login">
-                    Login
-                </Link>
+                {/* Mobile Actions */}
+                <div className={styles.mobileActions}>
+                    <Link
+                        href="/apply-member"
+                        className={styles.mobileJoinBtn}
+                        aria-label="Mobile Join"
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        Join Now
+                    </Link>
+                    <Link
+                        href="/login"
+                        className={styles.mobileLoginBtn}
+                        aria-label="Mobile Login"
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        Login
+                    </Link>
+                </div>
             </div>
         </>
     );

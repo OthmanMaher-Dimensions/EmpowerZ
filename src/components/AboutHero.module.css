@@ -323,3 +323,57 @@
         padding: 2rem;
     }
 }
+
+/* Social Icons */
+.socialSidebar {
+    position: absolute;
+    right: 3vw;
+    top: 50%;
+    transform: translateY(-50%) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    z-index: 100;
+    animation-delay: 0.8s;
+}
+
+.mobileSocials {
+    display: none;
+}
+
+.socialIconLink {
+    display: block;
+    transition: transform 0.2s;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.socialIconLink:hover {
+    transform: scale(1.1);
+}
+
+.socialIconImg {
+    width: 32px;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 1024px) {
+    .socialSidebar {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobileSocials {
+        display: flex;
+        gap: 1.5rem;
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .mobileSocials .socialIconImg {
+        width: 30px;
+    }
+}

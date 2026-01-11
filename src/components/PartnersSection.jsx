@@ -63,7 +63,7 @@ const PartnersSection = ({ enableSignup = false, variant = 'default' }) => {
 
             {enableSignup && (
                 <>
-                    <Link href="/apply-member" className={styles.ctaBtn}>
+                    <Link href="/apply-member" className={styles.signupBtn}>
                         Sign Up Now <ArrowRight size={16} />
                     </Link>
                     <hr className={styles.divider} />

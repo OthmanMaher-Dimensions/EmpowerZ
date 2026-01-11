@@ -17,7 +17,6 @@ export default function RootLayout({ children }) {
         {children}
         <script src="/burger-handler.js" defer></script>
         <script src="/empower-sliders.js?v=1" defer></script>
-        <script src="/text-animation.js" defer></script>
         <script src="/form-handler.js" defer></script>
       </body>
     </html>

@@ -308,7 +308,7 @@
 }
 
 .socialIconImg {
-    width: 40px;
+    width: 32px;
     height: auto;
     display: block;
 }
@@ -396,9 +396,11 @@
         padding-top: 100px;
         align-items: flex-start;
         min-height: auto;
-        padding-bottom: 2rem;
+        padding-bottom: 0;
         width: 100%;
         overflow-x: hidden;
+        display: block;
+        /* Stack vertically */
     }
 
     .heroBgImage {
@@ -412,6 +414,11 @@
         padding-right: 1.5rem;
         padding-top: 0;
         width: 100%;
+        min-height: 85vh;
+        /* Ensure hero text takes up most of the first screen */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .contentInner {
@@ -496,8 +503,9 @@
     }
 
     .partnersFooter {
-        padding-top: 1rem;
-        padding-bottom: 2rem;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        margin-top: 0;
         gap: 1rem;
         background: transparent;
         position: relative;

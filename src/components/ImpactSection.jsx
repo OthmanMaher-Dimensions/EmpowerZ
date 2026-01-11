@@ -14,6 +14,7 @@ import styles from './ImpactSection.module.css';
 
 const goals = [
     {
+        number: 4,
         icon: "/assets/about/icon-education.png",
         isImage: true,
         title: "Quality Education",
@@ -21,6 +22,7 @@ const goals = [
         color: "#E76A8A" // Pink
     },
     {
+        number: 5,
         icon: "/assets/about/icon-gender.png",
         isImage: true,
         title: "Gender Equality",
@@ -28,6 +30,7 @@ const goals = [
         color: "#899DD0" // Periwinkle
     },
     {
+        number: 8,
         icon: "/assets/about/icon-work.png",
         isImage: true,
         title: "Decent Work & Economic Growth",
@@ -35,6 +38,7 @@ const goals = [
         color: "#73C2A5" // Green
     },
     {
+        number: 10,
         icon: "/assets/about/icon-equality.png",
         isImage: true,
         title: "Reduced Inequalities",
@@ -42,6 +46,7 @@ const goals = [
         color: "#DB80CF" // Orchid
     },
     {
+        number: 13,
         icon: "/assets/about/icon-climate.png",
         isImage: true,
         title: "Climate Action",
@@ -49,6 +54,7 @@ const goals = [
         color: "#A97FD1" // Purple
     },
     {
+        number: 15,
         icon: "/assets/about/icon-life.png", // Life on Land
         isImage: true,
         title: "Life on Land",
@@ -56,6 +62,7 @@ const goals = [
         color: "#FCB889" // Orange
     },
     {
+        number: 17,
         icon: "/assets/about/icon-partnerships.png",
         isImage: true,
         title: "Partnerships for the Goals",
@@ -89,7 +96,7 @@ const ImpactSection = () => {
                                 style={{ backgroundColor: goal.color }}
                             >
                                 <div className={styles.numberWrapper}>
-                                    <span className={styles.goalNumber}>{index + 1}</span>
+                                    <span className={styles.goalNumber}>{goal.number}</span>
                                 </div>
                                 <div className={styles.iconWrapper}>
                                     {goal.isImage ? (

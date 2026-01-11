@@ -106,7 +106,7 @@ const Philosophy = () => {
 
         {/* Bottom CTA */}
         <div className={styles.ctaWrapper}>
-          <Link href="/apply-member" className={styles.ctaBtn}>
+          <Link href="/apply-member" className={styles.ctaButton}>
             Sign Up Now <ArrowRight size={20} />
           </Link>
         </div>
