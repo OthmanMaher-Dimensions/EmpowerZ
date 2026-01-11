@@ -84,6 +84,22 @@
             }
         }
 
+        // Scroll Stepper to Active Item
+        const stepperContainer = document.getElementById(`${prefix}-stepper`);
+        if (stepperContainer) {
+            const activeStepEl = document.getElementById(`${prefix}-step-indicator-${s.currentStep}`);
+            if (activeStepEl) {
+                const itemCenter = activeStepEl.offsetLeft + (activeStepEl.offsetWidth / 2);
+                const containerCenter = stepperContainer.offsetWidth / 2;
+                let scrollLeft = itemCenter - containerCenter;
+
+                stepperContainer.scrollTo({
+                    left: scrollLeft,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
         // 2. Update Buttons
         const prevBtn = document.getElementById(type === 'member' ? 'btn-prev' : 'btn-prev-sponsor');
         const nextBtn = document.getElementById(type === 'member' ? 'btn-next' : 'btn-next-sponsor');

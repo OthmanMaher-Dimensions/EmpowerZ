@@ -331,7 +331,10 @@
 
 @media (max-width: 768px) {
     .pageContainer {
-        padding: 100px 1rem 2rem;
+        padding: 100px 1rem 120px;
+        /* Increased bottom padding for floating widgets */
+        display: block;
+        /* Change from flex to block on mobile for better flow */
     }
 
     .formCard {
@@ -345,7 +348,12 @@
         margin-left: -1.5rem;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-        padding-bottom: 1rem;
+        padding-bottom: 2rem;
+        /* Add clear space for shadows */
+        justify-content: flex-start;
+        /* Ensure items start from left */
+        gap: 1rem;
+        /* Consistent spacing */
         /* Hide scrollbar */
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -356,11 +364,18 @@
     }
 
     .stepItem {
-        min-width: 80px;
+        width: 90px;
+        min-width: 90px;
+        flex-shrink: 0;
     }
 
     .formGrid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .inputGroup {
+        gap: 0.35rem;
     }
 
     .title {
@@ -382,5 +397,12 @@
     .stepper::before {
         display: none;
         /* Hide line on mobile usually as it breaks active overflow */
+    }
+
+    .input,
+    .select,
+    .textarea {
+        font-size: 16px;
+        /* Prevent iOS zoom */
     }
 }

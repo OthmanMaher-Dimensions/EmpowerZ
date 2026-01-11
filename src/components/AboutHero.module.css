@@ -328,7 +328,7 @@
 .socialSidebar {
     position: absolute;
     right: 3vw;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%) !important;
     display: flex;
     flex-direction: column;
