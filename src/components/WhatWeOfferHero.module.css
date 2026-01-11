@@ -155,7 +155,7 @@
 }
 
 .socialIconImg {
-    width: 30;
+    width: 40px;
     height: auto;
     display: block;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
@@ -201,6 +201,11 @@
 
 .delay4 {
     animation-delay: 0.8s;
+}
+
+
+.mobileSocials {
+    display: none;
 }
 
 /* Responsive Styles */
@@ -266,7 +271,22 @@
         display: inline !important;
         /* or block depending on usage, inline is safer for spans */
     }
+
+    .mobileSocials {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .mobileSocials .socialIconImg {
+        width: 30px;
+    }
 }
+
+
 
 .mobileOnly {
     display: none;

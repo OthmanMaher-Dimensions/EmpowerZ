@@ -44,6 +44,14 @@
     color: #000000;
 }
 
+.highlightText {
+    font-weight: 900;
+    font-size: 1.4em;
+    display: block;
+    margin-top: 0.5rem;
+    line-height: 1.2;
+}
+
 .sponsorBtn {
     background-color: #ffc83d;
     /* Gold/Yellow from image */

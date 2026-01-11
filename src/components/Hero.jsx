@@ -1,8 +1,10 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import styles from './Hero.module.css';
+// Force rebuild
 import PartnersSection from './PartnersSection';
 import Script from 'next/script';
 
@@ -62,9 +64,9 @@ const Hero = () => {
                     </p>
 
                     {/* CTA Button: Join the Movement */}
-                    <a href="#join" className={`${styles.ctaButton} ${styles.animateIn} ${styles.delay6}`}>
+                    <Link href="/apply-member" className={styles.ctaButton}>
                         <span className="hero-cta-text">Join the Movement</span> <ArrowRight className={styles.ctaArrow} size={24} strokeWidth={2.5} />
-                    </a>
+                    </Link>
 
                     {/* Mobile Social Icons Row */}
                     <div className={styles.mobileSocials}>

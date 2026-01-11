@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import styles from './PartnersSection.module.css';
 
@@ -62,9 +63,9 @@ const PartnersSection = ({ enableSignup = false, variant = 'default' }) => {
 
             {enableSignup && (
                 <>
-                    <button className={styles.signupBtn}>
+                    <Link href="/apply-member" className={styles.ctaBtn}>
                         Sign Up Now <ArrowRight size={16} />
-                    </button>
+                    </Link>
                     <hr className={styles.divider} />
                 </>
             )}

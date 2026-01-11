@@ -1,6 +1,7 @@
 "use client";
 
 import styles from './SignUpProcess.module.css';
+import Link from 'next/link';
 import { ClipboardList, CreditCard, LogIn, ArrowRight } from 'lucide-react';
 
 const SignUpProcess = () => {
@@ -74,9 +75,9 @@ const SignUpProcess = () => {
             </div>
 
             <div className={styles.ctaContainer}>
-                <button className={styles.ctaButton}>
+                <Link href="/apply-member" className={styles.ctaButton}>
                     SIGN UP NOW <ArrowRight size={20} className={styles.btnArrow} />
-                </button>
+                </Link>
             </div>
         </section>
     );

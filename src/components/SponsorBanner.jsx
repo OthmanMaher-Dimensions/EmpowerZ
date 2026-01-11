@@ -1,6 +1,7 @@
 "use client";
 
 import styles from './SponsorBanner.module.css';
+import Link from 'next/link';
 
 const SponsorBanner = () => {
     return (
@@ -10,14 +11,14 @@ const SponsorBanner = () => {
                     <div className={styles.pinkBar}></div>
                     <h2 className={styles.bannerText}>
                         Do you support our mission?<br />
-                        Sponsor a Member Now.
+                        <span className={styles.highlightText}>Sponsor a Member Now.</span>
                     </h2>
                 </div>
 
-                <button className={styles.sponsorBtn}>
+                <Link href="/apply-sponsor" className={styles.sponsorBtn}>
                     SPONSOR A MEMBER
                     <span className={styles.arrowIcon}>→</span>
-                </button>
+                </Link>
             </div>
         </section>
     );

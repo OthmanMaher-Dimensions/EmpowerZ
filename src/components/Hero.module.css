@@ -466,10 +466,10 @@
     }
 
     .empowerText {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         margin-bottom: 3rem;
         width: 100%;
-        white-space: normal;
+        white-space: nowrap;
         line-height: 1.4;
     }
 

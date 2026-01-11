@@ -1,0 +1,386 @@
+/* Container for the whole form page content */
+.pageContainer {
+    min-height: 100vh;
+    padding: 120px 1.5rem 4rem;
+    background: var(--bg-primary);
+    /* Matched to globals */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.formCard {
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(15, 23, 42, 0.8);
+    /* Slightly more opaque bg-secondary */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(254, 194, 61, 0.1);
+    /* Subtle brand border */
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.formCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(254, 194, 61, 0.3), transparent);
+}
+
+/* Header Section */
+.formHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* Stepper */
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    position: relative;
+    padding: 0 2rem;
+}
+
+.stepper::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 4rem;
+    right: 4rem;
+    height: 2px;
+    background: #1e293b;
+    z-index: 0;
+}
+
+.stepItem {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    /* fixed width for text alignment */
+}
+
+.stepCircle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1e293b;
+    border: 2px solid #334155;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.stepLabel {
+    font-size: 0.75rem;
+    color: #64748b;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+}
+
+/* Active Step */
+.stepItem.active .stepCircle {
+    background: #fec23d;
+    border-color: #fec23d;
+    color: #020617;
+    box-shadow: 0 0 15px rgba(254, 194, 61, 0.4);
+}
+
+.stepItem.active .stepLabel {
+    color: #fec23d;
+}
+
+/* Completed Step */
+.stepItem.completed .stepCircle {
+    background: #0f172a;
+    border-color: #fec23d;
+    color: #fec23d;
+}
+
+.stepItem.completed .stepLabel {
+    color: #94a3b8;
+}
+
+/* Form Layout */
+.stepContent {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.stepTitle {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.stepDescription {
+    text-align: center;
+    color: #94a3b8;
+    margin-bottom: 2.5rem;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
+/* Input Fields */
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #e2e8f0;
+}
+
+.required {
+    color: #ec4899;
+    margin-left: 2px;
+}
+
+.input,
+.select,
+.textarea {
+    background: rgba(2, 6, 23, 0.5);
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+    outline: none;
+    border-color: #fec23d;
+    box-shadow: 0 0 0 2px rgba(254, 194, 61, 0.1);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: #475569;
+}
+
+/* Checkboxes */
+.checkboxGroup {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #334155;
+    border-radius: 4px;
+    background: rgba(2, 6, 23, 0.5);
+    position: relative;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.checkbox:checked {
+    background: #fec23d;
+    border-color: #fec23d;
+}
+
+.checkbox:checked::after {
+    content: '✓';
+    color: #020617;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 800;
+}
+
+.checkboxLabel {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    user-select: none;
+}
+
+.link {
+    color: #fec23d;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 10;
+}
+
+.backBtn {
+    background: transparent;
+    color: #94a3b8;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.2s;
+    border: 1px solid #334155;
+    cursor: pointer;
+}
+
+.backBtn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-color: #475569;
+}
+
+.nextBtn {
+    background: #fec23d;
+    color: #020617;
+    padding: 0.75rem 2.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+}
+
+.nextBtn:hover {
+    background: #e5ac2e;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.summaryLabel {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.summaryValue {
+    color: #fff;
+    font-weight: 500;
+    text-align: right;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .pageContainer {
+        padding: 100px 1rem 2rem;
+    }
+
+    .formCard {
+        padding: 1.5rem;
+    }
+
+    .stepper {
+        padding: 0;
+        overflow-x: auto;
+        margin-right: -1.5rem;
+        margin-left: -1.5rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-bottom: 1rem;
+        /* Hide scrollbar */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .stepper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .stepItem {
+        min-width: 80px;
+    }
+
+    .formGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .actions {
+        flex-direction: column-reverse;
+        /* Put next on top usually, or stick to row but smaller */
+        gap: 1rem;
+    }
+
+    .nextBtn,
+    .backBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stepper::before {
+        display: none;
+        /* Hide line on mobile usually as it breaks active overflow */
+    }
+}

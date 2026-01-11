@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from './CommunitySlider.module.css';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
@@ -108,9 +109,9 @@ const CommunitySlider = () => {
                 </div>
 
                 <div className={styles.ctaContainer}>
-                    <button className={styles.ctaButton}>
+                    <Link href="/apply-member" className={styles.ctaButton}>
                         SIGN UP NOW <ArrowRight size={20} />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

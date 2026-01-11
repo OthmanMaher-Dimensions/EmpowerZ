@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import styles from './Philosophy.module.css';
 
@@ -105,9 +106,9 @@ const Philosophy = () => {
 
         {/* Bottom CTA */}
         <div className={styles.ctaWrapper}>
-          <a href="#signup" className={styles.ctaButton}>
+          <Link href="/apply-member" className={styles.ctaBtn}>
             Sign Up Now <ArrowRight size={20} />
-          </a>
+          </Link>
         </div>
 
       </div>

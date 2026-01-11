@@ -106,10 +106,15 @@
 }
 
 .socialIconImg {
-    width: 22px;
+    width: 40px;
     height: auto;
     display: block;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+
+.mobileSocials {
+    display: none;
 }
 
 /* Responsive */
@@ -133,5 +138,18 @@
 
     .subtitle {
         font-size: 0.9rem;
+    }
+
+    .mobileSocials {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .mobileSocials .socialIconImg {
+        width: 30px;
     }
 }

@@ -179,87 +179,156 @@
 }
 
 /* --- Responsive --- */
-@media (max-width: 1200px) {
+@media (max-width: 1700px) {
+    .section {
+        min-height: 1100px;
+        /* Force sufficient height */
+        padding-top: 4rem;
+        /* Reduce top padding slightly */
+    }
 
-    /* Adjust overlapping when screen shrinks */
-    .manImage {
-        width: 50vw;
+    .container {
+        margin-bottom: 5rem;
+    }
+
+    /* Scale down the top part to save vertical space */
+    .topDescription {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .aboutTitle {
+        font-size: 1.3rem;
+    }
+
+    .quote {
+        font-size: 2rem;
+    }
+
+    .quoteMark {
+        font-size: 2.5rem;
+    }
+
+    .headerWrapper {
+        margin-bottom: 2rem;
     }
 
     .textBoxWrapper {
         width: 50vw;
-        right: 0;
-        /* Align to right edge */
-        padding-right: 2rem;
-        /* Add padding from edge */
+        /* Make it wider so it's not so tall */
+        right: 1%;
+        bottom: 2%;
+    }
+
+    .manImage {
+        width: 55vw;
+        max-width: 900px;
+    }
+
+    .boxContentOverlay {
+        padding: 8% 6% 9% 18%;
+    }
+
+    .boxTitle {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .boxContent p {
+        font-size: 0.85rem;
+        line-height: 1.5;
     }
 }
 
+@media (max-width: 1366px) {
+    .section {
+        min-height: 1000px;
+    }
+
+    .textBoxWrapper {
+        width: 52vw;
+    }
+
+    .boxContentOverlay {
+        padding: 8% 6% 10% 12%;
+    }
+
+    .boxTitle {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        margin-bottom: 4rem;
+    }
+
+    .textBoxWrapper {
+        width: 55vw;
+    }
+}
 
 @media (max-width: 1024px) {
     .section {
         min-height: auto;
         padding-bottom: 4rem;
         display: block;
-        /* Reset back to block flow */
         height: auto;
     }
 
     .container {
         margin-bottom: 2rem;
         padding: 0;
-        /* Remove padding to allow full width children */
         width: 100%;
     }
 
-    /* Add padding back to header content */
     .headerWrapper {
         padding: 0 1rem;
     }
 
-    /* Hide Man Image on Mobile */
     .manImage {
         display: none !important;
     }
 
-    /* Reset Text Box Positioning */
     .textBoxWrapper {
         position: relative;
-
-        /* Naturally full width */
-        width: 100%;
-        /* max-width: none; */
-        min-width: 0;
-        /* Override desktop min-width */
-        margin: 4rem 0 0 0;
-        /* Top margin only */
-
+        width: 80%;
+        /* Reduce width to maintain better aspect ratio */
+        max-width: 700px;
+        /* Cap width */
+        margin: 2rem auto 0;
+        /* Center horizontally with less top margin */
         transform: none;
-        /* padding: 0 1.5rem; */
+        right: auto;
+        bottom: auto;
     }
 
     .textBox {
         display: block;
         width: 100%;
+        height: auto;
+        /* Allow height to grow */
     }
 
     .boxBorderBg {
         width: 100%;
-        height: auto;
+        height: 100%;
+        /* Ensure the image covers the entire area, potentially stretching */
     }
 
     .quote {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        /* Smaller quote on tablet */
         white-space: normal;
+        margin-top: -10px;
     }
 
     .boxContentOverlay {
-        padding: 4rem 2rem;
-        /* Fixed padding instead of % */
-        position: relative;
-        /* Maintain relative flow */
+        /* Shift text UP by reducing top padding and increasing bottom padding */
+        padding:5% 8% 8% 18%;
         width: 100%;
-        height: auto;
+        height: 100%;
+        /* Match container height */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -270,18 +339,23 @@
     .boxTitle {
         text-align: center;
         margin-left: 0;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
     }
 
     .boxContent p {
         text-align: center;
+        font-size: 0.85rem;
+        line-height: 1.5;
     }
 
     .boxBorderBg {
-        /* Ensure it stretches on mobile too */
+        /* Redundant rule removed/merged above */
         width: 100%;
         height: 100%;
         position: absolute;
+        top: 0;
+        left: 0;
     }
 }
 

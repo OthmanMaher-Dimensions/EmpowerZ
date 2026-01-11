@@ -54,14 +54,34 @@
 }
 
 .socialIconImg {
-    width: 24px;
+    width: 40px;
     height: auto;
     display: block;
+}
+
+
+.mobileSocials {
+    display: none;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
     .socialSidebar {
         display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobileSocials {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .mobileSocials .socialIconImg {
+        width: 30px;
     }
 }

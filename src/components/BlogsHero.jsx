@@ -41,6 +41,21 @@ const BlogsHero = () => {
                             <Search className={styles.searchIcon} size={24} />
                         </button>
                     </div>
+
+                    {/* Mobile Social Icons Row */}
+                    <div className={styles.mobileSocials}>
+                        {[
+                            { img: '/assets/icon-youtube-gold.png', href: '#' },
+                            { img: '/assets/icon-x-gold.png', href: '#' },
+                            { img: '/assets/icon-facebook-gold.png', href: '#' },
+                            { img: '/assets/icon-instagram-gold.png', href: '#' },
+                            { img: '/assets/icon-linkedin-gold.png', href: '#' }
+                        ].map((item, i) => (
+                            <a key={i} href={item.href} className={styles.socialIconLink}>
+                                <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
+                            </a>
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -58,7 +73,7 @@ const BlogsHero = () => {
                     </a>
                 ))}
             </div>
-        </section>
+        </section >
     );
 };
 

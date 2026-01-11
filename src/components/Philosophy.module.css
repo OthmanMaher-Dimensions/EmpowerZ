@@ -357,10 +357,10 @@
     }
 
     .henryFordImage {
-        width: 60%;
+         width: 50%;
         position: absolute;
-        top: -118px;
-        left: 29%;
+        top: 9%;
+        left: 34%;
         transform: none;
         display: block !important;
         /* Reset desktop transform if any, though desktop didn't have X transform */

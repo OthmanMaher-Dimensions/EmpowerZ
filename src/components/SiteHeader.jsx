@@ -74,7 +74,7 @@ const SiteHeader = () => {
 
                     {/* Desktop Actions (Login) */}
                     <div className={styles.desktopActions}>
-                        <Link href="/#login" className={styles.loginBtn}>
+                        <Link href="/login" className={styles.loginBtn} aria-label="Login">
                             Login
                         </Link>
                     </div>
@@ -120,7 +120,7 @@ const SiteHeader = () => {
                 </ul>
 
                 {/* Mobile Login Button */}
-                <Link href="/#login" className={`mobile-menu-link ${styles.mobileLoginBtn}`}>
+                <Link href="/login" className={`mobile-menu-link ${styles.mobileLoginBtn}`} aria-label="Mobile Login">
                     Login
                 </Link>
             </div>

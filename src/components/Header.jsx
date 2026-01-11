@@ -12,7 +12,7 @@ const Header = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -85,7 +85,7 @@ const Header = () => {
 
         {/* Desktop Actions (Login) */}
         <div className={styles.desktopActions}>
-          <Link href="/#login" className={styles.loginBtn}>
+          <Link href="/login" className={styles.loginBtn}>
             Login
           </Link>
         </div>
@@ -139,7 +139,7 @@ const Header = () => {
         </ul>
 
         {/* Mobile Login Button */}
-        <Link href="/#login" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileLoginBtn}>
+        <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileLoginBtn}>
           Login
         </Link>
       </div>
