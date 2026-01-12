@@ -317,6 +317,15 @@
     .polaroidFrame {
         margin-bottom: 0;
     }
+    .quoteHeader{
+        margin-bottom: 2.5rem;
+    }
+     .henryFordImage {
+      width: 20%;
+ 
+    top: 6%;
+    left: 44%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -357,13 +366,12 @@
     }
 
     .henryFordImage {
-         width: 50%;
+        width: 18%;
         position: absolute;
-        top: 9%;
+        top: 16%;
         left: 34%;
         transform: none;
         display: block !important;
-        /* Reset desktop transform if any, though desktop didn't have X transform */
         filter: brightness(0) invert(1);
     }
 
@@ -374,8 +382,31 @@
     }
 
     .quoteIntro {
-        margin-left: 20px;
+        /* margin-left: 20px; */
         /* Offset for image overlap */
-        font-size: 1rem;
+        /* font-size: 1rem; */
+    }
+}
+
+
+@media (max-width: 425px) {
+
+    .henryFordImage {
+        width: 37%;
+    }
+
+}
+
+@media (max-width: 375px) {
+
+    .henryFordImage {
+        width: 49%;
+    }
+
+}
+
+@media (max-width: 320px) {
+  .henryFordImage {
+        width: 60%;
     }
 }

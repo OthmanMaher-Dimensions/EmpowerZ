@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import styles from './Hero.module.css';
+import Typewriter from './Typewriter';
 // Force rebuild
 import PartnersSection from './PartnersSection';
 import Script from 'next/script';
@@ -59,7 +60,14 @@ const Hero = () => {
                     {/* Empower Statement: WE EMPOWER ENTREPRENEURS */}
                     <p className={`${styles.empowerText} ${styles.animateIn} ${styles.delay5}`}>
                         We Empower{' '}
-                        <span className={styles.empowerTextStrong}>Entrepreneurs</span>
+                        <Typewriter
+                            words={['Entrepreneurs']}
+                            textClassName={styles.empowerTextStrong}
+                            cursorClassName={styles.empowerTextCursor}
+                            typeSpeed={100}
+                            deleteSpeed={50}
+                            delay={2000}
+                        />
                     </p>
 
                     {/* CTA Button: Join the Movement */}

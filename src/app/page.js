@@ -1,5 +1,4 @@
 
-
 import Header from '../components/SiteHeader';
 import Hero from '../components/Hero';
 import Philosophy from '../components/Philosophy';
