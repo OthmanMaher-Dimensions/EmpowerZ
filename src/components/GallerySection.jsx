@@ -22,14 +22,17 @@ const GallerySection = ({
     return (
         <section className={styles.gallerySection} style={style}>
             <div className={styles.galleryGrid}>
-                {displayImages.map((src, index) => (
-                    <img
-                        key={index}
-                        src={src}
-                        alt={`Gallery ${index + 1}`}
-                        className={styles.galleryImage}
-                    />
-                ))}
+                {displayImages.map((src, index) => {
+                    const finalSrc = src.startsWith('http') ? src : `${process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'}${src}`;
+                    return (
+                        <img
+                            key={index}
+                            src={finalSrc}
+                            alt={`Gallery ${index + 1}`}
+                            className={styles.galleryImage}
+                        />
+                    );
+                })}
             </div>
         </section>
     );

@@ -98,7 +98,7 @@ const Testimonials = ({
                                         />
                                         <div className={styles.cardHeader}>
                                             <img
-                                                src={item.image}
+                                                src={item.image.startsWith('http') ? item.image : `${process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'}${item.image}`}
                                                 alt={item.name}
                                                 className={styles.userImage}
                                             />

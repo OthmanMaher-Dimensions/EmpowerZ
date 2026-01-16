@@ -78,7 +78,7 @@ const BoardSection = ({
                     {members.map((member, index) => (
                         <div key={member.id || index} className={styles.card}>
                             <img
-                                src={member.image ? `${process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'}${member.image}` : placeholderImage}
+                                src={member.image ? (member.image.startsWith('http') ? member.image : `${process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'}${member.image}`) : placeholderImage}
                                 alt={member.name}
                                 className={styles.cardBg}
                                 onError={(e) => {

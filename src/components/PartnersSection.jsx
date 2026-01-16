@@ -45,7 +45,11 @@ const PartnersSection = ({
                     const data = await res.json();
                     if (Array.isArray(data) && data.length > 0) {
                         // Extract URLs if data is objects
-                        const urls = data.map(p => typeof p === 'string' ? p : p.url);
+                        const urls = data.map(p => {
+                            const url = typeof p === 'string' ? p : p.url;
+                            if (url.startsWith('http')) return url;
+                            return `${adminUrl}${url}`;
+                        });
                         setPartners(urls);
                     }
                 }
