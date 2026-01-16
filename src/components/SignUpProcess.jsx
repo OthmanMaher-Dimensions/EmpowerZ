@@ -4,28 +4,44 @@ import styles from './SignUpProcess.module.css';
 import Link from 'next/link';
 import { ClipboardList, CreditCard, LogIn, ArrowRight } from 'lucide-react';
 
-const SignUpProcess = () => {
+const SignUpProcess = ({
+    title = "Sign Up Process",
+    step1Number = "01",
+    step1Title = "Sign Up",
+    step1Desc = "Fill out the application form and make sure your answers reflect your needs to help us tailor our offerings to meet your needs and expectations.",
+    step1Image = "/assets/register.png",
+    step2Number = "02",
+    step2Title = "Pay the Fees",
+    step2Desc = "Pay the membership fees using our online encrypted payment gateway. If you have no access to online payments, please contact us for alternative payment methods.",
+    step2Image = "/assets/card-payment.png",
+    step3Number = "03",
+    step3Title = "That's it! Welcome on Board",
+    step3Desc = "Log in using your username and password, and access your dashboard, where you will find your digital membership card, available perks and benefits, and all notifications and resources at your fingertips.",
+    step3Image = "/assets/sign-in.png",
+    ctaText = "SIGN UP NOW",
+    style = {}
+}) => {
     return (
-        <section className={styles.section}>
+        <section className={styles.section} style={style}>
             {/* Header with Teal Accent */}
             <div className={styles.headerContainer}>
                 <div className={styles.tealBar}></div>
-                <h2 className={styles.title}>Sign Up Process</h2>
+                <h2 className={styles.title}>{title}</h2>
             </div>
 
             <div className={styles.stepsContainer}>
                 {/* Step 01 */}
                 <div className={styles.stepWrapper}>
                     <div className={styles.stepCard}>
-                        <div className={styles.stepNumber}>01</div>
+                        <div className={styles.stepNumber}>{step1Number}</div>
                         <div className={styles.iconWrapper}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src="/assets/register.png" alt="Sign Up" width={96} height={96} style={{ objectFit: 'contain' }} />
+                            <img src={step1Image} alt="Sign Up" width={96} height={96} style={{ objectFit: 'contain' }} />
                         </div>
-                        <h3 className={styles.stepTitle}>Sign Up</h3>
+                        <h3 className={styles.stepTitle}>{step1Title}</h3>
                     </div>
                     <p className={styles.stepDescription}>
-                        Fill out the application form and make sure your answers reflect your needs to help us tailor our offerings to meet your needs and expectations.
+                        {step1Desc}
                     </p>
                 </div>
 
@@ -39,15 +55,15 @@ const SignUpProcess = () => {
                 {/* Step 02 */}
                 <div className={styles.stepWrapper}>
                     <div className={styles.stepCard}>
-                        <div className={styles.stepNumber}>02</div>
+                        <div className={styles.stepNumber}>{step2Number}</div>
                         <div className={styles.iconWrapper}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src="/assets/card-payment.png" alt="Pay the Fees" width={96} height={96} style={{ objectFit: 'contain' }} />
+                            <img src={step2Image} alt="Pay the Fees" width={96} height={96} style={{ objectFit: 'contain' }} />
                         </div>
-                        <h3 className={styles.stepTitle}>Pay the Fees</h3>
+                        <h3 className={styles.stepTitle}>{step2Title}</h3>
                     </div>
                     <p className={styles.stepDescription}>
-                        Pay the membership fees using our online encrypted payment gateway. If you have no access to online payments, please contact us for alternative payment methods.
+                        {step2Desc}
                     </p>
                 </div>
 
@@ -61,22 +77,22 @@ const SignUpProcess = () => {
                 {/* Step 03 */}
                 <div className={styles.stepWrapper}>
                     <div className={styles.stepCard}>
-                        <div className={styles.stepNumber}>03</div>
+                        <div className={styles.stepNumber}>{step3Number}</div>
                         <div className={styles.iconWrapper}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src="/assets/sign-in.png" alt="Welcome on Board" width={96} height={96} style={{ objectFit: 'contain' }} />
+                            <img src={step3Image} alt="Welcome on Board" width={96} height={96} style={{ objectFit: 'contain' }} />
                         </div>
-                        <h3 className={styles.stepTitle}>That's it! Welcome on Board</h3>
+                        <h3 className={styles.stepTitle}>{step3Title}</h3>
                     </div>
                     <p className={styles.stepDescription}>
-                        Log in using your username and password, and access your dashboard, where you will find your digital membership card, available perks and benefits, and all notifications and resources at your fingertips.
+                        {step3Desc}
                     </p>
                 </div>
             </div>
 
             <div className={styles.ctaContainer}>
                 <Link href="/apply-member" className={styles.ctaButton}>
-                    SIGN UP NOW <ArrowRight size={20} className={styles.btnArrow} />
+                    {ctaText} <ArrowRight size={20} className={styles.btnArrow} />
                 </Link>
             </div>
         </section>

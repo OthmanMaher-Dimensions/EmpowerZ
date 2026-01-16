@@ -1,55 +1,55 @@
 "use client";
 
-import React from 'react';
-import SiteHeader from './SiteHeader';
+import React, { useState, useEffect } from 'react';
 import styles from './BlogDetailsHero.module.css';
+import { getSocialLinks } from '../utils/socialLinks';
 
-const BlogDetailsHero = () => {
+import SiteHeader from './SiteHeader';
+
+export default function BlogDetailsHero({ showHeader = true, title = "BLOG DETAILS", post }) {
+    const displayTitle = post?.title || title;
+    const [socialLinks, setSocialLinks] = useState({
+        facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
+    });
+
+    useEffect(() => {
+        getSocialLinks().then(setSocialLinks);
+    }, []);
+
+    const socialIcons = [
+        { name: 'Youtube', icon: '/assets/icon-youtube-gold.png', link: socialLinks.youtube },
+        { name: 'X', icon: '/assets/icon-x-gold.png', link: socialLinks.twitter },
+        { name: 'Facebook', icon: '/assets/icon-facebook-gold.png', link: socialLinks.facebook },
+        { name: 'Instagram', icon: '/assets/icon-instagram-gold.png', link: socialLinks.instagram },
+        { name: 'LinkedIn', icon: '/assets/icon-linkedin-gold.png', link: socialLinks.linkedin },
+    ];
+
     return (
-        <section className={styles.hero}>
-            <SiteHeader />
+        <>
+            {showHeader && <SiteHeader />}
+            <section className={styles.hero}>
+                <div className={styles.contentContainer}>
+                    <h1 className={styles.title}>
+                        {displayTitle}
+                    </h1>
+                </div>
 
-            <div className={styles.contentContainer}>
-                <h1 className={styles.title}>
-                    HOW TO MAKE THE MOST <br />
-                    OUT OF EVERY MEMBERSHIP <br />
-                    PERK AND BENEFIT
-                </h1>
-
-                {/* Mobile Social Icons Row */}
-                <div className={styles.mobileSocials}>
-                    {[
-                        { img: '/assets/icon-youtube-gold.png', href: '#' },
-                        { img: '/assets/icon-x-gold.png', href: '#' },
-                        { img: '/assets/icon-facebook-gold.png', href: '#' },
-                        { img: '/assets/icon-instagram-gold.png', href: '#' },
-                        { img: '/assets/icon-linkedin-gold.png', href: '#' }
-                    ].map((item, i) => (
-                        <a key={i} href={item.href} className={styles.socialIconLink}>
-                            <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
+                <div className={styles.socialSidebar}>
+                    {socialIcons.map((social) => (
+                        <a key={social.name} href={social.link} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
+                            <img src={social.icon} alt={social.name} className={styles.socialIconImg} />
                         </a>
                     ))}
                 </div>
-            </div>
 
-            {/* Social Sidebar */}
-            <div className={styles.socialSidebar}>
-                {[
-                    { img: '/assets/icon-youtube-gold.png', href: '#' },
-                    { img: '/assets/icon-x-gold.png', href: '#' },
-                    { img: '/assets/icon-facebook-gold.png', href: '#' },
-                    { img: '/assets/icon-instagram-gold.png', href: '#' },
-                    { img: '/assets/icon-linkedin-gold.png', href: '#' }
-                ].map((item, i) => (
-                    <a key={i} href={item.href} className={styles.socialIconLink}>
-                        <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
-                    </a>
-                ))}
-            </div>
-        </section>
+                <div className={styles.mobileSocials}>
+                    {socialIcons.map((social) => (
+                        <a key={social.name} href={social.link} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
+                            <img src={social.icon} alt={social.name} className={styles.socialIconImg} />
+                        </a>
+                    ))}
+                </div>
+            </section>
+        </>
     );
-};
-
-export default BlogDetailsHero;
-
-
+}

@@ -1,17 +1,34 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import styles from './Hero.module.css';
 import Typewriter from './Typewriter';
+import { getSocialLinks } from '../utils/socialLinks';
 // Force rebuild
 import PartnersSection from './PartnersSection';
 import Script from 'next/script';
 
-const Hero = () => {
+const Hero = ({
+    eyebrow = "A New Learning",
+    heading = "Journey",
+    subheading = "Investing in Your Potential",
+    dividerText = "A world of benefits",
+    empowerPrefix = "We Empower",
+    typewriterWords = ['Professionals', 'Students', 'Graduates'],
+    ctaText = "Join the Movement",
+    style = {}
+}) => {
+    const [socialLinks, setSocialLinks] = useState({
+        facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
+    });
+
+    useEffect(() => {
+        getSocialLinks().then(setSocialLinks);
+    }, []);
     return (
-        <section className={styles.hero}>
+        <section className={styles.hero} style={style}>
 
             {/* Background Image Container */}
             <div className={styles.heroBgContainer}>
@@ -35,33 +52,33 @@ const Hero = () => {
 
                     {/* Eyebrow: A NEW LEARNING ----- */}
                     <h2 className={`${styles.eyebrow} ${styles.animateIn} ${styles.delay1}`}>
-                        A New Learning
+                        {eyebrow}
                         <span className={styles.eyebrowLine}></span>
                     </h2>
 
                     {/* Heading: JOURNEY */}
                     <h1 className={`${styles.heading} ${styles.animateIn} ${styles.delay2}`}>
-                        Journey
+                        {heading}
                     </h1>
 
                     {/* Subheading: INVESTING IN YOUR POTENTIAL */}
                     <h3 className={`${styles.subheading} ${styles.animateIn} ${styles.delay3}`}>
-                        Investing in Your Potential
+                        {subheading}
                     </h3>
 
                     {/* Divider/Subtitle: ---- A WORLD OF BENEFITS */}
                     <div className={`${styles.dividerContainer} ${styles.animateIn} ${styles.delay4}`}>
                         <span className={styles.dividerLine}></span>
                         <span className={styles.dividerText}>
-                            A world of benefits
+                            {dividerText}
                         </span>
                     </div>
 
                     {/* Empower Statement: WE EMPOWER ENTREPRENEURS */}
                     <p className={`${styles.empowerText} ${styles.animateIn} ${styles.delay5}`}>
-                        We Empower{' '}
+                        {empowerPrefix}{' '}
                         <Typewriter
-                            words={['Entrepreneurs']}
+                            words={typewriterWords}
                             textClassName={styles.empowerTextStrong}
                             cursorClassName={styles.empowerTextCursor}
                             typeSpeed={100}
@@ -72,19 +89,19 @@ const Hero = () => {
 
                     {/* CTA Button: Join the Movement */}
                     <Link href="/apply-member" className={styles.ctaButton}>
-                        <span className="hero-cta-text">Join the Movement</span> <ArrowRight className={styles.ctaArrow} size={24} strokeWidth={2.5} />
+                        <span className="hero-cta-text">{ctaText}</span> <ArrowRight className={styles.ctaArrow} size={24} strokeWidth={2.5} />
                     </Link>
 
                     {/* Mobile Social Icons Row */}
                     <div className={styles.mobileSocials}>
                         {[
-                            { img: '/assets/icon-youtube-gold.png', href: '#' },
-                            { img: '/assets/icon-x-gold.png', href: '#' },
-                            { img: '/assets/icon-facebook-gold.png', href: '#' },
-                            { img: '/assets/icon-instagram-gold.png', href: '#' },
-                            { img: '/assets/icon-linkedin-gold.png', href: '#' }
+                            { img: '/assets/icon-youtube-gold.png', href: socialLinks.youtube },
+                            { img: '/assets/icon-x-gold.png', href: socialLinks.twitter },
+                            { img: '/assets/icon-facebook-gold.png', href: socialLinks.facebook },
+                            { img: '/assets/icon-instagram-gold.png', href: socialLinks.instagram },
+                            { img: '/assets/icon-linkedin-gold.png', href: socialLinks.linkedin }
                         ].map((item, i) => (
-                            <a key={i} href={item.href} className={styles.socialIconLink}>
+                            <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
                                 <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
                             </a>
                         ))}
@@ -102,13 +119,13 @@ const Hero = () => {
             {/* Social Sidebar */}
             <div className={`${styles.socialSidebar} ${styles.animateIn} ${styles.delay8}`}>
                 {[
-                    { img: '/assets/icon-youtube-gold.png', href: '#' },
-                    { img: '/assets/icon-x-gold.png', href: '#' },
-                    { img: '/assets/icon-facebook-gold.png', href: '#' },
-                    { img: '/assets/icon-instagram-gold.png', href: '#' },
-                    { img: '/assets/icon-linkedin-gold.png', href: '#' }
+                    { img: '/assets/icon-youtube-gold.png', href: socialLinks.youtube },
+                    { img: '/assets/icon-x-gold.png', href: socialLinks.twitter },
+                    { img: '/assets/icon-facebook-gold.png', href: socialLinks.facebook },
+                    { img: '/assets/icon-instagram-gold.png', href: socialLinks.instagram },
+                    { img: '/assets/icon-linkedin-gold.png', href: socialLinks.linkedin }
                 ].map((item, i) => (
-                    <a key={i} href={item.href} className={styles.socialIconLink}>
+                    <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
                         <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
                     </a>
                 ))}

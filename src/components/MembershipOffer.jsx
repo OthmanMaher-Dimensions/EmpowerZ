@@ -1,15 +1,36 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { Rocket, Gem, Gift } from 'lucide-react';
 import styles from './MembershipOffer.module.css';
 
-const MembershipOffer = () => {
+const MembershipOffer = ({
+    backgroundImage = "/assets/membership-bg.png",
+    arrowImage = "/assets/membership-arrow.png",
+    quote = "You do not have to spend a fortune to access high-profile courses and learn new skills. For less than a dollar a day, you will unpack a load of learning opportunities and networking events that are worth thousands of dollars.",
+    title = "Every coin counts,\nevery skill hits different.",
+    description = "This is a Limited-Time Opportunity. Once the Target Number of Members is Achieved, Membership Will be Closed.",
+    stat1Value = "1000",
+    stat1Label = "Target Members",
+    stat2Value = "50%",
+    stat2Label = "Exclusive Student Discount",
+    stat3Value = "500",
+    stat3Label = "Target Events",
+    stat4Value = "$10,000",
+    stat4Label = "Worth of Perks",
+    oneStepText = "One Step Changes Everything!",
+    card1Text = "Join a world full of perks and exclusive experiences.",
+    card2Text = "Choose uniqueness and enjoy a different experience every day.",
+    card3Text = "Your membership unlocks exclusive opportunities here.",
+    ctaText = "Start Your Journey to Exclusive Perks",
+    style = {}
+}) => {
     return (
-        <section className={styles.section} id="membership-offer">
+        <section className={styles.section} id="membership-offer" style={style}>
             {/* Background Image */}
             <img
-                src="/assets/membership-bg.png"
+                src={backgroundImage}
                 alt="Community background"
                 className={styles.bgImage}
             />
@@ -21,47 +42,44 @@ const MembershipOffer = () => {
                 <div className={styles.topQuoteContainer}>
                     <p className={styles.topQuote}>
                         <span className={styles.quoteIcon}>❝</span>
-                        You do not have to spend a fortune to access high-profile courses
-                        and learn new skills. For less than a dollar a day, you will unpack a load of learning opportunities and networking events that are worth thousands of dollars.
+                        {quote}
                         <span className={styles.quoteIcon}>❞</span>
-
                     </p>
                 </div>
 
                 {/* Gold Border Box */}
                 <div className={styles.contentBox}>
 
-                    <h2 className={styles.title}>
-                        Every coin counts,<br />
-                        every skill hits different.
+                    <h2 className={styles.title} style={{ whiteSpace: 'pre-line' }}>
+                        {title}
                     </h2>
 
                     <p className={styles.description}>
-                        This is a Limited-Time Opportunity. Once the Target Number of Members is Achieved, Membership Will be Closed.
+                        {description}
                     </p>
 
                     {/* Stats Grid */}
                     <div className={styles.statsGrid}>
                         <div className={styles.statItem}>
-                            <div className={styles.statValue}>1000</div>
-                            <div className={styles.statLabel}>Target Members</div>
+                            <div className={styles.statValue}>{stat1Value}</div>
+                            <div className={styles.statLabel}>{stat1Label}</div>
                         </div>
                         <div className={styles.statItem}>
-                            <div className={styles.statValue}>50%</div>
-                            <div className={styles.statLabel}>Exclusive Student Discount</div>
+                            <div className={styles.statValue}>{stat2Value}</div>
+                            <div className={styles.statLabel}>{stat2Label}</div>
                         </div>
                         <div className={styles.statItem}>
-                            <div className={styles.statValue}>500</div>
-                            <div className={styles.statLabel}>Target Events</div>
+                            <div className={styles.statValue}>{stat3Value}</div>
+                            <div className={styles.statLabel}>{stat3Label}</div>
                         </div>
                         <div className={styles.statItem}>
-                            <div className={styles.statValue}>$10,000</div>
-                            <div className={styles.statLabel}>Worth of Perks</div>
+                            <div className={styles.statValue}>{stat4Value}</div>
+                            <div className={styles.statLabel}>{stat4Label}</div>
                         </div>
                     </div>
 
                     <div className={styles.oneStepText}>
-                        One Step Changes Everything!
+                        {oneStepText}
                     </div>
 
                     {/* Feature Cards Row */}
@@ -70,7 +88,7 @@ const MembershipOffer = () => {
                         <div className={`${styles.featureCard} ${styles.cardBlue}`}>
                             <div className={styles.featureIcon}>🔵</div>
                             <div className={styles.featureText}>
-                                Join a world full of perks and exclusive experiences.
+                                {card1Text}
                             </div>
                         </div>
 
@@ -78,7 +96,7 @@ const MembershipOffer = () => {
                         <div className={`${styles.featureCard} ${styles.cardGreen}`}>
                             <div className={styles.featureIcon}>💸</div>
                             <div className={styles.featureText}>
-                                Choose uniqueness and enjoy a different experience every day.
+                                {card2Text}
                             </div>
                         </div>
 
@@ -86,19 +104,21 @@ const MembershipOffer = () => {
                         <div className={`${styles.featureCard} ${styles.cardPink}`}>
                             <div className={styles.featureIcon}>💎</div>
                             <div className={styles.featureText}>
-                                Your membership unlocks exclusive opportunities here.
+                                {card3Text}
                             </div>
                         </div>
                     </div>
 
                     {/* CTA Button overlapping the bottom */}
                     <div className={styles.ctaContainer}>
-                        <button className={styles.ctaButton}>
-                            <Rocket size={24} />
-                            Start Your Journey to Exclusive Perks
-                        </button>
+                        <Link href="/apply-member" style={{ textDecoration: 'none' }}>
+                            <button className={styles.ctaButton}>
+                                <Rocket size={24} />
+                                {ctaText}
+                            </button>
+                        </Link>
                         <img
-                            src="/assets/membership-arrow.png"
+                            src={arrowImage}
                             alt="Arrow"
                             className={styles.arrowImage}
                         />

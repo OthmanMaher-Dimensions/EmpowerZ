@@ -5,12 +5,36 @@ import ConnectSection from '@/components/ConnectSection';
 import GallerySection from '@/components/GallerySection';
 import Footer from '@/components/Footer';
 
-export default function ContactUs() {
+import { generatePageMetadata } from '@/utils/seo';
+
+export async function generateMetadata() {
+    return generatePageMetadata(
+        'contact-us',
+        "Contact Us | EmpowerZ",
+        "Get in touch with us."
+    );
+}
+
+async function getOffices() {
+    try {
+        const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000';
+        const res = await fetch(`${adminUrl}/api/public/offices`, { cache: 'no-store' });
+        if (!res.ok) return [];
+        return res.json();
+    } catch (error) {
+        console.error("Failed to fetch offices:", error);
+        return [];
+    }
+}
+
+export default async function ContactUs() {
+    const offices = await getOffices();
+
     return (
         <main>
             <ContactUsHero />
             <ContactFormSection />
-            <OfficeLocationSection />
+            <OfficeLocationSection offices={offices} />
             <ConnectSection />
             <GallerySection />
             <Footer />

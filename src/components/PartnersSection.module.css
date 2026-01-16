@@ -36,6 +36,7 @@
     color: #e2e8f0;
     letter-spacing: 0.05em;
     margin-bottom: 3rem;
+    text-transform: capitalize;
 }
 
 .marqueeContainer {

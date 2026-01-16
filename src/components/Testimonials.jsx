@@ -2,10 +2,38 @@
 
 import React from 'react';
 import styles from './Testimonials.module.css';
+import Link from 'next/link';
 
-const Testimonials = () => {
-    const testimonials = [
-        // ... (data remains same, assuming I don't need to re-write it if I target correctly, but replace_file_content replaces chunk)
+const Testimonials = ({
+    title = "SEE WHAT OUR \nMEMBERS REALLY SAY...",
+    ctaText = "Start Your Journey to Exclusive Perks",
+    style = {}
+}) => {
+    const [testimonials, setTestimonials] = React.useState([]);
+
+    React.useEffect(() => {
+        const fetchTestimonials = async () => {
+            try {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_ADMIN_URL}/api/public/testimonials`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.length > 0) {
+                        setTestimonials(data);
+                    } else {
+                        // Fallback data if API returns empty
+                        setTestimonials(DEFAULT_TESTIMONIALS);
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to fetch testimonials:", error);
+                setTestimonials(DEFAULT_TESTIMONIALS);
+            }
+        };
+
+        fetchTestimonials();
+    }, []);
+
+    const DEFAULT_TESTIMONIALS = [
         {
             id: 1,
             name: "Sonia Gibson",
@@ -29,39 +57,14 @@ const Testimonials = () => {
             date: "",
             quote: "The discounts alone paid for the membership. But the knowledge and network? Priceless.",
             image: "/assets/testimonial-person.png"
-        },
-        {
-            id: 4,
-            name: "Sonia Gibson",
-            role: "STAGE Workshop Attendee,",
-            date: "June 2024",
-            quote: "This platform helped me get clarity, confidence, and community...all in one place.",
-            image: "/assets/testimonial-person.png"
-        },
-        {
-            id: 5,
-            name: "Shane Stone",
-            role: "STAGE Workshop Attendee,",
-            date: "June 2024",
-            quote: "I landed my first job after graduation, and I know this community gave me the edge.",
-            image: "/assets/testimonial-person.png"
-        },
-        {
-            id: 6,
-            name: "Aleksandra Pinneri",
-            role: "Adelaide's leading Hair & Makeup Artist Stage Virtual Masterclass, October 2024",
-            date: "",
-            quote: "The discounts alone paid for the membership. But the knowledge and network? Priceless.",
-            image: "/assets/testimonial-person.png"
         }
     ];
 
     return (
-        <section className={styles.testimonialsSection}>
+        <section className={styles.testimonialsSection} style={style}>
             <div className={styles.container}>
-                <h2 className={styles.title}>
-                    SEE WHAT OUR <br />
-                    MEMBERS REALLY SAY...
+                <h2 className={styles.title} style={{ whiteSpace: 'pre-line' }}>
+                    {title}
                 </h2>
 
                 <div
@@ -124,9 +127,11 @@ const Testimonials = () => {
                     </button>
                 </div>
 
-                <button className={styles.ctaButton}>
-                    Start Your Journey to Exclusive Perks
-                </button>
+                <Link href="/apply-member">
+                    <button className={styles.ctaButton}>
+                        {ctaText}
+                    </button>
+                </Link>
             </div>
         </section>
     );

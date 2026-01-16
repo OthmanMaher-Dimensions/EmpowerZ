@@ -14,6 +14,16 @@ import ConnectSection from '@/components/ConnectSection';
 import GallerySection from '@/components/GallerySection';
 import Footer from '@/components/Footer';
 
+import { generatePageMetadata } from '@/utils/seo';
+
+export async function generateMetadata() {
+    return generatePageMetadata(
+        'about-us',
+        "About Us | EmpowerZ",
+        "Learn more about EmpowerZ and our mission."
+    );
+}
+
 export default function AboutUs() {
     return (
         <main>

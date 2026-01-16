@@ -52,15 +52,36 @@ export default async function Home() {
   let sections = DEFAULT_SECTIONS;
 
   try {
-    // Attempt to fetch from Admin API (Assuming localhost:3000 for Admin)
-    // In production, this URL should be an environment variable
-    const res = await fetch('http://localhost:3000/api/public/pages/home', {
+    // Attempt to fetch from Admin API
+    const ADMIN_URL = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000';
+    const res = await fetch(`${ADMIN_URL}/api/public/pages/home`, {
       next: { revalidate: 10 } // Revalidate every 10 seconds
     });
     if (res.ok) {
       const data = await res.json();
-      if (data.page && Array.isArray(data.page.content)) {
-        sections = data.page.content;
+
+      // Structure is now { page: {...}, components: [...] }
+      const pageData = data.page || data; // Fallback for old API structure
+      const components = data.components || [];
+
+      // Create lookup for component defaults
+      const componentDefaults = {};
+      components.forEach(comp => {
+        // Map by component name (e.g., 'Hero') or ID if needed. 
+        // The page sections store 'component' name like 'Hero'.
+        // The DB components have 'name': 'Hero'.
+        componentDefaults[comp.name] = comp.defaultProps || {};
+      });
+
+      if (pageData && Array.isArray(pageData.sections)) {
+        // Merge defaults with section props
+        sections = pageData.sections.map(section => {
+          const defaults = componentDefaults[section.component] || {};
+          return {
+            ...section,
+            props: { ...defaults, ...section.props }
+          };
+        });
       }
     }
   } catch (error) {

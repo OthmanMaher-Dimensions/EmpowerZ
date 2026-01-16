@@ -1,41 +1,159 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { ArrowLeft, Folder, Image as ImageIcon } from 'lucide-react';
 import styles from './GalleryGrid.module.css';
 
-const galleryImages = [
-    { src: '/assets/about/about-hero-bg.jpg', alt: 'EmpowerZ Community Gathering' },
-    { src: '/assets/about/about-hero-bg.jpg', alt: 'Making an Impact' },
-    { src: '/assets/about/about-hero-bg.jpg', alt: 'Industry Meetups' },
-    { src: '/assets/about/about-hero-bg.jpg', alt: 'Career Fairs' },
-    { src: '/assets/about/about-hero-bg.jpg', alt: 'Leadership Summits' },
-    { src: '/assets/about/about-hero-bg.jpg', alt: 'Community Event' },
-    { src: '/assets/about/about-hero-bg.jpg', alt: 'Workshop Session' },
-    { src: '/assets/about/about-hero-bg.jpg', alt: 'Networking Night' },
-    { src: '/assets/about/about-hero-bg.jpg', alt: 'Youth Conference' },
-];
-
 const GalleryGrid = () => {
+    const [galleries, setGalleries] = useState([]);
+    const [selectedGallery, setSelectedGallery] = useState(null);
+    const [galleryImages, setGalleryImages] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [view, setView] = useState('folders'); // 'folders' or 'images'
+
+    const ADMIN_URL = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000';
+
+    const getImageUrl = (url) => {
+        if (!url) return null;
+        if (url.startsWith('http') || url.startsWith('https')) return url;
+        if (url.startsWith('/uploads/')) return `${ADMIN_URL}${url}`;
+        return url; // Internal assets like /assets/
+    };
+
+    useEffect(() => {
+        fetchGalleries();
+    }, []);
+
+    const fetchGalleries = async () => {
+        try {
+            const res = await fetch(`${ADMIN_URL}/api/public/galleries`);
+            if (res.ok) {
+                const data = await res.json();
+                setGalleries(data);
+            }
+        } catch (error) {
+            console.error("Failed to fetch galleries", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleGalleryClick = async (galleryId) => {
+        setLoading(true);
+        try {
+            const res = await fetch(`${ADMIN_URL}/api/public/galleries/${galleryId}`);
+            if (res.ok) {
+                const data = await res.json();
+                setSelectedGallery(data);
+                setGalleryImages(data.images || []);
+                setView('images');
+            }
+        } catch (error) {
+            console.error("Failed to fetch gallery details", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleBack = () => {
+        setSelectedGallery(null);
+        setGalleryImages([]);
+        setView('folders');
+    };
+
+    if (loading && view === 'folders' && galleries.length === 0) {
+        return (
+            <section className={styles.section}>
+                <div className={styles.container} style={{ display: 'flex', justifyContent: 'center', padding: '4rem' }}>
+                    <div className={styles.spinner}></div>
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section className={styles.section}>
             <div className={styles.container}>
-                <div className={styles.grid}>
-                    {galleryImages.map((img, index) => (
-                        <div key={index} className={styles.card}>
-                            <div className={styles.imageWrapper}>
-                                <img
-                                    src={img.src}
-                                    alt={img.alt}
-                                    className={styles.image}
-                                    loading="lazy"
-                                />
-                                <div className={styles.overlay}>
-                                    <span className={styles.caption}>{img.alt}</span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+
+                {/* Header / Navigation */}
+                <div className={styles.header}>
+                    {view === 'images' && (
+                        <button onClick={handleBack} className={styles.backBtn}>
+                            <ArrowLeft size={20} /> Back to Galleries
+                        </button>
+                    )}
+                    <h2 className={styles.viewTitle}>
+                        {view === 'folders' ? 'Photo Galleries' : selectedGallery?.name}
+                    </h2>
                 </div>
+
+                {/* FOLDERS VIEW */}
+                {view === 'folders' && (
+                    <div className={styles.grid}>
+                        {galleries.length === 0 ? (
+                            <div className={styles.emptyState}>No galleries found.</div>
+                        ) : (
+                            galleries.map((gallery) => (
+                                <div
+                                    key={gallery.id}
+                                    className={styles.card}
+                                    onClick={() => handleGalleryClick(gallery.id)}
+                                >
+                                    <div className={styles.imageWrapper}>
+                                        {/* Show cover image or first image, else placeholder folder icon */}
+                                        {gallery.coverImage || (gallery.images && gallery.images[0]?.url) || (gallery._count?.images > 0) ? (
+                                            <img
+                                                src={getImageUrl(gallery.coverImage || gallery.images?.[0]?.url) || '/assets/placeholder-gallery.jpg'}
+                                                alt={gallery.name}
+                                                className={styles.image}
+                                                loading="lazy"
+                                                onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'flex'; }}
+                                            />
+                                        ) : (
+                                            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#334155' }}>
+                                                <Folder size={64} color="#94a3b8" />
+                                            </div>
+                                        )}
+                                        {/* Fallback div if image errors (managed via onError logic above mostly, or just ensuring placeholder logic) */}
+
+                                        <div className={styles.overlay}>
+                                            <span className={styles.caption}>{gallery._count?.images || 0} Items</span>
+                                        </div>
+                                    </div>
+                                    <h3 style={{ marginTop: '1rem', color: '#fff', fontSize: '1.25rem', textAlign: 'center' }}>{gallery.name}</h3>
+                                </div>
+                            ))
+                        )}
+                    </div>
+                )}
+
+                {/* IMAGES VIEW */}
+                {view === 'images' && (
+                    <div className={styles.grid}>
+                        {galleryImages.length === 0 ? (
+                            <div className={styles.emptyState}>No images in this gallery.</div>
+                        ) : (
+                            galleryImages.map((img) => (
+                                <div key={img.id} className={styles.card}>
+                                    <div className={styles.imageWrapper}>
+                                        <img
+                                            src={getImageUrl(img.url)}
+                                            alt={img.caption || 'Gallery Image'}
+                                            className={styles.image}
+                                            loading="lazy"
+                                            onError={(e) => { e.target.src = '/assets/placeholder-gallery.jpg'; }}
+                                        />
+                                        {img.caption && (
+                                            <div className={styles.overlay}>
+                                                <span className={styles.caption}>{img.caption}</span>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            ))
+                        )}
+                    </div>
+                )}
             </div>
         </section>
     );

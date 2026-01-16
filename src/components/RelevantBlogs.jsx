@@ -4,28 +4,40 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './RelevantBlogs.module.css';
 
-const RelevantBlogs = () => {
-    // Reusing the same data structure as BlogsGrid but only 3 items
-    const relevantPosts = [
-        {
-            id: 1,
-            title: "How to Make the Most Out of Every Membership Perk and Benefit",
-            description: "Discover practical ways to enjoy your membership more by exploring perks that match your lifestyle, maximize your value, and are easily accessible from your dashboard.",
-            image: "/assets/blogs/article-cover.png"
-        },
-        {
-            id: 2,
-            title: "Why We Carefully Select Quality Perks That Add Real Value",
-            description: "Learn how we carefully select each perk to guarantee it brings exclusive value, long-term usefulness, and a thoughtful experience that goes beyond ordinary offers.",
-            image: "/assets/blogs/article-cover.png"
-        },
-        {
-            id: 3,
-            title: "This Month's Top Picks from Our Most Loved Partner Brands",
-            description: "Explore the latest handpicked perks from our top partner brands and see which benefits are trending right now across the platform and among active members.",
-            image: "/assets/blogs/article-cover.png"
-        }
-    ];
+const RelevantBlogs = ({ currentPostId }) => {
+    const [relevantPosts, setRelevantPosts] = React.useState([]);
+
+    React.useEffect(() => {
+        const fetchRelevantBlogs = async () => {
+            try {
+                const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000';
+                const res = await fetch(`${adminUrl}/api/public/blogs`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (Array.isArray(data)) {
+                        // Filter out current post and limit to 3
+                        const filtered = data
+                            .filter(post => post.id !== currentPostId)
+                            .slice(0, 3)
+                            .map(post => ({
+                                id: post.id,
+                                title: post.title,
+                                description: post.excerpt || post.content?.replace(/<[^>]+>/g, '')?.substring(0, 150) + "..." || "",
+                                image: post.coverImage
+                                    ? (post.coverImage.startsWith('http') ? post.coverImage : `${adminUrl}${post.coverImage}`)
+                                    : "/assets/blogs/article-cover.png",
+                                slug: post.slug
+                            }));
+                        setRelevantPosts(filtered);
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to fetch relevant blogs:", error);
+            }
+        };
+
+        fetchRelevantBlogs();
+    }, [currentPostId]);
 
     return (
         <section className={styles.section}>
@@ -40,12 +52,12 @@ const RelevantBlogs = () => {
                             </div>
                             <div className={styles.cardContent}>
                                 <h3 className={styles.cardTitle}>
-                                    <Link href={`/blogs/post-${post.id}`} className={styles.titleLink}>
+                                    <Link href={`/blogs/${post.slug || post.id}`} className={styles.titleLink}>
                                         {post.title}
                                     </Link>
                                 </h3>
                                 <p className={styles.cardDescription}>{post.description}</p>
-                                <Link href={`/blogs/post-${post.id}`} className={styles.readMore}>
+                                <Link href={`/blogs/${post.slug || post.id}`} className={styles.readMore}>
                                     READ MORE
                                 </Link>
                             </div>

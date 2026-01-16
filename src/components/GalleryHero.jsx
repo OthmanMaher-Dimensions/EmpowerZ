@@ -1,49 +1,56 @@
-import styles from './GalleryHero.module.css';
-import SiteHeader from './SiteHeader';
+"use client";
 
-const GalleryHero = () => {
+import React, { useState, useEffect } from 'react';
+import styles from './GalleryHero.module.css';
+import { getSocialLinks } from '../utils/socialLinks';
+
+export default function GalleryHero({ showHeader = true }) {
+    const [socialLinks, setSocialLinks] = useState({
+        facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
+    });
+
+    useEffect(() => {
+        getSocialLinks().then(setSocialLinks);
+    }, []);
+
+    const socialIcons = [
+        { name: 'Youtube', icon: '/assets/icon-youtube-gold.png', link: socialLinks.youtube },
+        { name: 'X', icon: '/assets/icon-x-gold.png', link: socialLinks.twitter },
+        { name: 'Facebook', icon: '/assets/icon-facebook-gold.png', link: socialLinks.facebook },
+        { name: 'Instagram', icon: '/assets/icon-instagram-gold.png', link: socialLinks.instagram },
+        { name: 'LinkedIn', icon: '/assets/icon-linkedin-gold.png', link: socialLinks.linkedin },
+    ];
+
     return (
         <section className={styles.section}>
-            <SiteHeader />
+            <div className={styles.bgImage} />
+            <div className={styles.overlay} />
+
             <div className={styles.container}>
-                <h1 className={styles.title}>Our Visual Journey</h1>
+                <h1 className={styles.title}>
+                    GALLERY
+                </h1>
+
                 <p className={styles.subtitle}>
-                    Explore moments from our events, workshops, and community gatherings.
+                    Capturing moments of growth, connection, and success.
                 </p>
-                {/* Mobile Social Icons Row */}
-                <div className={styles.mobileSocials}>
-                    {[
-                        { img: '/assets/icon-youtube-gold.png', href: '#' },
-                        { img: '/assets/icon-x-gold.png', href: '#' },
-                        { img: '/assets/icon-facebook-gold.png', href: '#' },
-                        { img: '/assets/icon-instagram-gold.png', href: '#' },
-                        { img: '/assets/icon-linkedin-gold.png', href: '#' }
-                    ].map((item, i) => (
-                        <a key={i} href={item.href} className={styles.socialIconLink}>
-                            <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
-                        </a>
-                    ))}
-                </div>
             </div>
-            {/* Social Sidebar */}
+
             <div className={styles.socialSidebar}>
-                {[
-                    { img: '/assets/icon-youtube-gold.png', href: '#' },
-                    { img: '/assets/icon-x-gold.png', href: '#' },
-                    { img: '/assets/icon-facebook-gold.png', href: '#' },
-                    { img: '/assets/icon-instagram-gold.png', href: '#' },
-                    { img: '/assets/icon-linkedin-gold.png', href: '#' }
-                ].map((item, i) => (
-                    <a key={i} href={item.href} className={styles.socialIconLink}>
-                        <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
+                {socialIcons.map((social) => (
+                    <a key={social.name} href={social.link} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
+                        <img src={social.icon} alt={social.name} className={styles.socialIconImg} />
                     </a>
                 ))}
             </div>
-            {/* Background Image / Overlay */}
-            <div className={styles.bgImage}></div>
-            <div className={styles.overlay}></div>
+
+            <div className={styles.mobileSocials}>
+                {socialIcons.map((social) => (
+                    <a key={social.name} href={social.link} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
+                        <img src={social.icon} alt={social.name} className={styles.socialIconImg} />
+                    </a>
+                ))}
+            </div>
         </section>
     );
-};
-
-export default GalleryHero;
+}

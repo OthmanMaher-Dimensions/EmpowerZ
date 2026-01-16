@@ -1,14 +1,31 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import styles from './WhatWeOfferHero.module.css';
 import SiteHeader from './SiteHeader';
+import { getSocialLinks } from '../utils/socialLinks';
 
-const WhatWeOfferHero = () => {
+const WhatWeOfferHero = ({ showHeader = true }) => {
+    const [socialLinks, setSocialLinks] = useState({
+        facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
+    });
+
+    useEffect(() => {
+        getSocialLinks().then(setSocialLinks);
+    }, []);
+
+    const socialIcons = [
+        { name: 'Youtube', img: '/assets/icon-youtube-gold.png', href: socialLinks.youtube },
+        { name: 'X', img: '/assets/icon-x-gold.png', href: socialLinks.twitter },
+        { name: 'Facebook', img: '/assets/icon-facebook-gold.png', href: socialLinks.facebook },
+        { name: 'Instagram', img: '/assets/icon-instagram-gold.png', href: socialLinks.instagram },
+        { name: 'LinkedIn', img: '/assets/icon-linkedin-gold.png', href: socialLinks.linkedin },
+    ];
+
     return (
         <>
-            <SiteHeader />
+            {showHeader && <SiteHeader />}
             <section className={styles.hero}>
                 {/* Background Image Container */}
                 <div className={styles.heroBgContainer}>
@@ -60,14 +77,8 @@ const WhatWeOfferHero = () => {
 
                         {/* Mobile Social Icons Row */}
                         <div className={styles.mobileSocials}>
-                            {[
-                                { img: '/assets/icon-youtube-gold.png', href: '#' },
-                                { img: '/assets/icon-x-gold.png', href: '#', },
-                                { img: '/assets/icon-facebook-gold.png', href: '#', },
-                                { img: '/assets/icon-instagram-gold.png', href: '#', },
-                                { img: '/assets/icon-linkedin-gold.png', href: '#', }
-                            ].map((item, i) => (
-                                <a key={i} href={item.href} className={styles.socialIconLink}>
+                            {socialIcons.map((item, i) => (
+                                <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
                                     <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
                                 </a>
                             ))}
@@ -77,14 +88,8 @@ const WhatWeOfferHero = () => {
 
                 {/* Social Sidebar */}
                 <div className={`${styles.socialSidebar} ${styles.animateIn} ${styles.delay4}`}>
-                    {[
-                        { img: '/assets/icon-youtube-gold.png', href: '#' },
-                        { img: '/assets/icon-x-gold.png', href: '#', },
-                        { img: '/assets/icon-facebook-gold.png', href: '#', },
-                        { img: '/assets/icon-instagram-gold.png', href: '#', },
-                        { img: '/assets/icon-linkedin-gold.png', href: '#', }
-                    ].map((item, i) => (
-                        <a key={i} href={item.href} className={styles.socialIconLink}>
+                    {socialIcons.map((item, i) => (
+                        <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
                             <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
                         </a>
                     ))}

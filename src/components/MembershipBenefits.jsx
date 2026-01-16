@@ -3,53 +3,50 @@
 import React from 'react';
 import styles from './MembershipBenefits.module.css';
 
-const benefits = [
-    {
-        text: "Access Exclusive Perks",
-        color: "#E76A8A"
-    },
-    {
-        text: "Discover Available Scholarships",
-        color: "#73C2A5"
-    },
-    {
-        text: "Learn from International Experts",
-        color: "#899DD0"
-    },
-    {
-        text: "Make New Friends and Meet Like-Minded People",
-        color: "#DB80CF"
-    },
-    {
-        text: "Save Loads of Cash with Our Discounts",
-        color: "#CADB7F"
-    }
-];
+const MembershipBenefits = ({
+    stat1Number = "50,000+", stat1Text = "Potential members to benefit from the offerings of our membership",
+    stat2Number = "10,000+", stat2Text = "US dollars to save with our exclusive perks and deals.",
+    subtitle = "Through our exclusive membership based community, you will be able to....",
 
-const MembershipBenefits = () => {
+    benefit1Text = "Access Exclusive Perks",
+    benefit2Text = "Discover Available Scholarships",
+    benefit3Text = "Learn from International Experts",
+    benefit4Text = "Make New Friends and Meet Like-Minded People",
+    benefit5Text = "Save Loads of Cash with Our Discounts",
+    style = {}
+}) => {
+
+    const benefits = [
+        { text: benefit1Text, color: "#E76A8A" },
+        { text: benefit2Text, color: "#73C2A5" },
+        { text: benefit3Text, color: "#899DD0" },
+        { text: benefit4Text, color: "#DB80CF" },
+        { text: benefit5Text, color: "#CADB7F" }
+    ];
+
     return (
-        <section className={styles.section}>
+        <section className={styles.section} style={style}>
             <div className={styles.container}>
 
                 {/* Stats Row */}
                 <div className={styles.statsRow}>
                     <div className={styles.statBox}>
-                        <h3 className={styles.statNumber}>50,000+</h3>
+                        <h3 className={styles.statNumber}>{stat1Number}</h3>
                         <p className={styles.statText}>
-                            Potential members to benefit from the offerings of our membership
+                            {stat1Text}
                         </p>
                     </div>
                     <div className={styles.statBox}>
-                        <h3 className={styles.statNumber}>10,000+</h3>
+                        <h3 className={styles.statNumber}>{stat2Number}</h3>
                         <p className={styles.statText}>
-                            US dollars to save with our exclusive perks and deals.
+                            {stat2Text}
                         </p>
                     </div>
                 </div>
 
                 {/* Subtitle */}
                 <h4 className={styles.subtitle}>
-                    Through our exclusive membership based community, you will be able to....
+                    {subtitle}
                 </h4>
 
                 {/* Benefits Grid */}

@@ -1,9 +1,18 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './AboutHero.module.css';
+import { getSocialLinks } from '../utils/socialLinks';
 
-const AboutHero = () => {
+const AboutHero = ({ showHeader = true }) => {
+    const [socialLinks, setSocialLinks] = useState({
+        facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
+    });
+
+    useEffect(() => {
+        getSocialLinks().then(setSocialLinks);
+    }, []);
+
     return (
         <section className={styles.section}>
             {/* Background */}
@@ -34,13 +43,13 @@ const AboutHero = () => {
                     {/* Mobile Social Icons Row */}
                     <div className={styles.mobileSocials}>
                         {[
-                            { img: '/assets/icon-youtube-gold.png', href: '#' },
-                            { img: '/assets/icon-x-gold.png', href: '#' },
-                            { img: '/assets/icon-facebook-gold.png', href: '#' },
-                            { img: '/assets/icon-instagram-gold.png', href: '#' },
-                            { img: '/assets/icon-linkedin-gold.png', href: '#' }
+                            { img: '/assets/icon-youtube-gold.png', href: socialLinks.youtube },
+                            { img: '/assets/icon-x-gold.png', href: socialLinks.twitter },
+                            { img: '/assets/icon-facebook-gold.png', href: socialLinks.facebook },
+                            { img: '/assets/icon-instagram-gold.png', href: socialLinks.instagram },
+                            { img: '/assets/icon-linkedin-gold.png', href: socialLinks.linkedin }
                         ].map((item, i) => (
-                            <a key={i} href={item.href} className={styles.socialIconLink}>
+                            <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
                                 <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
                             </a>
                         ))}
@@ -76,13 +85,13 @@ const AboutHero = () => {
             {/* Social Sidebar */}
             <div className={styles.socialSidebar}>
                 {[
-                    { img: '/assets/icon-youtube-gold.png', href: '#' },
-                    { img: '/assets/icon-x-gold.png', href: '#' },
-                    { img: '/assets/icon-facebook-gold.png', href: '#' },
-                    { img: '/assets/icon-instagram-gold.png', href: '#' },
-                    { img: '/assets/icon-linkedin-gold.png', href: '#' }
+                    { img: '/assets/icon-youtube-gold.png', href: socialLinks.youtube },
+                    { img: '/assets/icon-x-gold.png', href: socialLinks.twitter },
+                    { img: '/assets/icon-facebook-gold.png', href: socialLinks.facebook },
+                    { img: '/assets/icon-instagram-gold.png', href: socialLinks.instagram },
+                    { img: '/assets/icon-linkedin-gold.png', href: socialLinks.linkedin }
                 ].map((item, i) => (
-                    <a key={i} href={item.href} className={styles.socialIconLink}>
+                    <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
                         <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
                     </a>
                 ))}

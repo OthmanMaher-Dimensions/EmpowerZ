@@ -5,9 +5,15 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import styles from './PartnersSection.module.css';
 
-const PartnersSection = ({ enableSignup = false, variant = 'default' }) => {
+const PartnersSection = ({
+    enableSignup = false,
+    variant = 'default',
+    title = "Partners and Patrons",
+    signupText = "Sign Up Now",
+    style = {}
+}) => {
     // List of partner logos
-    const partners = [
+    const [partners, setPartners] = React.useState([
         "/assets/clients/logo.png",
         "/assets/clients/logo1.png",
         "/assets/clients/logo2.png",
@@ -28,13 +34,35 @@ const PartnersSection = ({ enableSignup = false, variant = 'default' }) => {
         "/assets/clients/logo17.png",
         "/assets/clients/logo18.png",
         "/assets/clients/logo19.png",
-    ];
+    ]);
+
+    React.useEffect(() => {
+        const fetchPartners = async () => {
+            try {
+                const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000';
+                const res = await fetch(`${adminUrl}/api/partners`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        // Extract URLs if data is objects
+                        const urls = data.map(p => typeof p === 'string' ? p : p.url);
+                        setPartners(urls);
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to fetch partners:", error);
+            }
+        };
+
+        fetchPartners();
+    }, []);
 
     return (
         <section
             className={`${styles.partnersSection} ${variant === 'hero' ? styles.heroSection : ''}`}
+            style={style}
         >
-            <span className={styles.partnersTitle}>Partners and Patrons</span>
+            <span className={styles.partnersTitle}>{title}</span>
 
             {/* Marquee Container */}
             <div className={styles.marqueeContainer}>

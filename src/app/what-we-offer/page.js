@@ -1,3 +1,4 @@
+import Header from '@/components/SiteHeader';
 import WhatWeOfferHero from '@/components/WhatWeOfferHero';
 import WhatWeOfferGrid from '@/components/WhatWeOfferGrid';
 import MembershipAccess from '@/components/MembershipAccess';
@@ -18,9 +19,20 @@ import WhoWeServe from '@/components/WhoWeServe';
 import PlatformSection from '@/components/PlatformSection';
 import SponsorBanner from '@/components/SponsorBanner';
 
+import { generatePageMetadata } from '@/utils/seo';
+
+export async function generateMetadata() {
+    return generatePageMetadata(
+        'what-we-offer',
+        "What We Offer | EmpowerZ",
+        "Discover our services and programs."
+    );
+}
+
 export default function WhatWeOffer() {
     return (
         <main>
+            <Header />
             <WhatWeOfferHero />
             <WhatWeOfferGrid />
             <MembershipAccess />

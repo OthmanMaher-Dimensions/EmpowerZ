@@ -1,64 +1,65 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ContactUsHero.module.css';
+import { getSocialLinks } from '../utils/socialLinks';
+
 import SiteHeader from './SiteHeader';
 
-const ContactUsHero = () => {
+export default function ContactUsHero({ showHeader = true }) {
+    const [socialLinks, setSocialLinks] = useState({
+        facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
+    });
+
+    useEffect(() => {
+        getSocialLinks().then(setSocialLinks);
+    }, []);
+
+    const socialIcons = [
+        { name: 'Youtube', icon: '/assets/icon-youtube-gold.png', link: socialLinks.youtube },
+        { name: 'X', icon: '/assets/icon-x-gold.png', link: socialLinks.twitter },
+        { name: 'Facebook', icon: '/assets/icon-facebook-gold.png', link: socialLinks.facebook },
+        { name: 'Instagram', icon: '/assets/icon-instagram-gold.png', link: socialLinks.instagram },
+        { name: 'LinkedIn', icon: '/assets/icon-linkedin-gold.png', link: socialLinks.linkedin },
+    ];
+
     return (
-        <section className={styles.hero}>
-            <div className={styles.heroBgContainer}>
-                {/* The Image */}
-                <div className={styles.heroBgImage} />
-
-                {/* The Gradient Overlay */}
-                <div className={styles.gradientOverlay} />
-            </div>
-
-            <SiteHeader />
-
-            <div className={styles.contentArea}>
-                <div className={styles.contentInner}>
-                    <h1 className={styles.heading}>
-                        <span className={styles.headingGold}>GET IN TOUCH</span> WITH OUR TEAM
-                    </h1>
-                    <p className={styles.subtitle}>
-                        WE'RE HERE TO ANSWER YOUR QUESTIONS AND SUPPORT YOU EVERY STEP.
-                    </p>
+        <>
+            {showHeader && <SiteHeader />}
+            <section className={styles.hero}>
+                <div className={styles.heroBgContainer}>
+                    <div className={styles.heroBgImage} />
+                    <div className={styles.gradientOverlay} />
                 </div>
 
-                {/* Mobile Social Icons Row */}
-                <div className={styles.mobileSocials}>
-                    {[
-                        { img: '/assets/icon-youtube-gold.png', href: '#' },
-                        { img: '/assets/icon-x-gold.png', href: '#' },
-                        { img: '/assets/icon-facebook-gold.png', href: '#' },
-                        { img: '/assets/icon-instagram-gold.png', href: '#' },
-                        { img: '/assets/icon-linkedin-gold.png', href: '#' }
-                    ].map((item, i) => (
-                        <a key={i} href={item.href} className={styles.socialIconLink}>
-                            <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
+                <div className={styles.contentArea}>
+                    <div className={styles.contentInner}>
+                        <h1 className={styles.heading}>
+                            GET IN <span className={styles.headingGold}>TOUCH</span>
+                        </h1>
+
+                        <p className={styles.subtitle}>
+                            WE'D LOVE TO HEAR FROM YOU. REACH OUT WITH ANY QUESTIONS OR INQUIRIES.
+                        </p>
+                    </div>
+                </div>
+
+                <div className={styles.socialSidebar}>
+                    {socialIcons.map((social) => (
+                        <a key={social.name} href={social.link} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
+                            <img src={social.icon} alt={social.name} className={styles.socialIconImg} />
                         </a>
                     ))}
                 </div>
-            </div>
 
-            {/* Social Sidebar */}
-            <div className={styles.socialSidebar}>
-                {[
-                    { img: '/assets/icon-youtube-gold.png', href: '#' },
-                    { img: '/assets/icon-x-gold.png', href: '#' },
-                    { img: '/assets/icon-facebook-gold.png', href: '#' },
-                    { img: '/assets/icon-instagram-gold.png', href: '#' },
-                    { img: '/assets/icon-linkedin-gold.png', href: '#' }
-                ].map((item, i) => (
-                    <a key={i} href={item.href} className={styles.socialIconLink}>
-                        <img src={item.img} alt="Social Icon" className={styles.socialIconImg} />
-                    </a>
-                ))}
-            </div>
-        </section>
+                <div className={styles.mobileSocials}>
+                    {socialIcons.map((social) => (
+                        <a key={social.name} href={social.link} target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
+                            <img src={social.icon} alt={social.name} className={styles.socialIconImg} />
+                        </a>
+                    ))}
+                </div>
+            </section>
+        </>
     );
-};
-
-export default ContactUsHero;
+}

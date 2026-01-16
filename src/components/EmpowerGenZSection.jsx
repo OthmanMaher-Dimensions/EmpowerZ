@@ -3,30 +3,34 @@
 import React from 'react';
 import styles from './EmpowerGenZSection.module.css';
 
-const EmpowerGenZSection = () => {
+const EmpowerGenZSection = ({
+    heading = "WE \nEMPOWER \nGEN Z TO \nHAVE FULL \nACCESS TO...",
+    stat1Number = "50,000+", stat1Text = "Potential members to benefit from the offerings of our membership",
+    stat2Number = "10,000+", stat2Text = "US dollars to save with our exclusive perks and deals.",
+
+    benefit1 = "Exclusive Perks & Discounts",
+    benefit2 = "Full and Partial Scholarships",
+    benefit3 = "Courses & Training",
+    benefit4 = "Paid Internship Opportunities",
+    benefit5 = "Exclusive Networking Events",
+    benefit6 = "Social and Volunteer Activities",
+    benefit7 = "Mentorship & Guidance",
+    benefit8 = "Lifetime Changing Experiences",
+    style = {}
+}) => {
     const listItems = [
-        "Exclusive Perks & Discounts",
-        "Full and Partial Scholarships",
-        "Courses & Training",
-        "Paid Internship Opportunities",
-        "Exclusive Networking Events",
-        "Social and Volunteer Activities",
-        "Mentorship & Guidance",
-        "Lifetime Changing Experiences"
-    ];
+        benefit1, benefit2, benefit3, benefit4,
+        benefit5, benefit6, benefit7, benefit8
+    ].filter(Boolean);
 
     return (
-        <section className={styles.section}>
+        <section className={styles.section} style={style}>
             <div className={styles.container}>
                 {/* Content Row */}
                 <div className={styles.contentRow}>
                     <div className={styles.leftColumn}>
-                        <h2 className={styles.heading}>
-                            WE <br />
-                            EMPOWER <br />
-                            GEN Z TO <br />
-                            HAVE FULL <br />
-                            ACCESS TO...
+                        <h2 className={styles.heading} style={{ whiteSpace: 'pre-line' }}>
+                            {heading}
                         </h2>
                     </div>
                     <div className={styles.rightColumn}>
@@ -44,15 +48,15 @@ const EmpowerGenZSection = () => {
                 {/* Stats Row */}
                 <div className={styles.statsRow}>
                     <div className={styles.statBox}>
-                        <h3 className={styles.statNumber}>50,000+</h3>
+                        <h3 className={styles.statNumber}>{stat1Number}</h3>
                         <p className={styles.statText}>
-                            Potential members to benefit from the offerings of our membership
+                            {stat1Text}
                         </p>
                     </div>
                     <div className={styles.statBox}>
-                        <h3 className={styles.statNumber}>10,000+</h3>
+                        <h3 className={styles.statNumber}>{stat2Number}</h3>
                         <p className={styles.statText}>
-                            US dollars to save with our exclusive perks and deals.
+                            {stat2Text}
                         </p>
                     </div>
                 </div>

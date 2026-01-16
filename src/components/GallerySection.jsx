@@ -3,9 +3,12 @@
 import React from 'react';
 import styles from './GallerySection.module.css';
 
-const GallerySection = () => {
-    // 6 repetitions of the same image as requested
-    const images = [
+const GallerySection = ({
+    images,
+    style = {}
+}) => {
+    // Default images if none provided
+    const defaultImages = [
         "/assets/gallery-img.png",
         "/assets/gallery-2.png",
         "/assets/gallery-3.png",
@@ -14,10 +17,12 @@ const GallerySection = () => {
         "/assets/gallery-6.png"
     ];
 
+    const displayImages = (images && images.length > 0) ? images : defaultImages;
+
     return (
-        <section className={styles.gallerySection}>
+        <section className={styles.gallerySection} style={style}>
             <div className={styles.galleryGrid}>
-                {images.map((src, index) => (
+                {displayImages.map((src, index) => (
                     <img
                         key={index}
                         src={src}
