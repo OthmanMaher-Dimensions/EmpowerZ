@@ -81,6 +81,10 @@ const BoardSection = ({
                                 src={member.image ? `${process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'}${member.image}` : placeholderImage}
                                 alt={member.name}
                                 className={styles.cardBg}
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = placeholderImage;
+                                }}
                             />
 
                             <div className={styles.cardOverlay}>

@@ -76,6 +76,7 @@ const Testimonials = ({
                         className={`${styles.navButton} ${styles.prevBtn}`}
                         aria-label="Previous"
                         disabled // Default disabled at start
+                        suppressHydrationWarning={true}
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15 19L8 12L15 5V19Z" fill="#ff007f" />
@@ -120,6 +121,7 @@ const Testimonials = ({
                         id="testimonials-next"
                         className={`${styles.navButton} ${styles.nextBtn}`}
                         aria-label="Next"
+                        suppressHydrationWarning={true}
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 5L16 12L9 19V5Z" fill="#ff007f" />
