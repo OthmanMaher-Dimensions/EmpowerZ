@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, User } from 'lucide-react';
 import styles from './OfficeLocationSection.module.css';
 
 const OfficeLocationSection = ({ offices = [] }) => {
@@ -33,6 +33,12 @@ const OfficeLocationSection = ({ offices = [] }) => {
                                         <div className={styles.detailRow}>
                                             <Mail className={styles.icon} />
                                             <p className={styles.detailText}>{office.email}</p>
+                                        </div>
+                                    )}
+                                    {office.contactPerson && (
+                                        <div className={styles.detailRow}>
+                                            <User className={styles.icon} />
+                                            <p className={styles.detailText}>{office.contactPerson}</p>
                                         </div>
                                     )}
                                 </div>
