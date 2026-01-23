@@ -277,7 +277,6 @@ const MemberApplicationForm = () => {
                                     <label className={styles.label}>Membership Type <span className={styles.required}>*</span></label>
                                     <select name="membershipType" value={formData.membershipType} onChange={handleInputChange} className={styles.select}>
                                         <option value="standard">Standard Member</option>
-                                        <option value="premium">Premium Member</option>
                                         <option value="student">Student Member</option>
                                     </select>
                                 </div>

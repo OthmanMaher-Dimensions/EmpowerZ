@@ -13,6 +13,7 @@ import Testimonials from '@/components/Testimonials';
 import ConnectSection from '@/components/ConnectSection';
 import GallerySection from '@/components/GallerySection';
 import Footer from '@/components/Footer';
+import { getNavLinks } from '@/lib/getNavLinks';
 
 import { generatePageMetadata } from '@/utils/seo';
 
@@ -24,10 +25,12 @@ export async function generateMetadata() {
     );
 }
 
-export default function AboutUs() {
+export default async function AboutUs() {
+    const navLinks = await getNavLinks();
+
     return (
         <main>
-            <Header />
+            <Header dynamicLinks={navLinks} />
             <AboutHero />
             <BoardSection />
             <PartnersSection enableSignup={true} />

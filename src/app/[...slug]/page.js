@@ -14,6 +14,7 @@ import Testimonials from '../../components/Testimonials';
 import ConnectSection from '../../components/ConnectSection';
 import GallerySection from '../../components/GallerySection';
 import Footer from '../../components/Footer';
+import { getNavLinks } from '../../lib/getNavLinks';
 
 const COMPONENT_MAP = {
     'Hero': Hero,
@@ -35,6 +36,9 @@ export default async function DynamicPage({ params }) {
     const { slug } = await params;
     const pageSlug = slug.join('/');
     let sections = [];
+
+    // Fetch nav links server-side
+    const navLinks = await getNavLinks();
 
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'}/api/public/pages/${pageSlug}`, {
@@ -66,7 +70,7 @@ export default async function DynamicPage({ params }) {
             // Page not found or error
             return (
                 <main>
-                    <Header />
+                    <Header dynamicLinks={navLinks} />
                     <div style={{ padding: '100px 20px', textAlign: 'center' }}>
                         <h1>Page Not Found</h1>
                         <p>The page "{pageSlug}" does not exist.</p>
@@ -79,7 +83,7 @@ export default async function DynamicPage({ params }) {
         console.error("Failed to fetch dynamic page:", error);
         return (
             <main>
-                <Header />
+                <Header dynamicLinks={navLinks} />
                 <div style={{ padding: '100px 20px', textAlign: 'center' }}>
                     <h1>Error Loading Page</h1>
                     <p>Please try again later.</p>
@@ -91,7 +95,7 @@ export default async function DynamicPage({ params }) {
 
     return (
         <main>
-            <Header />
+            <Header dynamicLinks={navLinks} />
             {sections.map(section => {
                 const Component = COMPONENT_MAP[section.component];
                 if (!Component) return null;

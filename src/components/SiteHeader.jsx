@@ -6,10 +6,11 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import styles from './SiteHeader.module.css';
 
-const SiteHeader = () => {
+const SiteHeader = ({ dynamicLinks: initialDynamicLinks }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
+    const [dynamicLinks, setDynamicLinks] = useState(initialDynamicLinks || []);
     const pathname = usePathname();
 
     useEffect(() => {
@@ -38,7 +39,29 @@ const SiteHeader = () => {
         };
     }, [mobileMenuOpen]);
 
-    const [dynamicLinks, setDynamicLinks] = useState([]);
+    // If no initial links provided, fetch client-side as fallback
+    useEffect(() => {
+        if (!initialDynamicLinks || initialDynamicLinks.length === 0) {
+            const fetchPages = async () => {
+                try {
+                    const res = await fetch(`${process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'}/api/public/pages`);
+                    if (res.ok) {
+                        const pages = await res.json();
+                        const links = pages
+                            .filter(p => p.slug !== 'home' && p.slug !== '/')
+                            .map(p => ({
+                                name: p.name,
+                                href: `/${p.slug}`
+                            }));
+                        setDynamicLinks(links);
+                    }
+                } catch (error) {
+                    console.error("Failed to fetch menu items:", error);
+                }
+            };
+            fetchPages();
+        }
+    }, [initialDynamicLinks]);
 
     const STATIC_LINKS = [
         { name: 'Blogs', href: '/blogs' },
@@ -46,45 +69,7 @@ const SiteHeader = () => {
         { name: 'Contact Us', href: '/contact-us' }
     ];
 
-    useEffect(() => {
-        const fetchPages = async () => {
-            try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'}/api/public/pages`);
-                if (res.ok) {
-                    const pages = await res.json();
-                    // Filter out home if it exists as a dynamic page to avoid duplicate "Home"
-                    const links = pages
-                        .filter(p => p.slug !== 'home' && p.slug !== '/')
-                        .map(p => ({
-                            name: p.name,
-                            href: `/${p.slug}`
-                        }));
-                    setDynamicLinks(links);
-                }
-            } catch (error) {
-                console.error("Failed to fetch menu items:", error);
-            }
-        };
-
-        fetchPages();
-    }, []);
-
     // Combine: Home -> Dynamic Pages -> Static Links
-    // "What We Offer" and "About Us" were hardcoded before. If they are not builder pages, I should keep them?
-    // The user said "make the pages like the structure its saved on". 
-    // If I replace them entirely, I might lose "What We Offer" if it's not in the builder.
-    // I will check if I should keep the old "What We Offer" and "About Us" or assume they are now dynamic.
-    // Given the prompt "the blogs or gallery or contact us are stuck", it implies those are the ONLY stuck ones.
-    // I'll assume "What We Offer" and "About Us" should be managed by the builder now or I should check if they exist.
-    // To be safe, I will append the NEW dynamic links BEFORE the static set (Blogs, Gallery, Contact).
-
-    // Updated Logic: 
-    // If "What We Offer" and "About Us" are NOT in builder, I should probably keep them if they are static files?
-    // But the user wants "pages like the structure its saved on".
-    // I'll play it safe: Include hardcoded "What We Offer" and "About Us" ONLY if I don't see them in dynamic links?
-    // Actually, "What We Offer" and "About Us" are likely the ones being converted to builder pages.
-    // I'll start with just Home -> Dynamic -> Blogs/Gallery/Contact.
-
     const navLinks = [
         ...dynamicLinks,
         ...STATIC_LINKS

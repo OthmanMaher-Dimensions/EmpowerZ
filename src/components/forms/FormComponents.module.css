@@ -682,8 +682,24 @@
 
 @media (max-width: 768px) {
     .interestsGrid {
-        grid-template-columns: 1fr;
-        /* Single column on mobile */
+        grid-template-columns: repeat(2, 1fr);
+        /* Two columns on mobile for compact display */
+        gap: 0.75rem;
+    }
+
+    .interestItem {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem 0.75rem;
+        gap: 0.5rem;
+        min-height: 70px;
+    }
+
+    .interestLabel {
+        font-size: 0.85rem;
+        line-height: 1.3;
     }
 
     .fileInput {

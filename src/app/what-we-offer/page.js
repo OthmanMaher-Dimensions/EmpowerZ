@@ -18,6 +18,7 @@ import Footer from '@/components/Footer';
 import WhoWeServe from '@/components/WhoWeServe';
 import PlatformSection from '@/components/PlatformSection';
 import SponsorBanner from '@/components/SponsorBanner';
+import { getNavLinks } from '@/lib/getNavLinks';
 
 import { generatePageMetadata } from '@/utils/seo';
 
@@ -29,10 +30,12 @@ export async function generateMetadata() {
     );
 }
 
-export default function WhatWeOffer() {
+export default async function WhatWeOffer() {
+    const navLinks = await getNavLinks();
+
     return (
         <main>
-            <Header />
+            <Header dynamicLinks={navLinks} />
             <WhatWeOfferHero />
             <WhatWeOfferGrid />
             <MembershipAccess />

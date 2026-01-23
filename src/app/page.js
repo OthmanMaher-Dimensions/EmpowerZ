@@ -14,6 +14,7 @@ import Testimonials from '../components/Testimonials';
 import ConnectSection from '../components/ConnectSection';
 import GallerySection from '../components/GallerySection';
 import Footer from '../components/Footer';
+import { getNavLinks } from '../lib/getNavLinks';
 
 
 const COMPONENT_MAP = {
@@ -50,6 +51,9 @@ const DEFAULT_SECTIONS = [
 
 export default async function Home() {
   let sections = DEFAULT_SECTIONS;
+
+  // Fetch nav links server-side
+  const navLinks = await getNavLinks();
 
   try {
     // Attempt to fetch from Admin API
@@ -90,7 +94,7 @@ export default async function Home() {
 
   return (
     <main>
-      <Header />
+      <Header dynamicLinks={navLinks} />
       {sections.map(section => {
         const Component = COMPONENT_MAP[section.component];
         if (!Component) return null;
@@ -100,3 +104,4 @@ export default async function Home() {
     </main>
   );
 }
+
