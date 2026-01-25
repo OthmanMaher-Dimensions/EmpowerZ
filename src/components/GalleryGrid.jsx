@@ -85,6 +85,21 @@ const GalleryGrid = () => {
                     <h2 className={styles.viewTitle}>
                         {view === 'folders' ? 'Photo Galleries' : selectedGallery?.name}
                     </h2>
+                    {view === 'images' && selectedGallery && (
+                        <div className={styles.galleryMeta}>
+                            {selectedGallery.date && (
+                                <span className={styles.metaItem}>
+                                    {new Date(selectedGallery.date).toLocaleDateString()}
+                                </span>
+                            )}
+                            {selectedGallery.location && (
+                                <span className={styles.metaItem}>• {selectedGallery.location}</span>
+                            )}
+                            {selectedGallery.venue && (
+                                <span className={styles.metaItem}>• {selectedGallery.venue}</span>
+                            )}
+                        </div>
+                    )}
                 </div>
 
                 {/* FOLDERS VIEW */}
@@ -120,7 +135,17 @@ const GalleryGrid = () => {
                                             <span className={styles.caption}>{gallery._count?.images || 0} Items</span>
                                         </div>
                                     </div>
-                                    <h3 style={{ marginTop: '1rem', color: '#fff', fontSize: '1.25rem', textAlign: 'center' }}>{gallery.name}</h3>
+                                    <h3 style={{ marginTop: '1rem', color: '#fff', fontSize: '1.25rem', textAlign: 'center' }}>
+                                        {gallery.name}
+                                    </h3>
+                                    <div style={{ textAlign: 'center', color: '#94a3b8', fontSize: '0.9rem', marginTop: '0.5rem' }}>
+                                        {gallery.date && (
+                                            <span>{new Date(gallery.date).toLocaleDateString()}</span>
+                                        )}
+                                        {gallery.location && (
+                                            <span> • {gallery.location}</span>
+                                        )}
+                                    </div>
                                 </div>
                             ))
                         )}

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import styles from './SiteHeader.module.css';
+import { trackCta } from '../lib/trackCta';
 
 const SiteHeader = ({ dynamicLinks: initialDynamicLinks }) => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -127,10 +128,20 @@ const SiteHeader = ({ dynamicLinks: initialDynamicLinks }) => {
                     {/* Desktop Actions (Login) */}
                     <div className={styles.desktopActions}>
 
-                        <Link href="/login" className={styles.loginBtn} aria-label="Login">
+                        <Link
+                            href="/login"
+                            className={styles.loginBtn}
+                            aria-label="Login"
+                            onClick={() => trackCta('Header - Login', 'Unknown')}
+                        >
                             Login
                         </Link>
-                        <Link href="/apply-member" className={styles.joinBtn} aria-label="Join Now">
+                        <Link
+                            href="/apply-member"
+                            className={styles.joinBtn}
+                            aria-label="Join Now"
+                            onClick={() => trackCta('Header - Join Now', 'Unknown')}
+                        >
                             Join Now
                         </Link>
                     </div>
@@ -181,7 +192,10 @@ const SiteHeader = ({ dynamicLinks: initialDynamicLinks }) => {
                         href="/apply-member"
                         className={styles.mobileJoinBtn}
                         aria-label="Mobile Join"
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                            setMobileMenuOpen(false);
+                            trackCta('Mobile Menu - Join Now', 'Unknown');
+                        }}
                     >
                         Join Now
                     </Link>
@@ -189,7 +203,10 @@ const SiteHeader = ({ dynamicLinks: initialDynamicLinks }) => {
                         href="/login"
                         className={styles.mobileLoginBtn}
                         aria-label="Mobile Login"
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                            setMobileMenuOpen(false);
+                            trackCta('Mobile Menu - Login', 'Unknown');
+                        }}
                     >
                         Login
                     </Link>

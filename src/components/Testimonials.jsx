@@ -87,6 +87,7 @@ const Testimonials = ({
                         <div
                             id="testimonials-track"
                             className={styles.cardsGrid}
+                            suppressHydrationWarning={true}
                         >
                             {testimonials.map((item) => (
                                 <div key={item.id} className={styles.card}>

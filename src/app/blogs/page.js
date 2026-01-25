@@ -1,4 +1,5 @@
 import BlogsHero from '@/components/BlogsHero';
+import { getNavLinks } from '../../lib/getNavLinks';
 import BlogsGrid from '@/components/BlogsGrid';
 import Footer from '@/components/Footer';
 import ConnectSection from '@/components/ConnectSection';
@@ -14,10 +15,11 @@ export async function generateMetadata() {
     );
 }
 
-export default function Blogs() {
+export default async function Blogs() {
+    const navLinks = await getNavLinks();
     return (
         <main>
-            <BlogsHero />
+            <BlogsHero dynamicLinks={navLinks} />
             <BlogsGrid />
             <ConnectSection />
             <GallerySection />

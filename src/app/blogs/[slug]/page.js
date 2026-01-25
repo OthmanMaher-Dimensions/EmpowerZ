@@ -3,11 +3,13 @@ import BlogDetailsHero from '@/components/BlogDetailsHero';
 import BlogContent from '@/components/BlogContent';
 import BlogTips from '@/components/BlogTips';
 import RelevantBlogs from '@/components/RelevantBlogs';
+import { getNavLinks } from '../../../lib/getNavLinks';
 import Footer from '@/components/Footer';
 
 export default async function BlogDetails({ params }) {
     console.log("BlogDetails Page - Params:", params);
     const { slug } = await params;
+    const navLinks = await getNavLinks();
     let post = null;
 
     try {
@@ -41,7 +43,7 @@ export default async function BlogDetails({ params }) {
 
     return (
         <main>
-            <BlogDetailsHero post={post} />
+            <BlogDetailsHero post={post} dynamicLinks={navLinks} />
             <BlogContent post={post} />
             <BlogTips />
             <RelevantBlogs currentPostId={post.id} />

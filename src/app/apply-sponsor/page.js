@@ -1,14 +1,14 @@
-"use client";
-
 import React from 'react';
 import SiteHeader from '@/components/SiteHeader';
+import { getNavLinks } from '../../lib/getNavLinks';
 import Footer from '@/components/Footer';
 import SponsorApplicationForm from '@/components/forms/SponsorApplicationForm';
 
-export default function SponsorApplyPage() {
+export default async function SponsorApplyPage() {
+    const navLinks = await getNavLinks();
     return (
         <>
-            <SiteHeader />
+            <SiteHeader dynamicLinks={navLinks} />
             <SponsorApplicationForm />
             <Footer />
         </>

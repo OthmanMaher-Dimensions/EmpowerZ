@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Rocket, Gem, Gift } from 'lucide-react';
 import styles from './MembershipOffer.module.css';
+import { trackCta } from '../lib/trackCta';
 
 const MembershipOffer = ({
     backgroundImage = "/assets/membership-bg.png",
@@ -26,6 +27,10 @@ const MembershipOffer = ({
     ctaText = "Start Your Journey to Exclusive Perks",
     style = {}
 }) => {
+    const handleCtaClick = () => {
+        trackCta('Membership - Start Journey', 'Home');
+    };
+
     return (
         <section className={styles.section} id="membership-offer" style={style}>
             {/* Background Image */}
@@ -112,7 +117,7 @@ const MembershipOffer = ({
                     {/* CTA Button overlapping the bottom */}
                     <div className={styles.ctaContainer}>
                         <Link href="/apply-member" style={{ textDecoration: 'none' }}>
-                            <button className={styles.ctaButton}>
+                            <button className={styles.ctaButton} onClick={handleCtaClick}>
                                 <Rocket size={24} />
                                 {ctaText}
                             </button>

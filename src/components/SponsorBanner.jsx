@@ -2,6 +2,7 @@
 
 import styles from './SponsorBanner.module.css';
 import Link from 'next/link';
+import { trackCta } from '../lib/trackCta';
 
 const SponsorBanner = ({
     titlePrefix = "Do you support our mission?",
@@ -20,7 +21,11 @@ const SponsorBanner = ({
                     </h2>
                 </div>
 
-                <Link href="/apply-sponsor" className={styles.sponsorBtn}>
+                <Link
+                    href="/apply-sponsor"
+                    className={styles.sponsorBtn}
+                    onClick={() => trackCta('Sponsor Banner - Apply', 'Sponsor Page')}
+                >
                     {ctaText}
                     <span className={styles.arrowIcon}>→</span>
                 </Link>

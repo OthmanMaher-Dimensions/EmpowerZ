@@ -1,14 +1,14 @@
-"use client";
-
 import React from 'react';
 import SiteHeader from '../../components/SiteHeader';
+import { getNavLinks } from '../../lib/getNavLinks';
 import Footer from '../../components/Footer';
 import styles from '../../components/LegalPage.module.css';
 
-const TermsAndConditions = () => {
+const TermsAndConditions = async () => {
+    const navLinks = await getNavLinks();
     return (
         <main className={styles.pageContainer}>
-            <SiteHeader />
+            <SiteHeader dynamicLinks={navLinks} />
 
             <div className={styles.contentContainer}>
                 <h1 className={styles.title}>Terms and Conditions</h1>

@@ -6,7 +6,13 @@ import { getSocialLinks } from '../utils/socialLinks';
 
 import SiteHeader from './SiteHeader';
 
-export default function ContactUsHero({ showHeader = true }) {
+export default function ContactUsHero({
+    showHeader = true,
+    dynamicLinks,
+    titlePrefix = "GET IN",
+    titleHighlight = "TOUCH",
+    subtitle = "WE'D LOVE TO HEAR FROM YOU. REACH OUT WITH ANY QUESTIONS OR INQUIRIES."
+}) {
     const [socialLinks, setSocialLinks] = useState({
         facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
     });
@@ -25,7 +31,7 @@ export default function ContactUsHero({ showHeader = true }) {
 
     return (
         <>
-            {showHeader && <SiteHeader />}
+            {showHeader && <SiteHeader dynamicLinks={dynamicLinks} />}
             <section className={styles.hero}>
                 <div className={styles.heroBgContainer}>
                     <div className={styles.heroBgImage} />
@@ -35,11 +41,11 @@ export default function ContactUsHero({ showHeader = true }) {
                 <div className={styles.contentArea}>
                     <div className={styles.contentInner}>
                         <h1 className={styles.heading}>
-                            GET IN <span className={styles.headingGold}>TOUCH</span>
+                            {titlePrefix} <span className={styles.headingGold}>{titleHighlight}</span>
                         </h1>
 
                         <p className={styles.subtitle}>
-                            WE'D LOVE TO HEAR FROM YOU. REACH OUT WITH ANY QUESTIONS OR INQUIRIES.
+                            {subtitle}
                         </p>
                     </div>
                 </div>

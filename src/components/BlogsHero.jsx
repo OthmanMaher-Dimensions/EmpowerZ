@@ -7,7 +7,14 @@ import { Search } from 'lucide-react';
 
 import SiteHeader from './SiteHeader';
 
-export default function BlogsHero({ showHeader = true }) {
+export default function BlogsHero({
+    showHeader = true,
+    dynamicLinks,
+    titlePrefix = "OUR",
+    titleHighlight = "BLOG",
+    subtitle = "Stay updated with the latest insights, news, and stories from the EmpowerZ community.",
+    searchPlaceholder = "Search articles..."
+}) {
     const [socialLinks, setSocialLinks] = useState({
         facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
     });
@@ -26,7 +33,7 @@ export default function BlogsHero({ showHeader = true }) {
 
     return (
         <>
-            {showHeader && <SiteHeader />}
+            {showHeader && <SiteHeader dynamicLinks={dynamicLinks} />}
             <section className={styles.hero}>
                 <div className={styles.heroBgContainer}>
                     <div className={styles.heroBgImage} />
@@ -36,17 +43,17 @@ export default function BlogsHero({ showHeader = true }) {
                 <div className={styles.contentArea}>
                     <div className={styles.contentInner}>
                         <h1 className={styles.heading}>
-                            OUR <span className={styles.headingGold}>BLOG</span>
+                            {titlePrefix} <span className={styles.headingGold}>{titleHighlight}</span>
                         </h1>
 
                         <p className={styles.subheading}>
-                            Stay updated with the latest insights, news, and stories from the EmpowerZ community.
+                            {subtitle}
                         </p>
 
                         <div className={styles.searchContainer}>
                             <input
                                 type="text"
-                                placeholder="Search articles..."
+                                placeholder={searchPlaceholder}
                                 className={styles.searchInput}
                             />
                             <button className={styles.searchButton}>

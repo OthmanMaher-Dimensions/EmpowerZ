@@ -6,7 +6,7 @@ import { getSocialLinks } from '../utils/socialLinks';
 
 import SiteHeader from './SiteHeader';
 
-export default function BlogDetailsHero({ showHeader = true, title = "BLOG DETAILS", post }) {
+export default function BlogDetailsHero({ showHeader = true, title = "BLOG DETAILS", post, dynamicLinks }) {
     const displayTitle = post?.title || title;
     const [socialLinks, setSocialLinks] = useState({
         facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
@@ -26,7 +26,7 @@ export default function BlogDetailsHero({ showHeader = true, title = "BLOG DETAI
 
     return (
         <>
-            {showHeader && <SiteHeader />}
+            {showHeader && <SiteHeader dynamicLinks={dynamicLinks} />}
             <section className={styles.hero}>
                 <div className={styles.contentContainer}>
                     <h1 className={styles.title}>

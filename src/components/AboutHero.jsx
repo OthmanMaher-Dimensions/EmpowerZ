@@ -4,13 +4,32 @@ import React, { useState, useEffect } from 'react';
 import styles from './AboutHero.module.css';
 import { getSocialLinks } from '../utils/socialLinks';
 
-const AboutHero = ({ showHeader = true }) => {
+const AboutHero = ({
+    showHeader = true,
+    badgeText = "EmpowerZ's Story",
+    headlineSpark = "How a",
+    headlinePassion = "Spark of Passion",
+    headlineGrow = "Grew into a",
+    headlineMovement = "Movement <br /> of Change.",
+    textP1 = "Empower Z Foundation is more than a community...it is a global movement with a big mission. We are here for young go-getters, entry-level professionals, and entrepreneurs across the MENA region. Through learning, hands-on training, networking, and real-world volunteering, we give our members the unique skills they need to crush it, personally and professionally.",
+    textP2 = "Our platform is all about giving you the good stuff, exclusive perks and curated experiences that actually fit your vibe, making you feel unique and valued. We believe everyone deserves access to offers, services, and skills that bring real value to daily life and open doors to epic experiences.",
+    textP3 = "That is why we're always levelling up, building smarter learning environments and pulling the best perks and services into one place, so your journey as a member is smooth, elevated, and anything but ordinary."
+}) => {
     const [socialLinks, setSocialLinks] = useState({
-        facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
+        facebook: '',
+        twitter: '',
+        instagram: '',
+        linkedin: '',
+        youtube: '',
+        tiktok: '',
+        snapchat: ''
     });
 
     useEffect(() => {
-        getSocialLinks().then(setSocialLinks);
+        import('../utils/socialLinks').then(({ getSocialLinks }) => {
+            const links = getSocialLinks();
+            setSocialLinks(prev => ({ ...prev, ...links }));
+        });
     }, []);
 
     return (
@@ -25,14 +44,14 @@ const AboutHero = ({ showHeader = true }) => {
                 {/* Top Content */}
                 <div className={styles.contentLeft}>
                     <div className={styles.badge}>
-                        EmpowerZ's Story
+                        {badgeText}
                     </div>
 
                     <h1 className={styles.headline}>
-                        <span className={styles.headlineSpark}>How a</span>
-                        <span className={styles.headlinePassion}>Spark of Passion</span>
-                        <span className={styles.subHeadline}>Grew into a</span>
-                        <span className={styles.headlineMovement}>Movement <br /> of Change.</span>
+                        <span className={styles.headlineSpark}>{headlineSpark}</span>
+                        <span className={styles.headlinePassion}>{headlinePassion}</span>
+                        <span className={styles.subHeadline}>{headlineGrow}</span>
+                        <span className={styles.headlineMovement} dangerouslySetInnerHTML={{ __html: headlineMovement }} />
                     </h1>
 
                     {/* Dotted Arrow - positioned absolutely relative to container handled by CSS */}
@@ -69,16 +88,9 @@ const AboutHero = ({ showHeader = true }) => {
 
                     {/* Yellow Text Box */}
                     <div className={styles.textBox}>
-                        <p>
-                            Empower Z Foundation is more than a community...it is a global movement with a big mission. We are here for young go-getters, entry-level professionals, and entrepreneurs across the MENA region. Through learning, hands-on training, networking, and real-world volunteering, we give our members the unique skills they need to crush it, personally and professionally.
-                        </p>
-                        <p>
-                            Our platform is all about giving you the good stuff, exclusive perks and curated experiences that actually fit your vibe, making you feel unique and valued.
-                            We believe everyone deserves access to offers, services, and skills that bring real value to daily life and open doors to epic experiences.
-                        </p>
-                        <p>
-                            That is why we're always levelling up, building smarter learning environments and pulling the best perks and services into one place, so your journey as a member is smooth, elevated, and anything but ordinary.
-                        </p>
+                        <p>{textP1}</p>
+                        <p>{textP2}</p>
+                        <p>{textP3}</p>
                     </div>
                 </div>
             </div>

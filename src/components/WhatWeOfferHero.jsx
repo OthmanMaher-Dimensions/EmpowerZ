@@ -2,11 +2,20 @@
 
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import styles from './WhatWeOfferHero.module.css';
-import SiteHeader from './SiteHeader';
+import { trackCta } from '../lib/trackCta';
 import { getSocialLinks } from '../utils/socialLinks';
 
-const WhatWeOfferHero = ({ showHeader = true }) => {
+const WhatWeOfferHero = ({
+    showHeader = true,
+    headingLine1 = "Discover",
+    headingLine2 = "An Exclusive",
+    subheadingLine1 = "World Of",
+    subheadingLine2 = "Limitless Perks",
+    subheadingLine3 = "And Benefits",
+    ctaText = "Join Now"
+}) => {
     const [socialLinks, setSocialLinks] = useState({
         facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
     });
@@ -14,6 +23,10 @@ const WhatWeOfferHero = ({ showHeader = true }) => {
     useEffect(() => {
         getSocialLinks().then(setSocialLinks);
     }, []);
+
+    const handleCtaClick = () => {
+        trackCta('Offer Hero - Join Now', 'What We Offer');
+    };
 
     const socialIcons = [
         { name: 'Youtube', img: '/assets/icon-youtube-gold.png', href: socialLinks.youtube },
@@ -25,7 +38,6 @@ const WhatWeOfferHero = ({ showHeader = true }) => {
 
     return (
         <>
-            {showHeader && <SiteHeader />}
             <section className={styles.hero}>
                 {/* Background Image Container */}
                 <div className={styles.heroBgContainer}>
@@ -42,38 +54,37 @@ const WhatWeOfferHero = ({ showHeader = true }) => {
                         {/* Heading: DISCOVER AN EXCLUSIVE */}
                         <h1 className={`${styles.heading} ${styles.animateIn} ${styles.delay1}`}>
                             <span className={styles.desktopOnly}>
-                                <span className={styles.headingGold}>Discover</span>
+                                <span className={styles.headingGold}>{headingLine1}</span>
                                 <br />
-                                <span className={styles.headingGold}>An Exclusive</span>
+                                <span className={styles.headingGold}>{headingLine2}</span>
                             </span>
                             <span className={styles.mobileOnly}>
-                                <span className={styles.headingGold}>Discover An</span>
+                                <span className={styles.headingGold}>{headingLine1} {headingLine2.split(" ")[0]}</span>
                                 <br />
-                                <span className={styles.headingGold}>Exclusive</span>
+                                <span className={styles.headingGold}>{headingLine2.split(" ").slice(1).join(" ")}</span>
                             </span>
                         </h1>
 
                         {/* Subheading: WORLD OF LIMITLESS PERKS AND BENEFITS */}
                         <h2 className={`${styles.subheading} ${styles.animateIn} ${styles.delay2}`}>
                             <span className={styles.desktopOnly}>
-                                World Of
+                                {subheadingLine1}
                                 <br />
-                                <span className={styles.subheadingBold}>Limitless Perks</span>
+                                <span className={styles.subheadingBold}>{subheadingLine2}</span>
                                 <br />
-                                <span className={styles.subheadingBold}>And Benefits</span>
+                                <span className={styles.subheadingBold}>{subheadingLine3}</span>
                             </span>
                             <span className={styles.mobileOnly}>
-                                World Of <span className={styles.subheadingBold}>Limitless</span>
+                                {subheadingLine1} <span className={styles.subheadingBold}>{subheadingLine2.split(" ")[0]}</span>
                                 <br />
-                                <span className={styles.subheadingBold}>Perks And Benefits</span>
+                                <span className={styles.subheadingBold}>{subheadingLine2.split(" ").slice(1).join(" ")} {subheadingLine3}</span>
                             </span>
                         </h2>
-
                         {/* CTA Button: Join Now */}
-                        <a href="#join" className={`${styles.ctaButton} ${styles.animateIn} ${styles.delay3}`}>
-                            <span>Join Now</span>
+                        <Link href="/apply-member" className={`${styles.ctaButton} ${styles.animateIn} ${styles.delay3}`} onClick={handleCtaClick}>
+                            <span>{ctaText}</span>
                             <ArrowRight className={styles.ctaArrow} size={24} strokeWidth={2.5} />
-                        </a>
+                        </Link>
 
                         {/* Mobile Social Icons Row */}
                         <div className={styles.mobileSocials}>
@@ -94,7 +105,7 @@ const WhatWeOfferHero = ({ showHeader = true }) => {
                         </a>
                     ))}
                 </div>
-            </section>
+            </section >
         </>
     );
 };

@@ -1,15 +1,14 @@
-"use client";
-
-import React from 'react';
 import Link from 'next/link';
 // Removed ArrowLeft since "Back to Home" is removed
 import styles from './Login.module.css';
 import Header from '@/components/SiteHeader';
+import { getNavLinks } from '../../lib/getNavLinks';
 
-const LoginPage = () => {
+const LoginPage = async () => {
+    const navLinks = await getNavLinks();
     return (
         <main>
-            <Header />
+            <Header dynamicLinks={navLinks} />
             <div className={styles.container}>
                 {/* Removed Back to Home Link */}
 

@@ -24,6 +24,19 @@
     font-weight: 700;
 }
 
+.galleryMeta {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.metaItem {
+    display: inline-block;
+}
+
 .backBtn {
     background: transparent;
     color: #fec23d;

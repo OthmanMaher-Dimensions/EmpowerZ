@@ -9,6 +9,7 @@ import { getSocialLinks } from '../utils/socialLinks';
 // Force rebuild
 import PartnersSection from './PartnersSection';
 import Script from 'next/script';
+import { trackCta } from '../lib/trackCta';
 
 const Hero = ({
     eyebrow = "A New Learning",
@@ -27,6 +28,11 @@ const Hero = ({
     useEffect(() => {
         getSocialLinks().then(setSocialLinks);
     }, []);
+
+    const handleCtaClick = () => {
+        trackCta('Hero - Join Movement', 'Home');
+    };
+
     return (
         <section className={styles.hero} style={style}>
 
@@ -88,7 +94,7 @@ const Hero = ({
                     </p>
 
                     {/* CTA Button: Join the Movement */}
-                    <Link href="/apply-member" className={styles.ctaButton}>
+                    <Link href="/apply-member" className={styles.ctaButton} onClick={handleCtaClick}>
                         <span className="hero-cta-text">{ctaText}</span> <ArrowRight className={styles.ctaArrow} size={24} strokeWidth={2.5} />
                     </Link>
 

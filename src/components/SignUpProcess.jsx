@@ -3,6 +3,7 @@
 import styles from './SignUpProcess.module.css';
 import Link from 'next/link';
 import { ClipboardList, CreditCard, LogIn, ArrowRight } from 'lucide-react';
+import { trackCta } from '../lib/trackCta';
 
 const SignUpProcess = ({
     title = "Sign Up Process",
@@ -91,7 +92,7 @@ const SignUpProcess = ({
             </div>
 
             <div className={styles.ctaContainer}>
-                <Link href="/apply-member" className={styles.ctaButton}>
+                <Link href="/apply-member" className={styles.ctaButton} onClick={() => trackCta('SignUp Process - Join', 'Sign Up')}>
                     {ctaText} <ArrowRight size={20} className={styles.btnArrow} />
                 </Link>
             </div>

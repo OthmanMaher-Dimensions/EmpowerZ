@@ -33,6 +33,12 @@ const ContactFormSection = () => {
             });
 
             if (res.ok) {
+                // Track successful submission
+                // Dynamic import to avoid SSR issues if any, or just standard import
+                import('../lib/trackCta').then(({ trackCta }) => {
+                    trackCta('Contact Form - Submit Success', 'Contact Us');
+                });
+
                 setStatus({ type: 'success', message: 'Message sent successfully! We will get back to you soon.' });
                 setFormData({
                     firstName: '',

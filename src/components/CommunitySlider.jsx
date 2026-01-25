@@ -4,20 +4,23 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './CommunitySlider.module.css';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { trackCta } from '../lib/trackCta';
 
 const CommunitySlider = ({
-    headline = "Our community is committed to providing you with tailored training courses, learning opportunities, tools and skills to land better opportunities, personally and professionally.",
+    title = "Our Community",
+    subtitle = "Connect, collaborate, and grow with like-minded individuals.",
     ctaText = "SIGN UP NOW",
-    slide1Title = "Courses & Training",
-    slide1Desc = "Access on-demand and live sessions covering business, leadership, communication, tech, and personal growth – free and discounted rates.",
+    ctaLink = "/register",
+    slide1Title = "Workshops & Training",
+    slide1Desc = "Gain hands-on skills through expert-led sessions designed to boost your career.",
     slide1Image = "/assets/community-slide-1.png",
-    slide2Title = "Exclusive Perks & Partner Discounts",
-    slide2Desc = "Enjoy member-only offers from top brands, services, and tools that support your success.",
+    slide2Title = "Networking Events",
+    slide2Desc = "Meet industry leaders and peers to expand your professional network.",
     slide2Image = "/assets/community-slide-2.png",
-    slide3Title = "Networking Events",
-    slide3Desc = "Connect with mentors, peers, and collaborators who challenge and inspire you.",
+    slide3Title = "Mentorship Programs",
+    slide3Desc = "Get one-on-one guidance from experienced professionals in your field.",
     slide3Image = "/assets/community-slide-3.png",
-    slide4Title = "Paid Internship",
+    slide4Title = "Internship Opportunities",
     slide4Desc = "Exciting internship opportunities offering a pathway to kick-start your career through invaluable experiences to shape your professional journey.",
     slide4Image = "/assets/community-slide-4.png",
     slide5Title = "Scholarship Opportunities",
@@ -57,13 +60,16 @@ const CommunitySlider = ({
     // or I can make "Our community" a separate prefix prop if critical.
     // Let's assume the user edits the whole string. I will render it inside the p tag.
 
+    const handleCtaClick = () => {
+        trackCta('Community - Sign Up', 'Home');
+    };
+
     return (
         <section className={styles.section} style={style}>
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <p className={styles.headline}>
-                        {headline}
-                    </p>
+                    <h2 className={styles.headlineTitle}>{title}</h2>
+                    <p className={styles.headlineSubtitle}>{subtitle}</p>
                 </div>
 
                 <div className={styles.sliderWrapper}>
@@ -84,6 +90,7 @@ const CommunitySlider = ({
                         <div
                             id="community-slider-track"
                             className={styles.sliderTrack}
+                            suppressHydrationWarning={true}
                         >
                             {slides.map((slide, index) => (
                                 <div
@@ -115,9 +122,9 @@ const CommunitySlider = ({
                     </button>
                 </div>
 
-                <div className={styles.ctaContainer}>
-                    <Link href="/apply-member" className={styles.ctaButton}>
-                        {ctaText} <ArrowRight size={20} />
+                <div className={styles.ctaContainer} onClick={handleCtaClick}>
+                    <Link href={ctaLink} className={styles.ctaButton}>
+                        {ctaText}
                     </Link>
                 </div>
             </div>

@@ -4,8 +4,11 @@ import OfficeLocationSection from '@/components/OfficeLocationSection';
 import ConnectSection from '@/components/ConnectSection';
 import GallerySection from '@/components/GallerySection';
 import Footer from '@/components/Footer';
+import { getNavLinks } from '../../lib/getNavLinks';
 
 import { generatePageMetadata } from '@/utils/seo';
+
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata() {
     return generatePageMetadata(
@@ -29,10 +32,11 @@ async function getOffices() {
 
 export default async function ContactUs() {
     const offices = await getOffices();
+    const navLinks = await getNavLinks();
 
     return (
         <main>
-            <ContactUsHero />
+            <ContactUsHero dynamicLinks={navLinks} />
             <ContactFormSection />
             <OfficeLocationSection offices={offices} />
             <ConnectSection />

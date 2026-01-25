@@ -4,7 +4,11 @@ import React, { useState, useEffect } from 'react';
 import styles from './GalleryHero.module.css';
 import { getSocialLinks } from '../utils/socialLinks';
 
-export default function GalleryHero({ showHeader = true }) {
+export default function GalleryHero({
+    showHeader = true,
+    title = "GALLERY",
+    subtitle = "Capturing moments of growth, connection, and success."
+}) {
     const [socialLinks, setSocialLinks] = useState({
         facebook: '#', twitter: '#', instagram: '#', linkedin: '#', youtube: '#'
     });
@@ -28,11 +32,11 @@ export default function GalleryHero({ showHeader = true }) {
 
             <div className={styles.container}>
                 <h1 className={styles.title}>
-                    GALLERY
+                    {title}
                 </h1>
 
                 <p className={styles.subtitle}>
-                    Capturing moments of growth, connection, and success.
+                    {subtitle}
                 </p>
             </div>
 
