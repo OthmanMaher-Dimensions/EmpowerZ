@@ -32,22 +32,22 @@ const PaidInternshipSection = ({
     const parseItems = (itemsString) => itemsString ? itemsString.split(',').map(i => i.trim()).filter(Boolean) : [];
 
     const opportunities = [
-        { title: opp1Title, icon: opp1Icon, color: "linear-gradient(0deg, rgba(231, 106, 138, 0.18), rgba(231, 106, 138, 0.18)), #FFFFFF", items: parseItems(opp1Items) },
-        { title: opp2Title, icon: opp2Icon, color: "linear-gradient(0deg, rgba(252, 184, 137, 0.18), rgba(252, 184, 137, 0.18)), #FFFFFF", items: parseItems(opp2Items) },
-        { title: opp3Title, icon: opp3Icon, color: "rgba(115, 194, 165, 0.18)", items: parseItems(opp3Items) },
-        { title: opp4Title, icon: opp4Icon, color: "rgba(202, 219, 127, 0.18)", items: parseItems(opp4Items) },
-        { title: opp5Title, icon: opp5Icon, color: "linear-gradient(0deg, rgba(137, 157, 208, 0.18), rgba(137, 157, 208, 0.18)), #FFFFFF", items: parseItems(opp5Items) },
-        { title: opp6Title, icon: opp6Icon, color: "linear-gradient(0deg, rgba(169, 127, 209, 0.18), rgba(169, 127, 209, 0.18)), #FFFFFF", items: parseItems(opp6Items) },
-        { title: opp7Title, icon: opp7Icon, color: "linear-gradient(0deg, rgba(254, 207, 54, 0.18), rgba(254, 207, 54, 0.18)), #FFFFFF", items: parseItems(opp7Items) },
-        { title: opp8Title, icon: opp8Icon, color: "linear-gradient(0deg, rgba(251, 47, 181, 0.18), rgba(251, 47, 181, 0.18)), #FFFFFF", items: parseItems(opp8Items) }
+        { title: opp1Title, titleProp: "opp1Title", icon: opp1Icon, iconProp: "opp1Icon", color: "linear-gradient(0deg, rgba(231, 106, 138, 0.18), rgba(231, 106, 138, 0.18)), #FFFFFF", items: parseItems(opp1Items), itemsProp: "opp1Items" },
+        { title: opp2Title, titleProp: "opp2Title", icon: opp2Icon, iconProp: "opp2Icon", color: "linear-gradient(0deg, rgba(252, 184, 137, 0.18), rgba(252, 184, 137, 0.18)), #FFFFFF", items: parseItems(opp2Items), itemsProp: "opp2Items" },
+        { title: opp3Title, titleProp: "opp3Title", icon: opp3Icon, iconProp: "opp3Icon", color: "rgba(115, 194, 165, 0.18)", items: parseItems(opp3Items), itemsProp: "opp3Items" },
+        { title: opp4Title, titleProp: "opp4Title", icon: opp4Icon, iconProp: "opp4Icon", color: "rgba(202, 219, 127, 0.18)", items: parseItems(opp4Items), itemsProp: "opp4Items" },
+        { title: opp5Title, titleProp: "opp5Title", icon: opp5Icon, iconProp: "opp5Icon", color: "linear-gradient(0deg, rgba(137, 157, 208, 0.18), rgba(137, 157, 208, 0.18)), #FFFFFF", items: parseItems(opp5Items), itemsProp: "opp5Items" },
+        { title: opp6Title, titleProp: "opp6Title", icon: opp6Icon, iconProp: "opp6Icon", color: "linear-gradient(0deg, rgba(169, 127, 209, 0.18), rgba(169, 127, 209, 0.18)), #FFFFFF", items: parseItems(opp6Items), itemsProp: "opp6Items" },
+        { title: opp7Title, titleProp: "opp7Title", icon: opp7Icon, iconProp: "opp7Icon", color: "linear-gradient(0deg, rgba(254, 207, 54, 0.18), rgba(254, 207, 54, 0.18)), #FFFFFF", items: parseItems(opp7Items), itemsProp: "opp7Items" },
+        { title: opp8Title, titleProp: "opp8Title", icon: opp8Icon, iconProp: "opp8Icon", color: "linear-gradient(0deg, rgba(251, 47, 181, 0.18), rgba(251, 47, 181, 0.18)), #FFFFFF", items: parseItems(opp8Items), itemsProp: "opp8Items" }
     ];
 
     return (
         <section className={styles.section} style={style}>
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <h2 className={styles.title}>{title}</h2>
-                    <p className={styles.subtitle}>
+                    <h2 className={styles.title} data-builder-prop="title">{title}</h2>
+                    <p className={styles.subtitle} data-builder-prop="subtitle">
                         {subtitle}
                     </p>
                 </div>
@@ -61,10 +61,10 @@ const PaidInternshipSection = ({
                         >
                             <div className={styles.cardHeader}>
                                 <div className={styles.iconWrapper}>
-                                    <img src={item.icon} alt={item.title} className={styles.customIcon} />
+                                    <img src={item.icon} alt={item.title} className={styles.customIcon} data-builder-prop={item.iconProp} />
                                 </div>
                             </div>
-                            <h3 className={styles.cardTitle}>{item.title}</h3>
+                            <h3 className={styles.cardTitle} data-builder-prop={item.titleProp}>{item.title}</h3>
                             <ul className={styles.list}>
                                 {item.items.map((subItem, i) => (
                                     <li key={i} className={styles.listItem}>

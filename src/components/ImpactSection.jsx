@@ -25,13 +25,13 @@ const ImpactSection = ({
 }) => {
 
     const goals = [
-        { number: goal1Number, title: goal1Title, description: goal1Desc, icon: goal1Image, color: "#E76A8A" }, // Pink
-        { number: goal2Number, title: goal2Title, description: goal2Desc, icon: goal2Image, color: "#899DD0" }, // Periwinkle
-        { number: goal3Number, title: goal3Title, description: goal3Desc, icon: goal3Image, color: "#73C2A5" }, // Green
-        { number: goal4Number, title: goal4Title, description: goal4Desc, icon: goal4Image, color: "#DB80CF" }, // Orchid
-        { number: goal5Number, title: goal5Title, description: goal5Desc, icon: goal5Image, color: "#A97FD1" }, // Purple
-        { number: goal6Number, title: goal6Title, description: goal6Desc, icon: goal6Image, color: "#FCB889" }, // Orange
-        { number: goal7Number, title: goal7Title, description: goal7Desc, icon: goal7Image, color: "#CADB7F" }  // Lime
+        { number: goal1Number, numberProp: "goal1Number", title: goal1Title, titleProp: "goal1Title", description: goal1Desc, descProp: "goal1Desc", icon: goal1Image, iconProp: "goal1Image", color: "#E76A8A" }, // Pink
+        { number: goal2Number, numberProp: "goal2Number", title: goal2Title, titleProp: "goal2Title", description: goal2Desc, descProp: "goal2Desc", icon: goal2Image, iconProp: "goal2Image", color: "#899DD0" }, // Periwinkle
+        { number: goal3Number, numberProp: "goal3Number", title: goal3Title, titleProp: "goal3Title", description: goal3Desc, descProp: "goal3Desc", icon: goal3Image, iconProp: "goal3Image", color: "#73C2A5" }, // Green
+        { number: goal4Number, numberProp: "goal4Number", title: goal4Title, titleProp: "goal4Title", description: goal4Desc, descProp: "goal4Desc", icon: goal4Image, iconProp: "goal4Image", color: "#DB80CF" }, // Orchid
+        { number: goal5Number, numberProp: "goal5Number", title: goal5Title, titleProp: "goal5Title", description: goal5Desc, descProp: "goal5Desc", icon: goal5Image, iconProp: "goal5Image", color: "#A97FD1" }, // Purple
+        { number: goal6Number, numberProp: "goal6Number", title: goal6Title, titleProp: "goal6Title", description: goal6Desc, descProp: "goal6Desc", icon: goal6Image, iconProp: "goal6Image", color: "#FCB889" }, // Orange
+        { number: goal7Number, numberProp: "goal7Number", title: goal7Title, titleProp: "goal7Title", description: goal7Desc, descProp: "goal7Desc", icon: goal7Image, iconProp: "goal7Image", color: "#CADB7F" }  // Lime
     ];
 
     return (
@@ -42,7 +42,7 @@ const ImpactSection = ({
             <div className={styles.container}>
                 <div className={styles.header}>
                     <div className={styles.pinkBar}></div>
-                    <h2 className={styles.mainTitle} style={{ whiteSpace: 'pre-line' }}>
+                    <h2 className={styles.mainTitle} style={{ whiteSpace: 'pre-line' }} data-builder-prop="mainTitle">
                         {mainTitle}
                     </h2>
                 </div>
@@ -55,14 +55,14 @@ const ImpactSection = ({
                             style={{ backgroundColor: goal.color }}
                         >
                             <div className={styles.numberWrapper}>
-                                <span className={styles.goalNumber}>{goal.number}</span>
+                                <span className={styles.goalNumber} data-builder-prop={goal.numberProp}>{goal.number}</span>
                             </div>
                             <div className={styles.iconWrapper}>
-                                <img src={goal.icon} alt={goal.title} className={styles.iconImage} />
+                                <img src={goal.icon} alt={goal.title} className={styles.iconImage} data-builder-prop={goal.iconProp} />
                             </div>
                             <div className={styles.content}>
-                                <h3 className={styles.goalTitle}>{goal.title}</h3>
-                                <p className={styles.goalDesc}>{goal.description}</p>
+                                <h3 className={styles.goalTitle} data-builder-prop={goal.titleProp}>{goal.title}</h3>
+                                <p className={styles.goalDesc} data-builder-prop={goal.descProp}>{goal.description}</p>
                             </div>
                         </div>
                     ))}

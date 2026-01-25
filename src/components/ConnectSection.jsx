@@ -44,15 +44,15 @@ const ConnectSection = ({
 
                     <div className={styles.content}>
                         <div className={styles.textGroup}>
-                            <h2 className={styles.mainHeading}>
+                            <h2 className={styles.mainHeading} data-builder-prop="mainHeading">
                                 {mainHeading}
                             </h2>
-                            <p className={styles.subHeading}>
+                            <p className={styles.subHeading} data-builder-prop="subHeading">
                                 {subHeading}
                             </p>
                         </div>
 
-                        <h3 className={styles.connectTitle}>
+                        <h3 className={styles.connectTitle} data-builder-prop="connectTitle">
                             {connectTitle}
                         </h3>
 
@@ -71,7 +71,7 @@ const ConnectSection = ({
                 </div>
 
                 <div className={styles.bottomLabel}>
-                    <span style={{ color: '#DEC48C' }}>{followLabel}</span> <span style={{ color: '#fff' }}>{followHandle}</span>
+                    <span style={{ color: '#DEC48C' }} data-builder-prop="followLabel">{followLabel}</span> <span style={{ color: '#fff' }} data-builder-prop="followHandle">{followHandle}</span>
                 </div>
             </div>
         </section>

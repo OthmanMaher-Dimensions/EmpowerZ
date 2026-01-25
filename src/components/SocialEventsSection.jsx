@@ -17,13 +17,13 @@ const SocialEventsSection = ({
     style = {}
 }) => {
     const events = [
-        { title: event1Title, description: event1Desc, color: "#E76A8A" },
-        { title: event2Title, description: event2Desc, color: "#899DD0" },
-        { title: event3Title, description: event3Desc, color: "#FCB889" },
-        { title: event4Title, description: event4Desc, color: "#DB80CF" },
-        { title: event5Title, description: event5Desc, color: "#CADB7F" },
-        { title: event6Title, description: event6Desc, color: "#73C2A5" },
-        { title: event7Title, description: event7Desc, color: "#A97FD1" }
+        { title: event1Title, titleProp: "event1Title", description: event1Desc, descProp: "event1Desc", color: "#E76A8A" },
+        { title: event2Title, titleProp: "event2Title", description: event2Desc, descProp: "event2Desc", color: "#899DD0" },
+        { title: event3Title, titleProp: "event3Title", description: event3Desc, descProp: "event3Desc", color: "#FCB889" },
+        { title: event4Title, titleProp: "event4Title", description: event4Desc, descProp: "event4Desc", color: "#DB80CF" },
+        { title: event5Title, titleProp: "event5Title", description: event5Desc, descProp: "event5Desc", color: "#CADB7F" },
+        { title: event6Title, titleProp: "event6Title", description: event6Desc, descProp: "event6Desc", color: "#73C2A5" },
+        { title: event7Title, titleProp: "event7Title", description: event7Desc, descProp: "event7Desc", color: "#A97FD1" }
     ];
 
     return (
@@ -31,10 +31,10 @@ const SocialEventsSection = ({
             <div className={styles.container}>
                 <div className={styles.headerWrapper}>
                     <div className={styles.yellowBlock}></div>
-                    <h2 className={styles.title}>{title}</h2>
+                    <h2 className={styles.title} data-builder-prop="title">{title}</h2>
                 </div>
 
-                <p className={styles.subtitle}>
+                <p className={styles.subtitle} data-builder-prop="subtitle">
                     {subtitle}
                 </p>
 
@@ -45,8 +45,8 @@ const SocialEventsSection = ({
                             className={styles.card}
                             style={{ backgroundColor: item.color }}
                         >
-                            <h3 className={styles.cardTitle}>{item.title}</h3>
-                            <p className={styles.cardDescription}>{item.description}</p>
+                            <h3 className={styles.cardTitle} data-builder-prop={item.titleProp}>{item.title}</h3>
+                            <p className={styles.cardDescription} data-builder-prop={item.descProp}>{item.description}</p>
                         </div>
                     ))}
                 </div>

@@ -31,11 +31,11 @@ export default function GalleryHero({
             <div className={styles.overlay} />
 
             <div className={styles.container}>
-                <h1 className={styles.title}>
+                <h1 className={styles.title} data-builder-prop="title">
                     {title}
                 </h1>
 
-                <p className={styles.subtitle}>
+                <p className={styles.subtitle} data-builder-prop="subtitle">
                     {subtitle}
                 </p>
             </div>

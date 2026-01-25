@@ -54,9 +54,9 @@ const WhatWeOfferHero = ({
                         {/* Heading: DISCOVER AN EXCLUSIVE */}
                         <h1 className={`${styles.heading} ${styles.animateIn} ${styles.delay1}`}>
                             <span className={styles.desktopOnly}>
-                                <span className={styles.headingGold}>{headingLine1}</span>
+                                <span className={styles.headingGold} data-builder-prop="headingLine1">{headingLine1}</span>
                                 <br />
-                                <span className={styles.headingGold}>{headingLine2}</span>
+                                <span className={styles.headingGold} data-builder-prop="headingLine2">{headingLine2}</span>
                             </span>
                             <span className={styles.mobileOnly}>
                                 <span className={styles.headingGold}>{headingLine1} {headingLine2.split(" ")[0]}</span>
@@ -68,11 +68,11 @@ const WhatWeOfferHero = ({
                         {/* Subheading: WORLD OF LIMITLESS PERKS AND BENEFITS */}
                         <h2 className={`${styles.subheading} ${styles.animateIn} ${styles.delay2}`}>
                             <span className={styles.desktopOnly}>
-                                {subheadingLine1}
+                                <span data-builder-prop="subheadingLine1">{subheadingLine1}</span>
                                 <br />
-                                <span className={styles.subheadingBold}>{subheadingLine2}</span>
+                                <span className={styles.subheadingBold} data-builder-prop="subheadingLine2">{subheadingLine2}</span>
                                 <br />
-                                <span className={styles.subheadingBold}>{subheadingLine3}</span>
+                                <span className={styles.subheadingBold} data-builder-prop="subheadingLine3">{subheadingLine3}</span>
                             </span>
                             <span className={styles.mobileOnly}>
                                 {subheadingLine1} <span className={styles.subheadingBold}>{subheadingLine2.split(" ")[0]}</span>
@@ -82,7 +82,7 @@ const WhatWeOfferHero = ({
                         </h2>
                         {/* CTA Button: Join Now */}
                         <Link href="/apply-member" className={`${styles.ctaButton} ${styles.animateIn} ${styles.delay3}`} onClick={handleCtaClick}>
-                            <span>{ctaText}</span>
+                            <span data-builder-prop="ctaText">{ctaText}</span>
                             <ArrowRight className={styles.ctaArrow} size={24} strokeWidth={2.5} />
                         </Link>
 

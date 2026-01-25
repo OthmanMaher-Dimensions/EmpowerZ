@@ -32,16 +32,16 @@ const VolunteerActivitiesSection = ({
     style = {}
 }) => {
     const activities = [
-        { title: activity1Title, description: activity1Desc, icon: activity1Icon, color: "#E76A8A" },
-        { title: activity2Title, description: activity2Desc, icon: activity2Icon, color: "#73C2A5" },
-        { title: activity3Title, description: activity3Desc, icon: activity3Icon, color: "#A97FD1" },
-        { title: activity4Title, description: activity4Desc, icon: activity4Icon, color: "#FCB889" },
-        { title: activity5Title, description: activity5Desc, icon: activity5Icon, color: "#899DD0" },
-        { title: activity6Title, description: activity6Desc, icon: activity6Icon, color: "#92FFD8" },
-        { title: activity7Title, description: activity7Desc, icon: activity7Icon, color: "#FEC23D" },
-        { title: activity8Title, description: activity8Desc, icon: activity8Icon, color: "#CADB7F" },
-        { title: activity9Title, description: activity9Desc, icon: activity9Icon, color: "#DB80CF" },
-        { title: activity10Title, description: activity10Desc, icon: activity10Icon, color: "#bc7ba6" }
+        { title: activity1Title, titleProp: "activity1Title", description: activity1Desc, descProp: "activity1Desc", icon: activity1Icon, iconProp: "activity1Icon", color: "#E76A8A" },
+        { title: activity2Title, titleProp: "activity2Title", description: activity2Desc, descProp: "activity2Desc", icon: activity2Icon, iconProp: "activity2Icon", color: "#73C2A5" },
+        { title: activity3Title, titleProp: "activity3Title", description: activity3Desc, descProp: "activity3Desc", icon: activity3Icon, iconProp: "activity3Icon", color: "#A97FD1" },
+        { title: activity4Title, titleProp: "activity4Title", description: activity4Desc, descProp: "activity4Desc", icon: activity4Icon, iconProp: "activity4Icon", color: "#FCB889" },
+        { title: activity5Title, titleProp: "activity5Title", description: activity5Desc, descProp: "activity5Desc", icon: activity5Icon, iconProp: "activity5Icon", color: "#899DD0" },
+        { title: activity6Title, titleProp: "activity6Title", description: activity6Desc, descProp: "activity6Desc", icon: activity6Icon, iconProp: "activity6Icon", color: "#92FFD8" },
+        { title: activity7Title, titleProp: "activity7Title", description: activity7Desc, descProp: "activity7Desc", icon: activity7Icon, iconProp: "activity7Icon", color: "#FEC23D" },
+        { title: activity8Title, titleProp: "activity8Title", description: activity8Desc, descProp: "activity8Desc", icon: activity8Icon, iconProp: "activity8Icon", color: "#CADB7F" },
+        { title: activity9Title, titleProp: "activity9Title", description: activity9Desc, descProp: "activity9Desc", icon: activity9Icon, iconProp: "activity9Icon", color: "#DB80CF" },
+        { title: activity10Title, titleProp: "activity10Title", description: activity10Desc, descProp: "activity10Desc", icon: activity10Icon, iconProp: "activity10Icon", color: "#bc7ba6" }
     ];
 
     return (
@@ -49,10 +49,10 @@ const VolunteerActivitiesSection = ({
             <div className={styles.container}>
                 <div className={styles.headerWrapper}>
                     <div className={styles.yellowBlock}></div>
-                    <h2 className={styles.title}>{title}</h2>
+                    <h2 className={styles.title} data-builder-prop="title">{title}</h2>
                 </div>
 
-                <p className={styles.subtitle}>
+                <p className={styles.subtitle} data-builder-prop="subtitle">
                     {subtitle}
                 </p>
 
@@ -64,11 +64,11 @@ const VolunteerActivitiesSection = ({
                             style={{ backgroundColor: item.color }}
                         >
                             <div className={styles.iconWrapper}>
-                                <img src={item.icon} alt={item.title} className={styles.customIcon} />
+                                <img src={item.icon} alt={item.title} className={styles.customIcon} data-builder-prop={item.iconProp} />
                             </div>
                             <div className={styles.content}>
-                                <h3 className={styles.cardTitle}>{item.title}</h3>
-                                <p className={styles.cardDescription}>{item.description}</p>
+                                <h3 className={styles.cardTitle} data-builder-prop={item.titleProp}>{item.title}</h3>
+                                <p className={styles.cardDescription} data-builder-prop={item.descProp}>{item.description}</p>
                             </div>
                         </div>
                     ))}

@@ -19,9 +19,15 @@ const EmpowerGenZSection = ({
     style = {}
 }) => {
     const listItems = [
-        benefit1, benefit2, benefit3, benefit4,
-        benefit5, benefit6, benefit7, benefit8
-    ].filter(Boolean);
+        { text: benefit1, prop: 'benefit1' },
+        { text: benefit2, prop: 'benefit2' },
+        { text: benefit3, prop: 'benefit3' },
+        { text: benefit4, prop: 'benefit4' },
+        { text: benefit5, prop: 'benefit5' },
+        { text: benefit6, prop: 'benefit6' },
+        { text: benefit7, prop: 'benefit7' },
+        { text: benefit8, prop: 'benefit8' }
+    ].filter(item => item.text);
 
     return (
         <section className={styles.section} style={style}>
@@ -29,7 +35,7 @@ const EmpowerGenZSection = ({
                 {/* Content Row */}
                 <div className={styles.contentRow}>
                     <div className={styles.leftColumn}>
-                        <h2 className={styles.heading} style={{ whiteSpace: 'pre-line' }}>
+                        <h2 className={styles.heading} style={{ whiteSpace: 'pre-line' }} data-builder-prop="heading">
                             {heading}
                         </h2>
                     </div>
@@ -38,7 +44,7 @@ const EmpowerGenZSection = ({
                             {listItems.map((item, index) => (
                                 <li key={index} className={styles.benefitItem}>
                                     <span className={styles.bullet}>•</span>
-                                    {item}
+                                    <span data-builder-prop={item.prop}>{item.text}</span>
                                 </li>
                             ))}
                         </ul>
@@ -48,14 +54,14 @@ const EmpowerGenZSection = ({
                 {/* Stats Row */}
                 <div className={styles.statsRow}>
                     <div className={styles.statBox}>
-                        <h3 className={styles.statNumber}>{stat1Number}</h3>
-                        <p className={styles.statText}>
+                        <h3 className={styles.statNumber} data-builder-prop="stat1Number">{stat1Number}</h3>
+                        <p className={styles.statText} data-builder-prop="stat1Text">
                             {stat1Text}
                         </p>
                     </div>
                     <div className={styles.statBox}>
-                        <h3 className={styles.statNumber}>{stat2Number}</h3>
-                        <p className={styles.statText}>
+                        <h3 className={styles.statNumber} data-builder-prop="stat2Number">{stat2Number}</h3>
+                        <p className={styles.statText} data-builder-prop="stat2Text">
                             {stat2Text}
                         </p>
                     </div>

@@ -58,31 +58,31 @@ const Hero = ({
 
                     {/* Eyebrow: A NEW LEARNING ----- */}
                     <h2 className={`${styles.eyebrow} ${styles.animateIn} ${styles.delay1}`}>
-                        {eyebrow}
+                        <span data-builder-prop="eyebrow">{eyebrow}</span>
                         <span className={styles.eyebrowLine}></span>
                     </h2>
 
                     {/* Heading: JOURNEY */}
-                    <h1 className={`${styles.heading} ${styles.animateIn} ${styles.delay2}`}>
+                    <h1 className={`${styles.heading} ${styles.animateIn} ${styles.delay2}`} data-builder-prop="heading">
                         {heading}
                     </h1>
 
                     {/* Subheading: INVESTING IN YOUR POTENTIAL */}
-                    <h3 className={`${styles.subheading} ${styles.animateIn} ${styles.delay3}`}>
+                    <h3 className={`${styles.subheading} ${styles.animateIn} ${styles.delay3}`} data-builder-prop="subheading">
                         {subheading}
                     </h3>
 
                     {/* Divider/Subtitle: ---- A WORLD OF BENEFITS */}
                     <div className={`${styles.dividerContainer} ${styles.animateIn} ${styles.delay4}`}>
                         <span className={styles.dividerLine}></span>
-                        <span className={styles.dividerText}>
+                        <span className={styles.dividerText} data-builder-prop="dividerText">
                             {dividerText}
                         </span>
                     </div>
 
                     {/* Empower Statement: WE EMPOWER ENTREPRENEURS */}
                     <p className={`${styles.empowerText} ${styles.animateIn} ${styles.delay5}`}>
-                        {empowerPrefix}{' '}
+                        <span data-builder-prop="empowerPrefix">{empowerPrefix}</span>{' '}
                         <Typewriter
                             words={typewriterWords}
                             textClassName={styles.empowerTextStrong}
@@ -95,7 +95,7 @@ const Hero = ({
 
                     {/* CTA Button: Join the Movement */}
                     <Link href="/apply-member" className={styles.ctaButton} onClick={handleCtaClick}>
-                        <span className="hero-cta-text">{ctaText}</span> <ArrowRight className={styles.ctaArrow} size={24} strokeWidth={2.5} />
+                        <span className="hero-cta-text" data-builder-prop="ctaText">{ctaText}</span> <ArrowRight className={styles.ctaArrow} size={24} strokeWidth={2.5} />
                     </Link>
 
                     {/* Mobile Social Icons Row */}

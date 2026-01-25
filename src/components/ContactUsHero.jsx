@@ -41,10 +41,10 @@ export default function ContactUsHero({
                 <div className={styles.contentArea}>
                     <div className={styles.contentInner}>
                         <h1 className={styles.heading}>
-                            {titlePrefix} <span className={styles.headingGold}>{titleHighlight}</span>
+                            <span data-builder-prop="titlePrefix">{titlePrefix}</span> <span className={styles.headingGold} data-builder-prop="titleHighlight">{titleHighlight}</span>
                         </h1>
 
-                        <p className={styles.subtitle}>
+                        <p className={styles.subtitle} data-builder-prop="subtitle">
                             {subtitle}
                         </p>
                     </div>

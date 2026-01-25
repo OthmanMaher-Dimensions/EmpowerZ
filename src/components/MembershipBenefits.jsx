@@ -17,11 +17,11 @@ const MembershipBenefits = ({
 }) => {
 
     const benefits = [
-        { text: benefit1Text, color: "#E76A8A" },
-        { text: benefit2Text, color: "#73C2A5" },
-        { text: benefit3Text, color: "#899DD0" },
-        { text: benefit4Text, color: "#DB80CF" },
-        { text: benefit5Text, color: "#CADB7F" }
+        { text: benefit1Text, prop: 'benefit1Text', color: "#E76A8A" },
+        { text: benefit2Text, prop: 'benefit2Text', color: "#73C2A5" },
+        { text: benefit3Text, prop: 'benefit3Text', color: "#899DD0" },
+        { text: benefit4Text, prop: 'benefit4Text', color: "#DB80CF" },
+        { text: benefit5Text, prop: 'benefit5Text', color: "#CADB7F" }
     ];
 
     return (
@@ -31,21 +31,21 @@ const MembershipBenefits = ({
                 {/* Stats Row */}
                 <div className={styles.statsRow}>
                     <div className={styles.statBox}>
-                        <h3 className={styles.statNumber}>{stat1Number}</h3>
-                        <p className={styles.statText}>
+                        <h3 className={styles.statNumber} data-builder-prop="stat1Number">{stat1Number}</h3>
+                        <p className={styles.statText} data-builder-prop="stat1Text">
                             {stat1Text}
                         </p>
                     </div>
                     <div className={styles.statBox}>
-                        <h3 className={styles.statNumber}>{stat2Number}</h3>
-                        <p className={styles.statText}>
+                        <h3 className={styles.statNumber} data-builder-prop="stat2Number">{stat2Number}</h3>
+                        <p className={styles.statText} data-builder-prop="stat2Text">
                             {stat2Text}
                         </p>
                     </div>
                 </div>
 
                 {/* Subtitle */}
-                <h4 className={styles.subtitle}>
+                <h4 className={styles.subtitle} data-builder-prop="subtitle">
                     {subtitle}
                 </h4>
 
@@ -57,7 +57,7 @@ const MembershipBenefits = ({
                             className={styles.benefitCard}
                             style={{ backgroundColor: benefit.color }}
                         >
-                            <p className={styles.benefitText}>{benefit.text}</p>
+                            <p className={styles.benefitText} data-builder-prop={benefit.prop}>{benefit.text}</p>
                         </div>
                     ))}
                 </div>

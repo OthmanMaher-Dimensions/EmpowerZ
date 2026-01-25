@@ -32,19 +32,19 @@ const MentorshipSection = ({
 }) => {
     // Top Row: 5 items
     const topRow = [
-        { title: top1Title, description: top1Desc, icon: top1Icon },
-        { title: top2Title, description: top2Desc, icon: top2Icon },
-        { title: top3Title, description: top3Desc, icon: top3Icon },
-        { title: top4Title, description: top4Desc, icon: top4Icon },
-        { title: top5Title, description: top5Desc, icon: top5Icon }
+        { title: top1Title, titleProp: "top1Title", description: top1Desc, descProp: "top1Desc", icon: top1Icon, iconProp: "top1Icon" },
+        { title: top2Title, titleProp: "top2Title", description: top2Desc, descProp: "top2Desc", icon: top2Icon, iconProp: "top2Icon" },
+        { title: top3Title, titleProp: "top3Title", description: top3Desc, descProp: "top3Desc", icon: top3Icon, iconProp: "top3Icon" },
+        { title: top4Title, titleProp: "top4Title", description: top4Desc, descProp: "top4Desc", icon: top4Icon, iconProp: "top4Icon" },
+        { title: top5Title, titleProp: "top5Title", description: top5Desc, descProp: "top5Desc", icon: top5Icon, iconProp: "top5Icon" }
     ];
 
     // Bottom Row: 4 items
     const bottomRow = [
-        { title: bottom1Title, description: bottom1Desc, icon: bottom1Icon },
-        { title: bottom2Title, description: bottom2Desc, icon: bottom2Icon },
-        { title: bottom3Title, description: bottom3Desc, icon: bottom3Icon },
-        { title: bottom4Title, description: bottom4Desc, icon: bottom4Icon }
+        { title: bottom1Title, titleProp: "bottom1Title", description: bottom1Desc, descProp: "bottom1Desc", icon: bottom1Icon, iconProp: "bottom1Icon" },
+        { title: bottom2Title, titleProp: "bottom2Title", description: bottom2Desc, descProp: "bottom2Desc", icon: bottom2Icon, iconProp: "bottom2Icon" },
+        { title: bottom3Title, titleProp: "bottom3Title", description: bottom3Desc, descProp: "bottom3Desc", icon: bottom3Icon, iconProp: "bottom3Icon" },
+        { title: bottom4Title, titleProp: "bottom4Title", description: bottom4Desc, descProp: "bottom4Desc", icon: bottom4Icon, iconProp: "bottom4Icon" }
     ];
 
     return (
@@ -52,10 +52,10 @@ const MentorshipSection = ({
             <div className={styles.container}>
                 <div className={styles.headerWrapper}>
                     <div className={styles.yellowBlock}></div>
-                    <h2 className={styles.title}>{title}</h2>
+                    <h2 className={styles.title} data-builder-prop="title">{title}</h2>
                 </div>
 
-                <p className={styles.subtitle}>
+                <p className={styles.subtitle} data-builder-prop="subtitle">
                     {subtitle}
                 </p>
 
@@ -64,10 +64,10 @@ const MentorshipSection = ({
                     {topRow.map((item, index) => (
                         <div key={index} className={styles.card}>
                             <div className={styles.iconWrapper}>
-                                <img src={item.icon} alt={item.title} className={styles.customIcon} />
+                                <img src={item.icon} alt={item.title} className={styles.customIcon} data-builder-prop={item.iconProp} />
                             </div>
-                            <h3 className={styles.cardTitle}>{item.title}</h3>
-                            <p className={styles.cardDescription}>{item.description}</p>
+                            <h3 className={styles.cardTitle} data-builder-prop={item.titleProp}>{item.title}</h3>
+                            <p className={styles.cardDescription} data-builder-prop={item.descProp}>{item.description}</p>
                         </div>
                     ))}
                 </div>
@@ -77,10 +77,10 @@ const MentorshipSection = ({
                     {bottomRow.map((item, index) => (
                         <div key={index} className={styles.card}>
                             <div className={styles.iconWrapper}>
-                                <img src={item.icon} alt={item.title} className={styles.customIcon} />
+                                <img src={item.icon} alt={item.title} className={styles.customIcon} data-builder-prop={item.iconProp} />
                             </div>
-                            <h3 className={styles.cardTitle}>{item.title}</h3>
-                            <p className={styles.cardDescription}>{item.description}</p>
+                            <h3 className={styles.cardTitle} data-builder-prop={item.titleProp}>{item.title}</h3>
+                            <p className={styles.cardDescription} data-builder-prop={item.descProp}>{item.description}</p>
                         </div>
                     ))}
                 </div>

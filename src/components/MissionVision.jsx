@@ -19,8 +19,8 @@ const MissionVision = ({
                 {/* Mission Block - Text Left, Image Right (on Desktop) */}
                 <div className={styles.block}>
                     <div className={styles.textContent}>
-                        <h2 className={styles.title}>{missionTitle}</h2>
-                        <p className={styles.description}>
+                        <h2 className={styles.title} data-builder-prop="missionTitle">{missionTitle}</h2>
+                        <p className={styles.description} data-builder-prop="missionDesc">
                             {missionDesc}
                         </p>
                     </div>
@@ -29,6 +29,7 @@ const MissionVision = ({
                             src={missionImage}
                             alt="Mission"
                             className={styles.image}
+                            data-builder-prop="missionImage"
                         />
                     </div>
                 </div>
@@ -40,11 +41,12 @@ const MissionVision = ({
                             src={visionImage}
                             alt="Vision"
                             className={styles.image}
+                            data-builder-prop="visionImage"
                         />
                     </div>
                     <div className={styles.textContent}>
-                        <h2 className={styles.title}>{visionTitle}</h2>
-                        <p className={styles.description}>
+                        <h2 className={styles.title} data-builder-prop="visionTitle">{visionTitle}</h2>
+                        <p className={styles.description} data-builder-prop="visionDesc">
                             {visionDesc}
                         </p>
                     </div>

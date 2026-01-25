@@ -43,15 +43,15 @@ const AboutHero = ({
             <div className={styles.container}>
                 {/* Top Content */}
                 <div className={styles.contentLeft}>
-                    <div className={styles.badge}>
+                    <div className={styles.badge} data-builder-prop="badgeText">
                         {badgeText}
                     </div>
 
                     <h1 className={styles.headline}>
-                        <span className={styles.headlineSpark}>{headlineSpark}</span>
-                        <span className={styles.headlinePassion}>{headlinePassion}</span>
-                        <span className={styles.subHeadline}>{headlineGrow}</span>
-                        <span className={styles.headlineMovement} dangerouslySetInnerHTML={{ __html: headlineMovement }} />
+                        <span className={styles.headlineSpark} data-builder-prop="headlineSpark">{headlineSpark}</span>
+                        <span className={styles.headlinePassion} data-builder-prop="headlinePassion">{headlinePassion}</span>
+                        <span className={styles.subHeadline} data-builder-prop="headlineGrow">{headlineGrow}</span>
+                        <span className={styles.headlineMovement} dangerouslySetInnerHTML={{ __html: headlineMovement }} data-builder-prop="headlineMovement" />
                     </h1>
 
                     {/* Dotted Arrow - positioned absolutely relative to container handled by CSS */}
@@ -88,9 +88,9 @@ const AboutHero = ({
 
                     {/* Yellow Text Box */}
                     <div className={styles.textBox}>
-                        <p>{textP1}</p>
-                        <p>{textP2}</p>
-                        <p>{textP3}</p>
+                        <p data-builder-prop="textP1">{textP1}</p>
+                        <p data-builder-prop="textP2">{textP2}</p>
+                        <p data-builder-prop="textP3">{textP3}</p>
                     </div>
                 </div>
             </div>

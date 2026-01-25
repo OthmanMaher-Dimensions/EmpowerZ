@@ -29,34 +29,43 @@ const JourneySection = ({
     const cards = [
         {
             title: card1Title,
+            titleProp: "card1Title",
             description: card1Desc,
-            items: parseItems(card1Items)
+            descProp: "card1Desc",
+            items: parseItems(card1Items),
+            itemsProp: "card1Items"
         },
         {
             title: card2Title,
+            titleProp: "card2Title",
             description: card2Desc,
-            items: parseItems(card2Items)
+            descProp: "card2Desc",
+            items: parseItems(card2Items),
+            itemsProp: "card2Items"
         },
         {
             title: card3Title,
+            titleProp: "card3Title",
             description: card3Desc,
-            items: parseItems(card3Items)
+            descProp: "card3Desc",
+            items: parseItems(card3Items),
+            itemsProp: "card3Items"
         }
     ];
 
     return (
         <section className={styles.section} style={style}>
             <div className={styles.container}>
-                <h2 className={styles.mainTitle}>{mainTitle}</h2>
+                <h2 className={styles.mainTitle} data-builder-prop="mainTitle">{mainTitle}</h2>
 
                 <div className={styles.cardsWrapper}>
                     {cards.map((card, index) => (
                         <div key={index} className={styles.card}>
                             <div className={styles.cardHeader}>
-                                <h3 className={styles.cardTitle}>{card.title}</h3>
+                                <h3 className={styles.cardTitle} data-builder-prop={card.titleProp}>{card.title}</h3>
                             </div>
                             <div className={styles.cardBody}>
-                                <p className={styles.description}>{card.description}</p>
+                                <p className={styles.description} data-builder-prop={card.descProp}>{card.description}</p>
                                 <ul className={styles.list}>
                                     {card.items.map((item, i) => (
                                         <li key={i} className={styles.listItem}>
