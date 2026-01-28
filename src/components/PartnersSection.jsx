@@ -11,7 +11,7 @@ const PartnersSection = ({
     title = "Our Partners",
     subtitle = "Collaborating with industry leaders to bring you the best opportunities.",
     enableSignup = false,
-    signupLink = "/register",
+    signupLink = "/apply-member",
     signupText = "Sign Up Now",
     initialPartners = [],
     variant = 'default',
@@ -118,9 +118,14 @@ const PartnersSection = ({
 
             {enableSignup && (
                 <>
-                    <div className={styles.ctaContainer} onClick={handleCtaClick}>
-                        <Link href={signupLink} className={styles.ctaButton}>
+                    <div className={styles.ctaWrapper}>
+                        <Link
+                            href={signupLink}
+                            className={styles.signupBtn}
+                            onClick={handleCtaClick}
+                        >
                             {signupText}
+                            <ArrowRight size={20} />
                         </Link>
                     </div>
                     <hr className={styles.divider} />
