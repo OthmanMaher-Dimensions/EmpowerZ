@@ -25,12 +25,21 @@
     bottom: 0;
     background-image: url('/assets/contact-us-bg-final.png');
     background-size: cover;
-    background-position: top center;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
 .gradientOverlay {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at top, rgba(0, 70, 255, 0.1) 0%, transparent 60%),
+        linear-gradient(to bottom, rgba(10, 10, 20, 0.4) 0%, rgba(10, 10, 20, 0.95) 100%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .contentArea {
